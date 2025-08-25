@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_25_095431) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_25_110114) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "price_per_unit"
     t.integer "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "food_preferences"
+    t.integer "total_budget"
+    t.integer "total_calories"
+    t.integer "total_recipes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|

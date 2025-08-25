@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Profil de <%= @profile.name %></h3>
+    </div>
+    <div class="card-body">
+      <p><strong>Nom :</strong> <%= @profile.name %></p>
+      <p><strong>Préférences alimentaires :</strong> <%= @profile.food_preferences %></p>
+      <p><strong>Budget total :</strong> <%= @profile.total_budget %> €</p>
+      <p><strong>Objectif calories :</strong> <%= @profile.total_calories %> kcal</p>
+      <p><strong>Nombre de recettes :</strong> <%= @profile.total_recipes %></p>
+    </div>
+    <div class="card-footer text-end">
+      <%= link_to "Modifier", edit_profile_path(@profile), class: "btn btn-warning" %>
+      <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
