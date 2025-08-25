@@ -29,7 +29,7 @@ gem "devise"
 gem "simple_form"
 gem 'dartsass-sprockets'
 gem 'bootstrap', '~> 5.3.3'
-
+gem "pg", "~> 1.1"
 
 
 # Use Redis adapter to run Action Cable in production
