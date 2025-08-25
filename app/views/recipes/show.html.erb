@@ -1,1 +1,39 @@
-<h1>coucou</h1>
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0"><%= @recipe.name %></h2>
+    </div>
+    <div class="card-body">
+      </ul>
+      <!-- Informations générales -->
+      <h4 class="mb-3">ℹ️ Informations sur la recette</h4>
+      <ul class="list-group mb-4">
+        <li class="list-group-item"><strong>Prix :</strong> <%= @recipe.price %> €</li>
+        <li class="list-group-item"><strong>Temps de préparation :</strong> <%= @recipe.time %> minutes</li>
+        <li class="list-group-item"><strong>Calories :</strong> <%= @recipe.calories %> kcal</li>
+        <li class="list-group-item"><strong>Description :</strong> <%= @recipe.description %></li>
+      </ul>
+      <!-- Ingrédients nécessaires -->
+      <h4 class="mb-3">🛒 Ingrédients nécessaires</h4>
+      <ul class="list-group mb-4">
+        <% @recipe.recipe_ingredients.each do |ri| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><%= ri.quantity %> de <%= ri.ingredient.name %></span>
+            <span class="badge bg-secondary">
+              <%= ri.ingredient.price_per_unit %> €
+            </span>
+          </li>
+        <% end %>
+      <!-- Étapes de préparation -->
+      <h4 class="mb-3">👩‍🍳 Étapes de préparation</h4>
+      <ol class="list-group list-group-numbered">
+        <% @recipe.steps.to_s.split("\n").each do |step| %>
+          <li class="list-group-item"><%= step %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="card-footer text-end">
+      <%= link_to "Retour aux recettes", recipes_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
