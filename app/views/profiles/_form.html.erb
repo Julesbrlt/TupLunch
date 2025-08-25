@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-body">
+      <%= simple_form_for @profile do |f| %>
+        <div class="mb-3">
+          <%= f.input :name, label: "Nom", input_html: { class: "form-control" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.input :food_preferences, label: "Préférences alimentaires", input_html: { class: "form-control" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.input :total_budget, label: "Budget total (€)", input_html: { class: "form-control" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.input :total_calories, label: "Objectif calories (kcal)", input_html: { class: "form-control" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.input :total_recipes, label: "Nombre de recettes", input_html: { class: "form-control" } %>
+        </div>
+        <div class="text-end">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
