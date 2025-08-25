@@ -1,1 +1,21 @@
-<h1>coucou</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Toutes les recettes</h1>
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= recipe.name %></h5>
+            <p class="card-text text-muted"><%= truncate(recipe.description, length: 100) %></p>
+            <p><strong>Prix :</strong> <%= recipe.price %> €</p>
+            <p><strong>Temps :</strong> <%= recipe.time %> min</p>
+            <p><strong>Calories :</strong> <%= recipe.calories %> kcal</p>
+          </div>
+          <div class="card-footer text-end">
+            <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
