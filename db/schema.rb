@@ -22,5 +22,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_25_094753) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+end
 
+  ActiveRecord::Schema[7.1].define(version: 2025_08_25_094942) do
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "price_per_unit"
+    t.integer "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
