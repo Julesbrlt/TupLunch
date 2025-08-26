@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :profiles, except: [:index, :destroy]
   resources :recipes, only: [:index, :show]
   resources :recipe_ingredients
-  resources :index_recap_recipes
+  resources :recap_recipes
   resources :chats do
     resources :messages
   end
