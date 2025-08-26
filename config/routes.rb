@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "/welcome", to: "pages#welcome"
+
   resources :profiles, except: [:index, :destroy]
   resources :recipes, only: [:index, :show]
   resources :recipe_ingredients
-  resources :index_recap_recipes
+  resources :recap_recipes
   resources :chats do
     resources :messages
   end
