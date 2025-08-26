@@ -9,6 +9,7 @@
             <h5 class="card-title"><%= favorite.recipe.name %></h5>
             <p class="card-text"><%= favorite.recipe.description %></p>
                <%= link_to "show this recipe", recipe_path(favorite.recipe_id)%>
+               <%= link_to "🚮", recipe_favorite_path(favorite.recipe_id, favorite.id), data: { turbo_method: :delete, confirm: "Voulez-vous vraiment retirer cette recette de vos favoris ?"}%>
           </div>
         </div>
       </div>

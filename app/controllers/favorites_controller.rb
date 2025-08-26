@@ -11,13 +11,14 @@ class FavoritesController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     current_user.favorites.create(recipe: @recipe)
-    redirect_to @recipe, notice: "Recette ajoutée à vos favoris !"
   end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @favorite = current_user.favorites.find_by(recipe: @recipe)
     @favorite.destroy
-    redirect_to favorites_path, notice: "Recette retirée de vos favoris."
+
+    redirect_to dashboard_path, notice: "Recette retirée de vos favoris."
   end
+
 end
