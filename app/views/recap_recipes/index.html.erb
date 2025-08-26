@@ -1,0 +1,26 @@
+<h1 class="mb-4">Ma sélection de recettes</h1>
+
+<% if @recap_recipes.any? %>
+  <div class="row">
+    <% @recap_recipes.each do |recap| %>
+      <% recipe = recap.recipe %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to recipe.name, recipe_path(recipe), class: "text-decoration-none" %>
+            </h5>
+            <p class="card-text">
+              <strong>Prix :</strong>
+              <%= number_to_currency(recipe.price, unit: "€") if recipe.respond_to?(:price) %>
+            </p>
+            <p class="card-text">
+              <strong>Préparation :</strong>
+              <%= "#{recipe.time} min" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
