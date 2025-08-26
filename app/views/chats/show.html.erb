@@ -1,0 +1,17 @@
+<div class="container-fluid vh-90 d-flex flex-column py-3 ">
+  <!-- Header -->
+  <div class="d-flex align-items-center justify-content-center position-relative mb-4">
+    <h1 class="fw-bold m-0">TupChef</h1>
+  </div>
+  <!-- Zone messages + input -->
+  <div class="card shadow-sm border-0 rounded-4 flex-grow-1 d-flex flex-column">
+    <!-- Messages scrollables -->
+    <div id="messages" class="card-body flex-grow-1 overflow-auto" style="max-height: 60vh">
+      <%= render "messages/messages", messages: @chat.messages %>
+    </div>
+    <!-- Barre de chat toujours en bas -->
+    <div id="new_message" class="p-3 border-top">
+      <%= render "messages/form", chat: @chat, message: Message.new %>
+    </div>
+  </div>
+</div>
