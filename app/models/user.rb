@@ -6,4 +6,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :recap_recipes, dependent: :destroy
+  has_many :selected_recipes, through: :recap_recipes, source: :recipe
+  
 end

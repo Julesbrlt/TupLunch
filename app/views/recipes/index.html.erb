@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <h1 class="mb-4">Toutes les recettes</h1>
+
   <div class="row">
     <% @recipes.each do |recipe| %>
       <div class="col-md-4 mb-4">
@@ -11,15 +12,30 @@
             <p><strong>Temps :</strong> <%= recipe.time %> min</p>
             <p><strong>Calories :</strong> <%= recipe.calories %> kcal</p>
           </div>
+
           <div class="card-footer text-end">
             <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm" %>
           </div>
+
           <% if user_signed_in? %>
-            <% if current_user.favorites.exists?(recipe.id) %>
-              <span>Déjà dans vos favoris</span>
-            <% else %>
-              <%= link_to "🩷", recipe_favorites_path(recipe), data: {turbo_method: :post }%>
-            <% end %>
+            <div class="card-footer d-flex justify-content-between">
+              <% if current_user.selected_recipes.exists?(recipe.id) %>
+                <span class="text-success">✅ Déjà dans votre sélection</span>
+              <% else %>
+                <%= link_to "Ajouter à ma sélection",
+                            recipe_recap_recipes_path(recipe),
+                            data: { turbo_method: :post },
+                            class: "btn btn-success btn-sm" %>
+              <% end %>
+
+              <% if current_user.favorites.exists?(recipe.id) %>
+                <span class="text-danger">❤️ Déjà dans vos favoris</span>
+              <% else %>
+                <%= link_to "🩷", recipe_favorites_path(recipe),
+                            data: { turbo_method: :post },
+                            class: "btn btn-outline-danger btn-sm" %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
