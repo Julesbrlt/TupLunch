@@ -28,7 +28,7 @@
                             class: "btn btn-success btn-sm" %>
               <% end %>
 
-              <% if current_user.favorites.exists?(recipe.id) %>
+              <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
                 <span class="text-danger">❤️ Déjà dans vos favoris</span>
               <% else %>
                 <%= link_to "🩷", recipe_favorites_path(recipe),
