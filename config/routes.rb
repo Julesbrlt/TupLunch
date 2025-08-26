@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :profiles, except: [:index, :destroy]
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show] do
+    resources :recap_recipes, only: [:create]
+  end
+  resources :recap_recipes, only: [:index]
   resources :recipe_ingredients
-  resources :recap_recipes
   resources :chats do
     resources :messages
   end
