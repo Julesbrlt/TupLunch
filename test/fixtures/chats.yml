@@ -1,18 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-<<<<<<< HEAD
-  title: MyString
-  model_id: MyString
-  user: one
-  recipe: one
-
-two:
-  title: MyString
-  model_id: MyString
-  user: two
-  recipe: two
-=======
   user: one
   recipe: one
   model_id: MyString
@@ -23,4 +11,3 @@ two:
   recipe: two
   model_id: MyString
   title: MyString
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257

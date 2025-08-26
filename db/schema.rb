@@ -10,17 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.1].define(version: 2025_08_26_082459) do
-  create_table "chats", force: :cascade do |t|
-    t.string "title"
-    t.string "model_id"
-    t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_chats_on_recipe_id"
-=======
 ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,18 +20,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-<<<<<<< HEAD
-    t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
-=======
     t.bigint "user_id", null: false
     t.bigint "recipe_id", null: false
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
@@ -57,14 +40,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
   end
 
   create_table "messages", force: :cascade do |t|
-<<<<<<< HEAD
-    t.integer "chat_id", null: false
-    t.string "content"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chat_id"], name: "index_messages_on_chat_id"
-=======
     t.bigint "chat_id", null: false
     t.string "role"
     t.string "content"
@@ -76,7 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
     t.bigint "tool_call_id"
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["tool_call_id"], name: "index_messages_on_tool_call_id"
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -144,18 +118,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-  add_foreign_key "chats", "recipes"
-=======
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
   add_foreign_key "chats", "users"
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
   add_foreign_key "messages", "chats"
-<<<<<<< HEAD
-=======
   add_foreign_key "messages", "tool_calls"
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
   add_foreign_key "recap_recipes", "recipes"
   add_foreign_key "recap_recipes", "users"
   add_foreign_key "tool_calls", "messages"

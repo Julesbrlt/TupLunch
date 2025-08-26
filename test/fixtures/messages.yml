@@ -2,15 +2,6 @@
 
 one:
   chat: one
-<<<<<<< HEAD
-  content: MyString
-  role: MyString
-
-two:
-  chat: two
-  content: MyString
-  role: MyString
-=======
   role: MyString
   content: MyString
 
@@ -18,4 +9,3 @@ two:
   chat: two
   role: MyString
   content: MyString
->>>>>>> 9a0e592a7318182a4ab834a1b852650fb1996257
