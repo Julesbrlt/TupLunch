@@ -14,6 +14,13 @@
           <div class="card-footer text-end">
             <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm" %>
           </div>
+          <% if user_signed_in? %>
+            <% if current_user.favorites.exists?(recipe.id) %>
+              <span>Déjà dans vos favoris</span>
+            <% else %>
+              <%= link_to "🩷", recipe_favorites_path(recipe), data: {turbo_method: :post }%>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
