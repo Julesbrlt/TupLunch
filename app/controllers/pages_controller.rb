@@ -4,6 +4,13 @@ class PagesController < ApplicationController
   def home
   end
 
-  def welcome #page d'accueil
+  def dashboard
+    @user = current_user
+    @favorites = @user.favorites
+
   end
+
+  def welcome
+  end
+
 end

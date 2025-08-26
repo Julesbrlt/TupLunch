@@ -1,6 +1,9 @@
+Favorite.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
+User.destroy_all
+
 
 # --- Recettes ---
 recipes = [
@@ -186,3 +189,20 @@ RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find
 RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/4 pièce")
 
 puts "✅ Liaisons recettes ↔ ingrédients créées"
+
+
+user = User.create!(
+  email: "test@test.fr",
+  password: "123456"
+)
+
+user.favorites.create(recipe: Recipe.create(recipes.first))
+
+p user.favorites
+
+recipe = Recipe.find(user.favorites.first.recipe_id)
+recipe2 = Recipe.find(78)
+
+
+p recipe
+p recipe2

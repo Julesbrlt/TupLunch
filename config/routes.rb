@@ -13,12 +13,16 @@ Rails.application.routes.draw do
   get "/welcome", to: "pages#welcome"
 
   resources :profiles, except: [:index, :destroy]
+  resources :recipe_ingredients
+  resources :index_recap_recipes
+  get "/dashboard", to: "pages#dashboard"
   resources :recipes, only: [:index, :show] do
+    resources :favorites, only: [:create, :destroy]
     resources :recap_recipes, only: [:create]
-    
   end
   resources :recap_recipes, only: [:index]
-  resources :recipe_ingredients
+  resources :favorites, only: [:index]
+  resources :recap_recipes
   resources :chats do
     resources :messages
   end
