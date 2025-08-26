@@ -7,5 +7,6 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @favorites = @user.favorites
+  def welcome #page d'accueil
   end
 end
