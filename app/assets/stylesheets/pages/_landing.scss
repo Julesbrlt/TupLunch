@@ -12,9 +12,9 @@
 
 .landing-decor {
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
-  width: 70%;   // ajuste selon ton Figma
+  width: 75%;   // ajuste selon ton Figma
   height: auto;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -22,13 +22,14 @@
 
 .landing-content {
   position: absolute;
-  top: 55%;
+  top: 65%;
   text-align: center;
   color: $color-light;
 }
 
 .landing-ligne {
-  
+  position: absolute;
+  bottom: 35%;
   z-index: 0;
 }
 
