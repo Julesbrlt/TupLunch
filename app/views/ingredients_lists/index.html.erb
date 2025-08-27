@@ -1,22 +1,52 @@
-<h1>Ma liste d’ingrédients</h1>
+<h1 class="mb-4">Ma liste d’ingrédients</h1>
 
-  <table>
-    <thead>
+<% if @lists.present? %>
+  <table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
       <tr>
         <th>Ingrédient</th>
         <th>Quantité</th>
         <th>Prix / unité</th>
+        <th>Acheté ?</th>
       </tr>
     </thead>
     <tbody>
       <% @lists.each do |recap| %>
         <% recap.recipe.recipe_ingredients.each do |ri| %>
-          <ul>
-            <li><%= ri.ingredient.name %></li>
-            <li><%= ri.quantity %></li>
-            <li><%= number_to_currency(ri.ingredient.price_per_unit, unit: "€", separator: ",") %></li>
-          </ul>
+          <tr>
+            <td><%= ri.ingredient.name %></td>
+            <td><%= ri.quantity %></td>
+            <td><%= number_to_currency(ri.ingredient.price_per_unit, unit: "€", separator: ",") %></td>
+            <td class="text-center">
+              <input type="checkbox"
+                     class="form-check-input ingredient-checkbox"
+                     data-id="<%= ri.ingredient.id %>">
+            </td>
+          </tr>
         <% end %>
       <% end %>
     </tbody>
   </table>
+<% else %>
+  <div class="alert alert-info">
+    Aucune recette trouvée dans votre récap.
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll(".ingredient-checkbox");
+
+    checkboxes.forEach((checkbox) => {
+      const ingredientId = checkbox.dataset.id;
+
+      if (localStorage.getItem("ingredient-" + ingredientId) === "true") {
+        checkbox.checked = true;
+      }
+
+      checkbox.addEventListener("change", () => {
+        localStorage.setItem("ingredient-" + ingredientId, checkbox.checked);
+      });
+    });
+  });
+</script>
