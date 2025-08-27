@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_27_101147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
     t.integer "price_per_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients_lists", force: :cascade do |t|
+    t.bigint "recap_recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recap_recipe_id"], name: "index_ingredients_lists_on_recap_recipe_id", unique: true
   end
 
   create_table "messages", force: :cascade do |t|
@@ -121,6 +128,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_26_133452) do
   add_foreign_key "chats", "users"
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
+  add_foreign_key "ingredients_lists", "recap_recipes"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "tool_calls"
   add_foreign_key "recap_recipes", "recipes"

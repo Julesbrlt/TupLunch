@@ -2,6 +2,7 @@ Favorite.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
+User.destroy_all
 
 
 # --- Recettes ---
@@ -201,13 +202,3 @@ Profile.create!(
   name: "Jean Dupont",
   food_preferences: "Végétarien, aime les pâtes"
 )
-p user.profile
-p user.favorites
-
-recipe = Recipe.find(user.favorites.first.recipe_id)
-recipe2 = Recipe.find(78)
-
-
-p recipe
-p recipe2
-
