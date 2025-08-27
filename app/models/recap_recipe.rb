@@ -8,5 +8,7 @@ class RecapRecipe < ApplicationRecord
     scope: :user_id,
     message: "est déjà dans votre sélection"
   }
+
+  has_one :ingredients_list, dependent: :destroy
   
 end

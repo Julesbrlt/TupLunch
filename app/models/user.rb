@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   has_many :recap_recipes, dependent: :destroy
   has_many :selected_recipes, through: :recap_recipes, source: :recipe
-  
+
 end
