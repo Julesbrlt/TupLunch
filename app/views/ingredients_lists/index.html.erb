@@ -1,7 +1,6 @@
 <div class="shopping-page">
   <div class="shopping-card">
     <h1>Liste de courses</h1>
-
     <% if @lists.present? %>
       <table>
         <thead>
@@ -31,7 +30,6 @@
           <% end %>
         </tbody>
       </table>
-
       <div class="shopping-total">
         <span class="label">TOTAL :</span>
         <span class="value"><%= number_to_currency(total_price, unit: "€", separator: ",") %></span>
