@@ -1,0 +1,99 @@
+
+
+.landing-hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-decor {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 70%;   // ajuste selon ton Figma
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.landing-content {
+  position: absolute;
+  top: 55%;
+  text-align: center;
+  color: $color-light;
+}
+
+.landing-ligne {
+  
+  z-index: 0;
+}
+
+
+.landing-title {
+  font-family: $font-primary;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.landing-subtitle {
+  font-family: $font-secondary;
+  font-size: 1rem;
+  opacity: .9;
+  margin: 0 0 10px;
+}
+
+/* CTA jaune avec flèche à droite */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: $color-secondary;
+  color: $color-light;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 0 rgba(#000, .12), $shadow-soft;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+
+  &:hover { transform: translateY(-2px); }
+
+  &.with-arrow::after {
+    content: "→";
+    display: inline-grid;
+    place-items: center;
+    width: 28px; height: 28px;
+    border-radius: 999px;
+    background: rgba(#000, .15);
+    line-height: 1;
+    font-weight: 700;
+  }
+}
+
+// .landing-top {
+
+// display: flex;
+// flex-direction: row;
+// align-items: center;
+// padding: 0px;
+// gap: 8px;
+
+// position: absolute;
+// width: 205px;
+// height: 22px;
+// left: 95px;
+// top: 57px;
+
+
+// }
