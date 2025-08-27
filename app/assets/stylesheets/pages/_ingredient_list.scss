@@ -1,0 +1,175 @@
+/* ========= TupLunch – shopping list ========= */
+
+/* Palette (approximations de la maquette) */
+$teal-bg:        #00524F;
+$card-bg:        #f3f9fb;
+$pill-bg:        #ecebeb;
+$accent-yellow:  #FCBF38;
+$text-dark:      #1f2a2e;
+$text-muted:     #7c8b91;
+$border:         rgba(0,0,0,0.06);
+
+/* Page background + centrage de la carte */
+.shopping-page {
+  min-height: 100vh;
+  background: $teal-bg;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+}
+
+/* Carte principale */
+.shopping-card {
+  width: 100%;
+  max-width: 720px;
+  background: $card-bg;
+  border-radius: 24px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  padding: 28px 24px 36px;
+  position: relative;
+}
+
+/* Titre style maquette */
+.shopping-card h1 {
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.1;
+  color: $accent-yellow;
+  text-align: center;
+  margin: 8px 0 18px;
+}
+
+/* Fine ligne sous le titre */
+.shopping-card h1::after {
+  content: "";
+  display: block;
+  width: 86%;
+  height: 2px;
+  background: $border;
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+/* Table → on la “dé-bootstrapise” visuellement pour ressembler à une liste */
+.shopping-card table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 12px 14px; /* espace entre les lignes */
+}
+
+.shopping-card thead {
+  display: table-header-group;
+}
+
+.shopping-card thead th {
+  background: transparent;
+  color: $text-muted;
+  font-weight: 700;
+  border: 0 !important;
+  text-transform: none;
+  letter-spacing: .2px;
+  padding: 0 12px 2px;
+}
+
+.shopping-card tbody tr {
+  background: transparent;
+}
+
+/* Chaque ligne : on donne un fond “pill” à chaque cellule comme sur la maquette */
+.shopping-card tbody td {
+  background: $pill-bg;
+  border: 0;
+  padding: 16px 18px;
+  border-radius: 16px;
+  color: $text-dark;
+}
+
+/* Colonnes : ajuster les largeurs pour ressembler au mock */
+.shopping-card tbody td:nth-child(1) { width: 48%; }
+.shopping-card tbody td:nth-child(2) { width: 22%; text-align: center; }
+.shopping-card tbody td:nth-child(3) { width: 20%; text-align: center; }
+.shopping-card tbody td:nth-child(4) {
+  width: 10%;
+  background: transparent; /* le bouton est seul, pas besoin de pill */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Checkbox ronde style “+ / −” */
+.round-check {
+  /* neutraliser le style natif */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border: 2px solid $text-dark;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  transition: all .18s ease;
+  outline: none;
+}
+
+/* Icône “+” par défaut */
+.round-check::after {
+  content: "";
+  font-weight: 800;
+  font-size: 18px;
+  color: $text-dark;
+  line-height: 1;
+}
+
+/* Quand cochée → “−”, fond pâle */
+.round-check:checked {
+  background: $pill-bg;
+}
+
+.round-check:checked::after {
+  content: "✔";
+  transform: translateY(-1px);
+}
+
+/* Hover/focus feedback */
+.round-check:hover {
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.04);
+}
+.round-check:focus-visible {
+  box-shadow: 0 0 0 6px rgba(255,191,42,0.25);
+  border-color: $accent-yellow;
+}
+
+/* Petites retouches typographiques */
+.shopping-card td, .shopping-card th {
+  font-size: clamp(14px, 2.4vw, 18px);
+}
+
+/* Pied “TOTAL : Prix” (si tu l’ajoutes) */
+.shopping-total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  .label {
+    color: #4aa3a3; /* vert/bleu léger comme sur la maquette */
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+  .value {
+    color: $text-muted;
+  }
+}
+
+/* Responsive : resserrer les pills sur petits écrans */
+@media (max-width: 540px) {
+  .shopping-card { padding: 20px 16px 28px; }
+  .shopping-card tbody td { padding: 14px 14px; }
+  .shopping-card tbody td:nth-child(1) { width: 50%; }
+  .shopping-card tbody td:nth-child(2),
+  .shopping-card tbody td:nth-child(3) { width: 22%; }
+  .round-check { width: 32px; height: 32px; }
+}
