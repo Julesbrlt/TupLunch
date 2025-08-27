@@ -31,7 +31,7 @@
               <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
                 <span class="text-danger">❤️ Déjà dans vos favoris</span>
               <% else %>
-                <%= link_to "🩷", recipe_favorites_path(recipe),
+                <%= link_to "❤️", recipe_favorites_path(recipe),
                             data: { turbo_method: :post },
                             class: "btn btn-outline-danger btn-sm" %>
               <% end %>

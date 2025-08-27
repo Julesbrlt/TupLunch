@@ -1,0 +1,22 @@
+<h1>Ma liste d’ingrédients</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ingrédient</th>
+        <th>Quantité</th>
+        <th>Prix / unité</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @lists.each do |recap| %>
+        <% recap.recipe.recipe_ingredients.each do |ri| %>
+          <ul>
+            <li><%= ri.ingredient.name %></li>
+            <li><%= ri.quantity %></li>
+            <li><%= number_to_currency(ri.ingredient.price_per_unit, unit: "€", separator: ",") %></li>
+          </ul>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>

@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :chats do
     resources :messages
   end
+  resources :ingredients_lists, only: [:index]
 end
