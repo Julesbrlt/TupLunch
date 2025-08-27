@@ -2,7 +2,6 @@ Favorite.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
-User.destroy_all
 
 
 # --- Recettes ---
@@ -211,3 +210,4 @@ recipe2 = Recipe.find(78)
 
 p recipe
 p recipe2
+
