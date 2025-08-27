@@ -1,0 +1,35 @@
+// -----------------------------
+// 🎨 Colors
+// -----------------------------
+$color-primary: #00524F;   // fond vert foncé (background landing)
+$color-secondary: #FCBF38; // jaune boutons + accents
+$color-accent: #FFB84D;    // jaune orangé (hover / icons)
+$color-light: #FFFFFF;     // blanc pour texte/bouton
+$color-muted: #9CA3AF;     // gris clair pour sous-texte
+$color-light2: #f1ecec;
+
+// -----------------------------
+// ✍️ Typography
+// -----------------------------
+$font-primary: 'Poppins', sans-serif;  // titres + boutons (bold)
+$font-secondary: 'Inter', sans-serif;  // textes, labels
+
+$font-size-title: 2.5rem;   // "Let's Cook"
+$font-size-subtitle: 1rem;  // sous-texte ("Find the best food recipes")
+$font-size-button: 1rem;
+
+// -----------------------------
+// 🔘 Buttons
+// -----------------------------
+$button-bg: $color-secondary;
+$button-color: $color-light;
+$button-radius: 12px;
+$button-padding: 12px 24px;
+$button-font-weight: 600;
+
+// -----------------------------
+// 📱 Layout
+// -----------------------------
+$container-padding: 1.5rem;
+$border-radius-card: 20px;
+$shadow-soft: 0px 4px 10px rgba(0, 0, 0, 0.15);

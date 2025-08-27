@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
   end
 
-  def welcome
+  def landing
   end
 
 end
