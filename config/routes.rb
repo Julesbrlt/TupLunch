@@ -20,9 +20,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :recap_recipes, only: [:create]
   end
-  resources :recap_recipes, only: [:index]
+  resources :recap_recipes, only: [:index, :destroy]
   resources :favorites, only: [:index]
-  resources :recap_recipes
   resources :chats do
     resources :messages
   end

@@ -2,7 +2,6 @@ Favorite.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
-User.destroy_all
 
 
 # --- Recettes ---
@@ -197,7 +196,12 @@ user = User.create!(
 )
 
 user.favorites.create(recipe: Recipe.create(recipes.first))
-
+Profile.create!(
+  user: user,
+  name: "Jean Dupont",
+  food_preferences: "Végétarien, aime les pâtes"
+)
+p user.profile
 p user.favorites
 
 recipe = Recipe.find(user.favorites.first.recipe_id)
@@ -206,3 +210,4 @@ recipe2 = Recipe.find(78)
 
 p recipe
 p recipe2
+

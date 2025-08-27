@@ -11,5 +11,11 @@ class RecapRecipesController < ApplicationController
     redirect_to recap_recipes_path
   end
 
+  def destroy
+    @recap_recipe = current_user.recap_recipes.find(params[:id])
+    @recap_recipe.destroy
+
+    redirect_to dashboard_path, notice: "Recette retirée de vos favoris."
+  end
 
 end
