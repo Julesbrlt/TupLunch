@@ -1,0 +1,29 @@
+.navbar {
+  //position: relative;
+  background-color: $color-primary;
+  padding: 1.850rem;
+  // position: fixed;
+  // height: 10vh;
+  // top: 0;
+  // width: 100%;
+  // z-index: 1000;
+  //padding-left: 1.5rem;
+  //padding-right: 1.5rem;
+}
+
+//.logo {
+//  width: 50px;
+//}
+
+.title-navbar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: $color-secondary;
+  font-family: $font-primary;
+  font-size: $font-size-title;
+}

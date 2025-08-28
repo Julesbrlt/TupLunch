@@ -9,7 +9,7 @@
     <%= link_to recipes_path, class: "footer-link" do %>
       <%= image_tag "cards.png", alt: "Recipes", class: "footer-icon" %>
     <% end %>
-    <%= link_to new_chat_path, class: "footer-link" do %>
+    <%= link_to chat_path(current_user.chat), class: "footer-link" do %>
       <%= image_tag "chef.png", alt: "Checklist", class: "footer-icon" %>
     <% end %>
     <%= link_to dashboard_path, class: "footer-link" do %>

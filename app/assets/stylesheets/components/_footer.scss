@@ -1,12 +1,12 @@
 .footer {
-  background: #fff;
-  height: 70px;                // hauteur fixe confortable
-  padding: 8px 0;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
-  width: 390px;                // largeur exacte iPhone 12
   left: 50%;
+  background: #fff;
+  height: 12vh;                // hauteur fixe confortable
+  padding: 8px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;                // largeur exacte iPhone 12
   transform: translateX(-50%); // centre si jamais tu testes sur écran plus large
   display: flex;
   justify-content: space-around;
