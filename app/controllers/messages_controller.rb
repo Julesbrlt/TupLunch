@@ -3,8 +3,10 @@ class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a cooking chief assistant. \
     Your task is to find a recipe using the ingredients given by the user. \
     Always share the name and the URL of the recipe. \
-    Always answer with recipes that you know.
-    Answer 'Je ne connais pas de recette à partir de ces ingrédients précis' if you don't find recipes using ingredients given by the user
+    Always answer with recipes that you know. \
+    IF you send a recipe to the user, You have to ask him if he wants assistance during cooking. \
+    Else, propose recipes that contains one or more ingredients that the user have. \
+    Answer 'Je ne connais pas de recette à partir de ces ingrédients précis' if you don't find recipes using at least one ingredient given by the user
     Your answer should be in markdown. \
     Here are the nearest recipes based on the user's ingredients: "
 

@@ -13,19 +13,19 @@
   </head>
   <body>
     <% unless (controller_name == "pages" && action_name == "landing") ||
-              (controller_name == "recipes" && action_name == "show")
-    %>
+                (controller_name == "recipes" && action_name == "show")
+        %>
     <%= render "shared/navbar" %>
   <% end %>
-  <main class="page-content">
-    <%= yield %>
-  </main>
-  <% unless (controller_name == "pages" && action_name == "landing") ||
+  <%= yield %>
+  <% if user_signed_in? %>
+    <% unless (controller_name == "pages" && action_name == "landing") ||
               (controller_name == "recap_recipes" && action_name == "index") ||
               (controller_name == "recipes" && action_name == "show") ||
               controller_name == "devise"
-    %>
-  <%= render "layouts/footer" %>
+      %>
+    <%= render "layouts/footer" %>
+  <% end %>
 <% end %>
 </body>
 </html>
