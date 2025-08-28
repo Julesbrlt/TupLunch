@@ -10,6 +10,23 @@
   overflow: hidden;
 }
 
+.landing-badge {
+  position: absolute;
+  top: 4%;
+  left: 27%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-secondary;
+  font-weight: 200;
+  font-size: .95rem;
+  color: rgba($color-light, .95);
+  padding: 8px 12px;
+
+  .landing-star { font-size: 1rem; line-height: 1; }
+}
+
 .landing-decor {
   position: absolute;
   top: 35%;
@@ -36,8 +53,8 @@
 
 .landing-title {
   font-family: $font-primary;
-  font-weight: 700;
-  font-size: 40px;
+  font-weight: 200;
+  font-size: 50px;
   line-height: 1.05;
   letter-spacing: 1px;
   margin: 0;
@@ -45,6 +62,7 @@
 
 .landing-subtitle {
   font-family: $font-secondary;
+  font-weight: 100;
   font-size: 1rem;
   opacity: .9;
   margin: 0 0 10px;
@@ -61,7 +79,7 @@
   border: 0;
   border-radius: 14px;
   padding: 14px 22px;
-  font-family: $font-primary;
+  font-family: $font-secondary;
   font-weight: 600;
   font-size: 1rem;
   box-shadow: 0 6px 0 rgba(#000, .12), $shadow-soft;
@@ -75,26 +93,7 @@
     display: inline-grid;
     place-items: center;
     width: 28px; height: 28px;
-    border-radius: 999px;
-    background: rgba(#000, .15);
     line-height: 1;
     font-weight: 700;
   }
 }
-
-// .landing-top {
-
-// display: flex;
-// flex-direction: row;
-// align-items: center;
-// padding: 0px;
-// gap: 8px;
-
-// position: absolute;
-// width: 205px;
-// height: 22px;
-// left: 95px;
-// top: 57px;
-
-
-// }

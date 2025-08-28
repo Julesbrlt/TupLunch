@@ -1,0 +1,41 @@
+.footer {
+  background: #fff;
+  height: 70px;                // hauteur fixe confortable
+  padding: 8px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  width: 390px;                // largeur exacte iPhone 12
+  left: 50%;
+  transform: translateX(-50%); // centre si jamais tu testes sur écran plus large
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around; // espace égal entre chaque icône
+  align-items: center;
+  gap: 42px;
+}
+
+.footer-link {
+  text-decoration: none;
+  flex: 1;                     // chaque icône prend le même espace
+  display: flex;
+  justify-content: center;
+    &:hover {
+    transform: translateY(-3px) rotate(4deg);
+    opacity: 0.85;               // léger changement de contraste
+  }
+   &:active {
+    transform: scale(0.92); // effet "tap" iOS quand on clique
+    opacity: 0.7;
+  }
+}
+
+.footer-icon {
+  width: 34px;                 // taille idéale pour tap target
+  height: auto;
+}

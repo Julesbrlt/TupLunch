@@ -1,13 +1,16 @@
 <div class="landing-hero">
+  <!-- Badge top -->
+  <div class="landing-badge">
+    <span class="landing-star">★</span>
+    <span>500+ Recettes</span>
+  </div>
   <%= image_tag "decor.svg", class: "landing-decor", alt: "Decor" %>
   <%= image_tag "ligne.svg", class:"landing-ligne", alt: "ligne" %>
-
   <div class="landing-content">
     <div class="mb-3">
-    <h1 class="landing-title">Let’s</h1>
-    <h1 class="landing-title">Cook</h1>
+      <h1 class="landing-title">TupLunch</h1>
     </div>
-    <p class="landing-subtitle mb-3">Find the best food recipes</p>
-    <%= link_to "Start Cooking", recipes_path, class: "btn btn-cta" %>
+    <p class="landing-subtitle mb-3">Rendez vos repas plus fun</p>
+    <%= link_to "Let's cook", home_path, class: "btn-cta" %>
   </div>
 </div>

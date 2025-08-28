@@ -1,0 +1,19 @@
+<footer class="footer">
+  <nav class="footer-nav">
+    <%= link_to home_path, class: "footer-link" do %>
+      <%= image_tag "home.png", alt: "Home", class: "footer-icon" %>
+    <% end %>
+    <%= link_to ingredients_lists_path, class: "footer-link" do %>
+      <%= image_tag "list.png", alt: "Favorites", class: "footer-icon" %>
+    <% end %>
+    <%= link_to recipes_path, class: "footer-link" do %>
+      <%= image_tag "cards.png", alt: "Recipes", class: "footer-icon" %>
+    <% end %>
+    <%= link_to new_chat_path, class: "footer-link" do %>
+      <%= image_tag "chef.png", alt: "Checklist", class: "footer-icon" %>
+    <% end %>
+    <%= link_to dashboard_path, class: "footer-link" do %>
+      <%= image_tag "profile.png", alt: "Chef", class: "footer-icon" %>
+    <% end %>
+  </nav>
+</footer>
