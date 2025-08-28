@@ -31,6 +31,10 @@ gem 'dartsass-sprockets'
 gem 'bootstrap', '~> 5.3.3'
 gem "pg", "~> 1.1"
 gem "ruby_llm", git: 'https://github.com/SuzukiRyuichiro/ruby_llm.git'
+gem "neighbor"
+gem "kramdown"
+gem "rouge"
+gem "kramdown-parser-gfm"
 
 
 # Use Redis adapter to run Action Cable in production
