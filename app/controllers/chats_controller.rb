@@ -13,9 +13,9 @@ class ChatsController < ApplicationController
     @chat = Chat.new(title: "Vide ton frigo avec TupLunch", model_id: "gpt-4.1-nano")
     @chat.user = current_user
     if @chat.save
-      redirect_to chat_path(@chat)
+      redirect_to chat_message_path(@chat)
     else
-      render :new
+      redirect_to root_path, alert: "Impossible de créer le chat"
     end
   end
 

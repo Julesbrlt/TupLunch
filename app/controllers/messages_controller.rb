@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     Your task is to find a recipe using the ingredients given by the user. \
     Always share the name and the URL of the recipe. \
     Always answer with recipes that you know.
-    Answer 'Je ne connais pas de recette à partir de ces ingéredients précis' if you don't find recipes using ingredients given by the user
+    Answer 'Je ne connais pas de recette à partir de ces ingrédients précis' if you don't find recipes using ingredients given by the user
     Your answer should be in markdown. \
     Here are the nearest recipes based on the user's ingredients: "
 
