@@ -1,3 +1,24 @@
-.logo {
-  width: 300px;
+.navbar {
+  //position: relative;
+  background-color: $color-primary;
+  padding: 2rem;
+  //padding-left: 1.5rem;
+  //padding-right: 1.5rem;
+}
+
+//.logo {
+//  width: 50px;
+//}
+
+.title-navbar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: $color-secondary;
+  font-family: $font-primary;
+  font-size: $font-size-title;
 }
