@@ -37,7 +37,7 @@ $border:         rgba(0,0,0,0.06);
   line-height: 1.1;
   color: $accent-yellow;
   text-align: center;
-  margin: 8px 0 18px;
+  margin: 8px 0 0px;
 }
 
 /* Fine ligne sous le titre */
@@ -51,11 +51,12 @@ $border:         rgba(0,0,0,0.06);
   border-radius: 2px;
 }
 
-/* Table → on la “dé-bootstrapise” visuellement pour ressembler à une liste */
+/* ====== TABLE ====== */
+/* On fabrique un "gros pill" par ligne : cellules 1–3 fusion visuelle + séparateurs verticaux */
 .shopping-card table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 12px 14px; /* espace entre les lignes */
+  border-spacing: 0 14px; /* 0 horizontal | 14px vertical */
 }
 
 .shopping-card thead {
@@ -76,29 +77,64 @@ $border:         rgba(0,0,0,0.06);
   background: transparent;
 }
 
-/* Chaque ligne : on donne un fond “pill” à chaque cellule comme sur la maquette */
+/* Reset de base */
 .shopping-card tbody td {
-  background: $pill-bg;
+  background: transparent;
   border: 0;
   padding: 16px 18px;
-  border-radius: 16px;
   color: $text-dark;
+  border-radius: 0;
+  font-size: clamp(14px, 2.4vw, 18px);
 }
 
-/* Colonnes : ajuster les largeurs pour ressembler au mock */
+/* Les 3 premières cellules composent le "pill" */
+.shopping-card tbody td:nth-child(-n+3) {
+  background: $pill-bg;
+}
+
+/* Coins arrondis du pill */
+.shopping-card tbody td:nth-child(1) {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.shopping-card tbody td:nth-child(3) {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Séparateurs verticaux entre 1|2 et 2|3 */
+.shopping-card tbody td:nth-child(2),
+.shopping-card tbody td:nth-child(3) {
+  position: relative;
+  text-align: center;
+}
+.shopping-card tbody td:nth-child(2)::before,
+.shopping-card tbody td:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;                 /* épaisseur du séparateur */
+  background: $text-dark;     /* couleur du séparateur */
+  border-radius: 2px;
+}
+
+/* Largeurs de colonnes */
 .shopping-card tbody td:nth-child(1) { width: 48%; }
 .shopping-card tbody td:nth-child(2) { width: 22%; text-align: center; }
 .shopping-card tbody td:nth-child(3) { width: 20%; text-align: center; }
+
+/* 4e cellule (bouton) : hors du pill */
 .shopping-card tbody td:nth-child(4) {
   width: 10%;
-  background: transparent; /* le bouton est seul, pas besoin de pill */
-  padding-left: 10px;
+  background: transparent;
+  padding-left: 12px; /* espace visuel entre le pill et le bouton */
   padding-right: 10px;
 }
 
-/* Checkbox ronde style “+ / −” */
+/* ====== Checkbox ronde style “+ / −” ====== */
 .round-check {
-  /* neutraliser le style natif */
   -webkit-appearance: none;
   appearance: none;
   width: 36px;
@@ -113,7 +149,7 @@ $border:         rgba(0,0,0,0.06);
   outline: none;
 }
 
-/* Icône “+” par défaut */
+/* Icône (utilisé ici pour un check ✔) */
 .round-check::after {
   content: "";
   font-weight: 800;
@@ -122,11 +158,9 @@ $border:         rgba(0,0,0,0.06);
   line-height: 1;
 }
 
-/* Quand cochée → “−”, fond pâle */
 .round-check:checked {
   background: $pill-bg;
 }
-
 .round-check:checked::after {
   content: "✔";
   transform: translateY(-1px);
@@ -141,12 +175,7 @@ $border:         rgba(0,0,0,0.06);
   border-color: $accent-yellow;
 }
 
-/* Petites retouches typographiques */
-.shopping-card td, .shopping-card th {
-  font-size: clamp(14px, 2.4vw, 18px);
-}
-
-/* Pied “TOTAL : Prix” (si tu l’ajoutes) */
+/* ====== Pied “TOTAL : Prix” ====== */
 .shopping-total {
   display: flex;
   justify-content: flex-end;
@@ -155,7 +184,7 @@ $border:         rgba(0,0,0,0.06);
   letter-spacing: .2px;
 
   .label {
-    color: #4aa3a3; /* vert/bleu léger comme sur la maquette */
+    color: #4aa3a3;
     text-transform: uppercase;
     margin-right: 8px;
   }
@@ -164,7 +193,7 @@ $border:         rgba(0,0,0,0.06);
   }
 }
 
-/* Responsive : resserrer les pills sur petits écrans */
+/* ====== Responsive ====== */
 @media (max-width: 540px) {
   .shopping-card { padding: 20px 16px 28px; }
   .shopping-card tbody td { padding: 14px 14px; }
@@ -172,4 +201,11 @@ $border:         rgba(0,0,0,0.06);
   .shopping-card tbody td:nth-child(2),
   .shopping-card tbody td:nth-child(3) { width: 22%; }
   .round-check { width: 32px; height: 32px; }
+
+  /* raccourcir un peu les séparateurs sur mobile */
+  .shopping-card tbody td:nth-child(2)::before,
+  .shopping-card tbody td:nth-child(3)::before {
+    top: 8px;
+    bottom: 8px;
+  }
 }
