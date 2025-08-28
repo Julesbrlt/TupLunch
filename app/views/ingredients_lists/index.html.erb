@@ -3,14 +3,6 @@
     <h1>Liste de courses</h1>
     <% if @lists.present? %>
       <table>
-        <thead>
-          <tr>
-            <th>Ingrédient</th>
-            <th>Quantité</th>
-            <th>Prix / unité</th>
-            <th>Acheté ?</th>
-          </tr>
-        </thead>
         <tbody>
           <% total_price = 0 %>
           <% @lists.each do |recap| %>
