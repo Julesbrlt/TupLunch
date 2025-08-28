@@ -2,18 +2,34 @@
   <div class="recipes-carousel">
     <% @recipes.each do |recipe| %>
       <div class="col-12">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title"><%= recipe.name %></h5>
-            <p class="card-text text-muted"><%= truncate(recipe.description, length: 100) %></p>
-            <p><strong>💸</strong> <%= recipe.price %> €</p>
-            <p><strong>⏳</strong> <%= recipe.time %> min</p>
-            <p><strong>🍕</strong> <%= recipe.calories %> kcal</p>
+        <div class="card shadow h-100 position-relative">
+
+          <div class="position-absolute top-0 end-0 m-2">
+            <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+              <span class="text-danger fs-4">❤️</span>
+            <% else %>
+              <%= link_to "🤍", recipe_favorites_path(recipe),
+                          data: { turbo_method: :post },
+                          class: "btn btn-outline-danger btn-sm" %>
+            <% end %>
           </div>
 
-          <div class="card-footer text-end">
-            <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm" %>
+
+          <div class="card-body d-flex flex-column">
+            <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm m-5" %>
+            <div class="mt-auto">
+              <h5 class="card-title"><%= recipe.name %></h5>
+              <p class="card-text text-muted">
+                <%= truncate(recipe.description, length: 100) %>
+              </p>
+              <div class="d-flex justify-content-between">
+                <p class="mb-0"><strong>💸</strong> <%= recipe.price %> €</p>
+                <p class="mb-0"><strong>⏳</strong> <%= recipe.time %> min</p>
+                <p class="mb-0"><strong>🍕</strong> <%= recipe.calories %> kcal</p>
+              </div>
+            </div>
           </div>
+
 
           <% if user_signed_in? %>
             <div class="card-footer d-flex justify-content-between">
@@ -24,14 +40,6 @@
                             recipe_recap_recipes_path(recipe),
                             data: { turbo_method: :post },
                             class: "btn btn-success btn-sm" %>
-              <% end %>
-
-              <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
-                <span class="text-danger">❤️</span>
-              <% else %>
-                <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "btn btn-outline-danger btn-sm" %>
               <% end %>
             </div>
           <% end %>

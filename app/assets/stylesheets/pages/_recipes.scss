@@ -4,6 +4,8 @@
   gap: 16px;
   padding: 26px 0 14px; /* top padding pour laisser sortir l'image au-dessus */
   scroll-snap-type: x mandatory;
+  height: 70vh; /* 70% de la hauteur de la fenêtre */
 
   &::-webkit-scrollbar { display: none; }
 }
+
