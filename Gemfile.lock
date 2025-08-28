@@ -188,6 +188,10 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     json (2.13.2)
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -204,6 +208,8 @@ GEM
     msgpack (1.8.0)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
+    neighbor (0.6.0)
+      activerecord (>= 7.1)
     net-http (0.6.0)
       uri
     net-imap (0.5.9)
@@ -299,6 +305,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
+    rouge (4.6.0)
     rubyzip (3.0.2)
     sass-embedded (1.90.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
@@ -393,9 +400,13 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
+  kramdown
+  kramdown-parser-gfm
+  neighbor
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.2)
+  rouge
   ruby_llm!
   selenium-webdriver
   simple_form

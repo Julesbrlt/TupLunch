@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-start mb-3">
       <div class="bg-light rounded-4 p-3 border shadow-sm" style="max-width: 70%;">
         <div class="fw-bold small text-muted mb-1">TupChef</div>
-        <div>  <%= simple_format(message.content) %>
+        <div>  <%= raw(render_markdown(message.content)) %>
         </div>
       </div>
     </div>
