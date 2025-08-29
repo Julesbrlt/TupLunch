@@ -3,16 +3,14 @@
   <section class="hero">
     <!-- Image d’arrière-plan -->
     <%= image_tag "plat-home.jpg", alt: "Assiette de sushi", loading: "eager" %>
-
     <div class="hero-content">
       <h2>Générez vos repas et optimisez votre budget</h2>
       <%= link_to "Let’s goooo", recipes_path, class: "cta-btn" %>
     </div>
   </section>
-
+  
   <section class="recipes-section">
     <h3>Les recettes du moment</h3>
-
     <div class="recipes-carousel">
       <% @recipes.each do |recipe| %>
 
