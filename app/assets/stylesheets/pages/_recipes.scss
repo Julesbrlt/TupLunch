@@ -1,11 +1,51 @@
-.recipes-carousel {
+.container-swipe {
+  background-color: $color-primary;
+}
+
+.carousel {
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding: 26px 0 14px; /* top padding pour laisser sortir l'image au-dessus */
+  padding: 10px 0;
   scroll-snap-type: x mandatory;
-  height: 70vh; /* 70% de la hauteur de la fenêtre */
 
   &::-webkit-scrollbar { display: none; }
 }
 
+.swipe-card {
+  width: 95%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: $color-background;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.card-img-background {
+  width: 90%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: .5rem;
+  position: relative;
+}
+
+.card-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bouton {
+  padding-top: 25px;
+  padding-right: 40px;
+}
