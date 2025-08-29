@@ -12,81 +12,42 @@
 
   <!-- ===== RECETTES DU MOMENT ===== -->
   <section class="recipes-section">
-    <h3>Les recettes du moment</h3>
+  <h3>Les recettes du moment</h3>
 
-    <div class="recipes-carousel">
-        <article class="recipe-card">
+  <% selected_ids = [13, 12, 14, 0, 11, 10] %>
+
+  <% recipes_by_id = @recipes %>
+
+
+  <% image_for = {
+       14 => "salade-pate.png",    # Salade de pâtes à la Julio
+       13 => "Pate-saussice2.png", # Tagliatelles à la tomate
+       12 => "parmesan2.png",      # Spaghetti aux parmesan
+        0 => "Spagetthi-bolo2.png",# Spaghetti bolognaise
+       11 => "Nouille2.png",       # Nouilles épicées au poulet
+       10 => "sushi2.png"          # Sushi & Makis avec Tempura
+     } %>
+
+  <div class="recipes-carousel">
+    <% selected_ids.each do |rid| %>
+      <% recipe = recipes_by_id[rid] %>
+
+      <article class="recipe-card">
+        <%= link_to recipe_path(recipe), class: "recipe-link" do %>
           <div class="image-wrapper">
-            <%= image_tag "salade-pate.png", alt: "Pepper sweetcorn ramen" %>
+            <%= image_tag(image_for[rid] || "placeholder.png", alt: recipe.name) %>
           </div>
-          <h4>Salade de pâtes à la Julio</h4>
+          <h4><%= recipe.name %></h4>
           <div class="meta">Time</div>
-          <div class="time">1000 Ans</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-        </article>
+          <div class="time"><%= "#{recipe.time} min" %></div>
+        <% end %>
 
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "parmesan2.png", alt: "Cheddar cheese and shell salad" %>
-          </div>
-          <h4>Spaghetti aux parmesan</h4>
-          <div class="meta">Time</div>
-          <div class="time">25 Mins</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-        </article>
+        <%= link_to "🤍", recipe_favorites_path(recipe),
+              data: { turbo_method: :post },
+              class: "fav-btn" %>
+      </article>
+    <% end %>
+  </div>
+</section>
 
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Pate-saussice2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Tagliatelles à la tomate</h4>
-          <div class="meta">Time</div>
-          <div class="time">15 Mins</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Spagetthi-bolo2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Spaghetti bolognaise</h4>
-          <div class="meta">Time</div>
-          <div class="time">35 Mins</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Nouille2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Nouilles épicées au poulet</h4>
-          <div class="meta">Time</div>
-          <div class="time">20 Mins</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "sushi2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Sushi & Makis avec Tempura</h4>
-          <div class="meta">Time</div>
-          <div class="time">25 Mins</div>
-          <%# <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "fav-btn" %>
-                            
-        </article>
-
-  </section>
 </main>
