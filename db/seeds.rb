@@ -19,7 +19,10 @@ recipes = [
     time: 30,
     calories: 650,
     steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce.",
+
     image_path: "app/assets/images/Spagetthi-bolo2.png"
+
+    image_url: "https://images.unsplash.com/photo-1692071097529-320eb2b32292?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Poulet Curry Coco",
@@ -27,7 +30,9 @@ recipes = [
     price: 14,
     time: 40,
     calories: 720,
-    steps: "Coupez le poulet en morceaux.\nFaites revenir l’oignon avec un peu d’huile.\nAjoutez les épices.\nIncorporez le poulet et faites dorer.\nVersez le lait de coco et laissez mijoter."
+    steps: "Coupez le poulet en morceaux.\nFaites revenir l’oignon avec un peu d’huile.\nAjoutez les épices.\nIncorporez le poulet et faites dorer.\nVersez le lait de coco et laissez mijoter.",
+    image_url: "https://plus.unsplash.com/premium_photo-1707227861789-475326479c2b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
   },
   {
     name: "Salade César",
@@ -35,7 +40,9 @@ recipes = [
     price: 9,
     time: 15,
     calories: 450,
-    steps: "Lavez et coupez la laitue romaine.\nFaites griller le poulet.\nPréparez la sauce.\nAjoutez les croûtons et le parmesan.\nServez frais."
+    steps: "Lavez et coupez la laitue romaine.\nFaites griller le poulet.\nPréparez la sauce.\nAjoutez les croûtons et le parmesan.\nServez frais.",
+    image_url: "https://images.unsplash.com/photo-1574926054530-540288c8e678?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
   },
   {
     name: "Burger Maison",
@@ -43,7 +50,8 @@ recipes = [
     price: 11,
     time: 25,
     calories: 800,
-    steps: "Préparez les steaks hachés.\nFaites cuire selon votre goût.\nToastez les pains.\nAjoutez la sauce, le steak et le fromage.\nServez avec des frites."
+    steps: "Préparez les steaks hachés.\nFaites cuire selon votre goût.\nToastez les pains.\nAjoutez la sauce, le steak et le fromage.\nServez avec des frites.",
+    image_url: "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Ratatouille Provençale",
@@ -51,7 +59,8 @@ recipes = [
     price: 8,
     time: 35,
     calories: 300,
-    steps: "Coupez les légumes.\nFaites revenir les oignons et l’ail.\nAjoutez les légumes.\nAssaisonnez.\nServez chaud ou froid."
+    steps: "Coupez les légumes.\nFaites revenir les oignons et l’ail.\nAjoutez les légumes.\nAssaisonnez.\nServez chaud ou froid.",
+    image_url: "https://plus.unsplash.com/premium_photo-1713635953194-ab8a625b2477?q=80&w=2105&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Sushi Saumon",
@@ -59,7 +68,8 @@ recipes = [
     price: 15,
     time: 50,
     calories: 500,
-    steps: "Faites cuire le riz vinaigré.\nCoupez le saumon.\nÉtalez le riz sur la feuille de nori.\nAjoutez le saumon.\nRoulez et découpez."
+    steps: "Faites cuire le riz vinaigré.\nCoupez le saumon.\nÉtalez le riz sur la feuille de nori.\nAjoutez le saumon.\nRoulez et découpez.",
+    image_url: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Pizza Margherita",
@@ -67,7 +77,8 @@ recipes = [
     price: 10,
     time: 20,
     calories: 700,
-    steps: "Étalez la pâte.\nAjoutez la sauce tomate.\nAjoutez la mozzarella.\nEnfournez 12 min à 220°C.\nAjoutez le basilic."
+    steps: "Étalez la pâte.\nAjoutez la sauce tomate.\nAjoutez la mozzarella.\nEnfournez 12 min à 220°C.\nAjoutez le basilic.",
+    image_url: "https://plus.unsplash.com/premium_photo-1673439304183-8840bd0dc1bf?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Tacos Mexicains",
@@ -75,7 +86,8 @@ recipes = [
     price: 12,
     time: 30,
     calories: 600,
-    steps: "Faites cuire la viande épicée.\nPréparez le guacamole.\nChauffez les tortillas.\nAjoutez légumes et sauce.\nRepliez et dégustez."
+    steps: "Faites cuire la viande épicée.\nPréparez le guacamole.\nChauffez les tortillas.\nAjoutez légumes et sauce.\nRepliez et dégustez.",
+    image_url: "https://plus.unsplash.com/premium_photo-1661730329741-b3bf77019b39?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Saumon Grillé",
@@ -83,7 +95,8 @@ recipes = [
     price: 16,
     time: 25,
     calories: 550,
-    steps: "Assaisonnez le saumon.\nFaites griller dans une poêle chaude.\nPréparez les légumes vapeur.\nServez avec le saumon.\nAjoutez un filet de citron."
+    steps: "Assaisonnez le saumon.\nFaites griller dans une poêle chaude.\nPréparez les légumes vapeur.\nServez avec le saumon.\nAjoutez un filet de citron.",
+    image_url: "https://plus.unsplash.com/premium_photo-1723532536299-487180c8fdf5?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "Omelette aux Champignons",
@@ -137,6 +150,9 @@ recipes = [
     calories: 420,
     steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais.",
     image_path: "app/assets/images/salade-pate.png"
+
+    steps: "Nettoyez les champignons.\nFaites-les revenir.\nBattez les œufs.\nVersez dans la poêle.\nFaites cuire à feu doux.",
+    image_url: "https://images.unsplash.com/photo-1677137261161-0095c10418ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
   ]
 

@@ -1,19 +1,29 @@
-<div class="container mt-5">
-  <h1 class="mb-4">Toutes les recettes</h1>
-  <div class="row">
+<div class="container-swipe">
+  <div class="carousel">
     <% @recipes.each do |recipe| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title"><%= recipe.name %></h5>
-            <p class="card-text text-muted"><%= truncate(recipe.description, length: 100) %></p>
-            <p><strong>Prix :</strong> <%= recipe.price %> €</p>
-            <p><strong>Temps :</strong> <%= recipe.time %> min</p>
-            <p><strong>Calories :</strong> <%= recipe.calories %> kcal</p>
-          </div>
-          <div class="card-footer text-end">
-            <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary btn-sm" %>
-          </div>
+      <div class="col-12 d-flex justify-content-center"> <!-- centre la card -->
+        <div class="card shadow h-100 position-relative overflow-hidden swipe-card">
+
+          <!-- Wrapper cliquable -->
+          <%= link_to recipe_path(recipe), class:"card-img-background", style:"background-image: url(#{recipe.image_url});" do %>
+            <div>
+
+
+
+              <!-- Infos en bas sur l'image -->
+              <div class="card-info-overlay p-3 text-white">
+                <h5 class="mb-2"><%= recipe.name %></h5>
+                <div class="d-flex justify-content-between small">
+                  <span>💸 <%= recipe.price %> €</span>
+                  <span>⏳ <%= recipe.time %> min</span>
+                  <span>🍕 <%= recipe.calories %> kcal</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+
+          <!-- Footer en dehors de l'image -->
           <% if user_signed_in? %>
             <div class="card-footer d-flex justify-content-between">
               <% if current_user.selected_recipes.exists?(recipe.id) %>
@@ -24,15 +34,20 @@
                             data: { turbo_method: :post },
                             class: "btn btn-success btn-sm" %>
               <% end %>
-              <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
-                <span class="text-danger">❤️</span>
-              <% else %>
-                <%= link_to "🤍", recipe_favorites_path(recipe),
-                            data: { turbo_method: :post },
-                            class: "btn btn-outline-danger btn-sm" %>
-              <% end %>
             </div>
           <% end %>
+
+                  <!-- Bouton coeur en overlay -->
+              <div class="bouton position-absolute top-0 end-0">
+                <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                  <span class="text-danger fs-4">❤️</span>
+                <% else %>
+                  <%= button_to "🤍", recipe_favorites_path(recipe),
+                              data: { turbo_method: :post },
+                              class: "btn btn-outline-danger btn-sm" %>
+                <% end %>
+              </div>
+
         </div>
       </div>
     <% end %>
