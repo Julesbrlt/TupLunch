@@ -10,44 +10,28 @@
     </div>
   </section>
 
-  <!-- ===== RECETTES DU MOMENT ===== -->
   <section class="recipes-section">
-  <h3>Les recettes du moment</h3>
+    <h3>Les recettes du moment</h3>
 
-  <% selected_ids = [13, 12, 14, 0, 11, 10] %>
+    <div class="recipes-carousel">
+      <% @recipes.each do |recipe| %>
 
-  <% recipes_by_id = @recipes %>
-
-
-  <% image_for = {
-       14 => "salade-pate.png",    # Salade de pâtes à la Julio
-       13 => "Pate-saussice2.png", # Tagliatelles à la tomate
-       12 => "parmesan2.png",      # Spaghetti aux parmesan
-        0 => "Spagetthi-bolo2.png",# Spaghetti bolognaise
-       11 => "Nouille2.png",       # Nouilles épicées au poulet
-       10 => "sushi2.png"          # Sushi & Makis avec Tempura
-     } %>
-
-  <div class="recipes-carousel">
-    <% selected_ids.each do |rid| %>
-      <% recipe = recipes_by_id[rid] %>
-
-      <article class="recipe-card">
-        <%= link_to recipe_path(recipe), class: "recipe-link" do %>
-          <div class="image-wrapper">
-            <%= image_tag(image_for[rid] || "placeholder.png", alt: recipe.name) %>
-          </div>
-          <h4><%= recipe.name %></h4>
-          <div class="meta">Time</div>
-          <div class="time"><%= "#{recipe.time} min" %></div>
-        <% end %>
-
-        <%= link_to "🤍", recipe_favorites_path(recipe),
-              data: { turbo_method: :post },
-              class: "fav-btn" %>
-      </article>
-    <% end %>
-  </div>
-</section>
-
+        <article class="recipe-card">
+          <%= link_to recipe_path(recipe), class: "recipe-link" do  %>
+            <div class="image-wrapper">
+              <% recipe.photos.each do |photo| %>
+                <%= cl_image_tag(photo.key)%>
+          <% end  %>
+              <% end %>
+            </div>
+            <h4><%= recipe.name %></h4>
+            <div class="meta">Time</div>
+            <div class="time"><%= "#{recipe.time} min" %></div>
+          <%= link_to "🤍", recipe_favorites_path(recipe),
+                data: { turbo_method: :post },
+                class: "fav-btn" %>
+        </article>
+      <% end %>
+    </div>
+  </section>
 </main>

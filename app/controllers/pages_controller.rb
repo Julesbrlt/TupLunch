@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @recipes = Recipe.all
+    @recipes = Recipe.all.select{|recipe|recipe.photos.any?}
   end
 
   def dashboard

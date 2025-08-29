@@ -14,7 +14,8 @@ recipes = [
     price: 12,
     time: 30,
     calories: 650,
-    steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce."
+    steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce.",
+    image_path: "app/assets/images/Spagetthi-bolo2.png"
   },
   {
     name: "Poulet Curry Coco",
@@ -94,7 +95,8 @@ recipes = [
     price: 18,
     time: 55,
     calories: 720,
-    steps: "Préparez le riz vinaigré.\nRoulez les makis avec poisson et légumes.\nFaites la pâte à tempura.\nFaites frire les légumes et crevettes.\nServez avec sauce soja."
+    steps: "Préparez le riz vinaigré.\nRoulez les makis avec poisson et légumes.\nFaites la pâte à tempura.\nFaites frire les légumes et crevettes.\nServez avec sauce soja.",
+    image_path: "app/assets/images/sushi2.png"
   },
   {
     name: "Nouilles épicées au poulet",
@@ -102,7 +104,8 @@ recipes = [
     price: 13,
     time: 25,
     calories: 680,
-    steps: "Faites cuire les nouilles.\nSaisissez le poulet avec ail et piment.\nAjoutez la sauce soja et légumes.\nMélangez avec les nouilles.\nServez chaud."
+    steps: "Faites cuire les nouilles.\nSaisissez le poulet avec ail et piment.\nAjoutez la sauce soja et légumes.\nMélangez avec les nouilles.\nServez chaud.",
+    image_path: "app/assets/images/Nouille2.png"
   },
   {
     name: "Spaghetti aux parmesan",
@@ -110,7 +113,8 @@ recipes = [
     price: 12,
     time: 20,
     calories: 580,
-    steps: "Faites cuire les spaghetti al dente.\nRéservez une louche d’eau de cuisson.\nHors du feu, mélangez les spaghetti avec le parmesan râpé et un peu d’eau de cuisson jusqu’à texture crémeuse.\nAjoutez l’ail finement haché.\nServez avec quelques feuilles de basilic."
+    steps: "Faites cuire les spaghetti al dente.\nRéservez une louche d’eau de cuisson.\nHors du feu, mélangez les spaghetti avec le parmesan râpé et un peu d’eau de cuisson jusqu’à texture crémeuse.\nAjoutez l’ail finement haché.\nServez avec quelques feuilles de basilic.",
+    image_path: "app/assets/images/parmesan2.png"
   },
   {
     name: "Tagliatelles à la tomate",
@@ -118,7 +122,8 @@ recipes = [
     price: 11,
     time: 20,
     calories: 560,
-    steps: "Faites cuire les tagliatelles.\nPréparez la sauce tomate avec oignon et ail.\nAjoutez des herbes.\nMélangez avec les pâtes.\nServez avec parmesan râpé."
+    steps: "Faites cuire les tagliatelles.\nPréparez la sauce tomate avec oignon et ail.\nAjoutez des herbes.\nMélangez avec les pâtes.\nServez avec parmesan râpé.",
+    image_path: "app/assets/images/Pate-saussice2.png"
   },
   {
     name: "Salade de pâtes à la Julio",
@@ -126,11 +131,22 @@ recipes = [
     price: 9,
     time: 15,
     calories: 420,
-    steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais."
+    steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais.",
+    image_path: "app/assets/images/salade-pate.png"
   }
-]
+  ]
 
-recipes_objects = recipes.map { |data| Recipe.create!(data) }
+recipes_objects = []
+ recipes.map do |data|
+  recipe = Recipe.create!(data.except(:image_path))
+ recipes_objects << recipe
+  next unless data[:image_path].present?
+  recipe.photos.attach(
+    io:File.open(data[:image_path]),
+    filename: data[:name],
+    content_type: "image/jpg"
+  )
+end
 puts "✅ #{recipes_objects.size} recettes créées"
 
 # --- Ingrédients globaux ---
@@ -284,7 +300,7 @@ user = User.create!(
   password: "123456"
 )
 
-user.favorites.create(recipe: Recipe.create(recipes.first))
+user.favorites.create(recipe: Recipe.all.sample)
 Profile.create!(
   user: user,
   name: "Jean Dupont",
