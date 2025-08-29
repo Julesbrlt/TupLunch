@@ -8,7 +8,7 @@ window.Stimulus   = application
 
 export { application }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   document.querySelectorAll(".ingredients-accordion .accordion-header")
     .forEach(header => {
       header.addEventListener("click", () => {

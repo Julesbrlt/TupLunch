@@ -3,13 +3,9 @@
     <% @recipes.each do |recipe| %>
       <div class="col-12 d-flex justify-content-center"> <!-- centre la card -->
         <div class="card shadow h-100 position-relative overflow-hidden swipe-card">
-
           <!-- Wrapper cliquable -->
           <%= link_to recipe_path(recipe), class:"card-img-background", style:"background-image: url(#{recipe.image_url});" do %>
             <div>
-
-
-
               <!-- Infos en bas sur l'image -->
               <div class="card-info-overlay p-3 text-white">
                 <h5 class="mb-2"><%= recipe.name %></h5>
@@ -21,8 +17,6 @@
               </div>
             </div>
           <% end %>
-
-
           <!-- Footer en dehors de l'image -->
           <% if user_signed_in? %>
             <div class="card-footer d-flex justify-content-between">
@@ -36,18 +30,16 @@
               <% end %>
             </div>
           <% end %>
-
-                  <!-- Bouton coeur en overlay -->
-              <div class="bouton position-absolute top-0 end-0">
-                <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
-                  <span class="text-danger fs-4">❤️</span>
-                <% else %>
-                  <%= button_to "🤍", recipe_favorites_path(recipe),
+          <!-- Bouton coeur en overlay -->
+          <div class="bouton position-absolute top-0 end-0">
+            <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+              <span class="text-danger fs-4">❤️</span>
+            <% else %>
+              <%= button_to "🤍", recipe_favorites_path(recipe),
                               data: { turbo_method: :post },
                               class: "btn btn-outline-danger btn-sm" %>
-                <% end %>
-              </div>
-
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
