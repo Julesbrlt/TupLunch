@@ -19,9 +19,7 @@ recipes = [
     time: 30,
     calories: 650,
     steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce.",
-
     image_path: "app/assets/images/Spagetthi-bolo2.png",
-
     image_url: "https://images.unsplash.com/photo-1692071097529-320eb2b32292?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
@@ -150,8 +148,7 @@ recipes = [
     time: 15,
     calories: 420,
     steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais.",
-    image_path: "app/assets/images/salade-pate.png"
-
+    image_path: "app/assets/images/salade-pate.png",
   }
   ]
 
