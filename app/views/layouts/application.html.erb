@@ -17,7 +17,7 @@
         %>
     <%= render "shared/navbar" %>
   <% end %>
-  <%= yield %>
+  <div id="body-home"><%= yield %></div>
   <% if user_signed_in? %>
     <% unless (controller_name == "pages" && action_name == "landing") ||
               (controller_name == "recap_recipes" && action_name == "index") ||
