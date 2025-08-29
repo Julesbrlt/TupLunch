@@ -3,77 +3,68 @@
   <section class="hero">
     <!-- Image d’arrière-plan -->
     <%= image_tag "plat-home.jpg", alt: "Assiette de sushi", loading: "eager" %>
-
     <div class="hero-content">
       <h2>Générez vos repas et optimisez votre budget</h2>
       <%= link_to "Let’s goooo", recipes_path, class: "cta-btn" %>
     </div>
   </section>
-
   <!-- ===== RECETTES DU MOMENT ===== -->
   <section class="recipes-section">
     <h3>Les recettes du moment</h3>
-
     <div class="recipes-carousel">
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "salade-pate.png", alt: "Pepper sweetcorn ramen" %>
-          </div>
-          <h4>Salade de pâtes à la Julio</h4>
-          <div class="meta">Time</div>
-          <div class="time">1000 Ans</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "parmesan2.png", alt: "Cheddar cheese and shell salad" %>
-          </div>
-          <h4>Spaghetti aux parmesan</h4>
-          <div class="meta">Time</div>
-          <div class="time">25 Mins</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Pate-saussice2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Tagliatelles à la tomate</h4>
-          <div class="meta">Time</div>
-          <div class="time">15 Mins</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Spagetthi-bolo2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Spaghetti bolognaise</h4>
-          <div class="meta">Time</div>
-          <div class="time">35 Mins</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "Nouille2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Nouilles épicées au poulet</h4>
-          <div class="meta">Time</div>
-          <div class="time">20 Mins</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-        <article class="recipe-card">
-          <div class="image-wrapper">
-            <%= image_tag "sushi2.png", alt: "Spicy curry" %>
-          </div>
-          <h4>Sushi & Makis avec Tempura</h4>
-          <div class="meta">Time</div>
-          <div class="time">25 Mins</div>
-          <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
-        </article>
-
-  </section>
-</main>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "salade-pate.png", alt: "Pepper sweetcorn ramen" %>
+        </div>
+        <h4>Salade de pâtes à la Julio</h4>
+        <div class="meta">Time</div>
+        <div class="time">1000 Ans</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "parmesan2.png", alt: "Cheddar cheese and shell salad" %>
+        </div>
+        <h4>Spaghetti aux parmesan</h4>
+        <div class="meta">Time</div>
+        <div class="time">25 Mins</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "Pate-saussice2.png", alt: "Spicy curry" %>
+        </div>
+        <h4>Tagliatelles à la tomate</h4>
+        <div class="meta">Time</div>
+        <div class="time">15 Mins</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "Spagetthi-bolo2.png", alt: "Spicy curry" %>
+        </div>
+        <h4>Spaghetti bolognaise</h4>
+        <div class="meta">Time</div>
+        <div class="time">35 Mins</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "Nouille2.png", alt: "Spicy curry" %>
+        </div>
+        <h4>Nouilles épicées au poulet</h4>
+        <div class="meta">Time</div>
+        <div class="time">20 Mins</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+      <article class="recipe-card">
+        <div class="image-wrapper">
+          <%= image_tag "sushi2.png", alt: "Spicy curry" %>
+        </div>
+        <h4>Sushi & Makis avec Tempura</h4>
+        <div class="meta">Time</div>
+        <div class="time">25 Mins</div>
+        <button type="button" class="fav-btn" aria-label="Ajouter aux favoris">🤍</button>
+      </article>
+    </section>
+  </main>

@@ -4,6 +4,10 @@ Ingredient.destroy_all
 Recipe.destroy_all
 User.destroy_all
 
+user = User.create!(
+  email: "test@test.fr",
+  password: "123456"
+)
 
 # --- Recettes ---
 recipes = [
@@ -191,10 +195,6 @@ RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find
 puts "✅ Liaisons recettes ↔ ingrédients créées"
 
 
-user = User.create!(
-  email: "test@test.fr",
-  password: "123456"
-)
 
 user.favorites.create(recipe: Recipe.create(recipes.first))
 Profile.create!(
