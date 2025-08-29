@@ -8,7 +8,7 @@
       <%= link_to "Let’s goooo", recipes_path, class: "cta-btn" %>
     </div>
   </section>
-  
+
   <section class="recipes-section">
     <h3>Les recettes du moment</h3>
     <div class="recipes-carousel">
@@ -23,8 +23,8 @@
               <% end %>
             </div>
             <h4><%= recipe.name %></h4>
-            <div class="meta">Time</div>
-            <div class="time"><%= "#{recipe.time} min" %></div>
+            <div class="meta">Prix</div>
+            <div class="time"><%= "#{number_to_currency(recipe.price, unit: "€")}" %></div>
           <%= link_to "🤍", recipe_favorites_path(recipe),
                 data: { turbo_method: :post },
                 class: "fav-btn" %>
