@@ -35,6 +35,7 @@ gem "neighbor"
 gem "kramdown"
 gem "rouge"
 gem "kramdown-parser-gfm"
+gem "cloudinary"
 
 
 # Use Redis adapter to run Action Cable in production
