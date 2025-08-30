@@ -1,47 +1,61 @@
-<H2>My account</H2>
-<div class="col-md-4 mb-3">
-  <div class="card shadow-sm">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0"><%= @profile.name %></h5>
-      <%= link_to "⚙️", edit_profile_path(@profile), class: "btn btn-outline-secondary btn-sm" %>
-    </div>
-    <div class="card-body">
-      <p class="card-text mb-1"><strong>Préférences :</strong></p>
-      <p class="card-text text-muted"><%= @profile.food_preferences %></p>
-    </div>
-  </div>
-</div>
-<H2>My recipes(nombre de recettes)</H2>
-<div class="container mt-4">
-  <div class="row">
-    <% @recap_recipes.each do |recipe| %>
-      <div class="col-md-4 mb-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= recipe.recipe.name %></h5>
-            <p class="card-text"><%= recipe.recipe.description %></p>
-            <%= link_to "show this recipe", recipe_path(recipe.recipe_id)%>
-            <%= link_to "🚮", recap_recipe_path(recipe), data: { turbo_method: :delete, confirm: "Avez-vous effectué cette recette ?" } %>
-          </div>
-        </div>
-      </div>
+<!-- SECTION PROFIL -->
+<h2 class="dashboard-section-title">Mon compte</h2>
+<div class="dashboard-profile-card">
+  <div class="dashboard-profile-header">
+    <h3 class="dashboard-profile-name"><%= @profile.name %></h3>
+    <%= link_to edit_profile_path(@profile) do %>
+      <%= image_tag "params.png", alt: "param", class: "dashboard-profile-edit" %>
     <% end %>
   </div>
+  <div class="dashboard-profile-body">
+    <p><strong>Préférences:</strong> <%= @profile.food_preferences %></p>
+    <p><strong>Budget:</strong> <%= @profile.total_budget %> €</p>
+    <p><strong>Objectif calories:</strong> <%= @profile.total_calories %> kcal</p>
+  </div>
 </div>
-<H2>My favorites</H2>
-<div class="container mt-4">
-  <div class="row">
-    <% @favorites.each do |favorite| %>
-      <div class="col-md-4 mb-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= favorite.recipe.name %></h5>
-            <p class="card-text"><%= favorite.recipe.description %></p>
-            <%= link_to "show this recipe", recipe_path(favorite.recipe_id)%>
-            <%= link_to "🚮", recipe_favorite_path(favorite.recipe_id, favorite.id), data: { turbo_method: :delete, confirm: "Voulez-vous vraiment retirer cette recette de vos favoris ?"}%>
-          </div>
+<!-- SECTION RECIPES -->
+<h2 class="dashboard-section-title">
+  Mes recettes
+  <span class="dashboard-count">(<%= @recap_recipes.count %>)</span>
+</h2>
+<div class="dashboard-recipes-scroll">
+  <% @recap_recipes.each do |recap| %>
+    <div class="dashboard-recipe-card">
+      <%= link_to recipe_path(recap.recipe), class:"dashboard-card-img", style:"background-image: url(#{recap.recipe.image_url});" do %>
+      <% end %>
+      <div class="dashboard-card-body">
+        <h5 class="dashboard-card-title"><%= recap.recipe.name %></h5>
+        <div class="dashboard-card-meta">
+          <span>💸 <%= recap.recipe.price %> €</span>
+          <span>⏳ <%= recap.recipe.time %> min</span>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
+</div>
+<!-- SECTION FAVORITES -->
+<div data-controller="favorites">
+<h2 class="dashboard-section-title">Mes favoris
+  <button data-action="click->favorites#toggle"
+    data-favorites-target="button"
+    class="dashboard-see-all-btn">
+    Voir tout
+  </button>
+</h2>
+<div class="dashboard-favorites-grid">
+  <% @favorites.each_with_index do |fav, index| %>
+    <div class="dashboard-recipe-card <%= 'hidden' if index > 1 %>"
+    data-favorites-target="card">
+      <%= link_to recipe_path(fav.recipe), class:"dashboard-card-img", style:"background-image: url(#{fav.recipe.image_url});" do %>
+      <% end %>
+      <div class="dashboard-card-body">
+        <h5 class="dashboard-card-title"><%= fav.recipe.name %></h5>
+        <div class="dashboard-card-meta">
+          <span>💸 <%= fav.recipe.price %> €</span>
+          <span>⏳ <%= fav.recipe.time %> min</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
   </div>
 </div>
