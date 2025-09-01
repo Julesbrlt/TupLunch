@@ -1,13 +1,35 @@
 .container-swipe {
   background-color: $color-primary;
+  height: 100vh;
 }
+
+.card-counter {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 6px;
+}
+
+.card-counter .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(194, 194, 194);
+  transition: background-color 0.3s ease;
+}
+
+.card-counter .dot.active {
+  background-color: rgb(30, 240, 173);
+}
+
 
 .carousel {
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding: 10px 0;
   scroll-snap-type: x mandatory;
+  height: 82%;
 
   &::-webkit-scrollbar { display: none; }
 }
@@ -15,15 +37,24 @@
 .swipe-card {
   width: 95%;
   border-radius: 1rem;
-  overflow: hidden;
   background-color: $color-background;
-  flex-shrink: 0;
-  display: flex;
   align-items: center;
+}
+
+.btn-actions {
+  bottom: 12px;
+  align-items: center;
+  padding-inline: 20px;
+}
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
 }
 
 .card-img-background {
   width: 90%;
+  top: 40px;
   height: 70vh;
   background-size: cover;
   background-position: center;
@@ -31,10 +62,9 @@
   position: relative;
 }
 
-.card-info-overlay {
+.card-overlay {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   height: 40%;
   background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
@@ -43,6 +73,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.card-info {
+  padding-bottom: 30px;
 }
 
 .bouton {
