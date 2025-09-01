@@ -1,0 +1,133 @@
+/* --- GLOBAL --- */
+body {
+  background-color: $color-primary;
+}
+
+.dashboard-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.5rem $container-padding 1rem;
+  color: $color-secondary;
+  font-family: $font-secondary;
+}
+
+/* --- PROFILE CARD --- */
+.dashboard-profile-card {
+  background: $color-light;
+  border-radius: $border-radius-card;
+  padding: 1rem;
+  margin: 0 $container-padding 1.5rem;
+  box-shadow: $shadow-soft;
+  color: $color-primary;
+  width: calc(100% - 2 * #{$container-padding});
+}
+
+.dashboard-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-profile-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.dashboard-profile-edit {
+  width: 20px;
+  height: 20px;
+  color: $color-secondary;
+  text-decoration: none;
+}
+
+.dashboard-profile-body p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  color: $color-primary;
+}
+
+/* --- RECIPE CARD --- */
+
+.dashboard-count {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $color-secondary; // ou $color-muted selon le rendu voulu
+  margin-left: 0.2rem;
+}
+
+.dashboard-recipe-card {
+  width: 160px;
+  border-radius: $border-radius-card;
+  overflow: hidden;
+  background: $color-light;
+  box-shadow: $shadow-soft;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.dashboard-card-img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  border-radius: $border-radius-card;
+}
+
+.dashboard-card-body {
+  padding: 0.7rem;
+}
+
+.dashboard-card-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $color-primary;
+  font-family: $font-secondary;
+}
+
+.dashboard-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: $color-muted;
+}
+
+/* --- RECIPES SCROLL (horizontal) --- */
+.dashboard-recipes-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0 $container-padding 1rem;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* --- FAVORITES GRID (vertical) --- */
+.dashboard-favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0 $container-padding 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.dashboard-see-all-btn {
+  background: none;
+  border: none;
+  color: $color-secondary;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
