@@ -1,12 +1,13 @@
 /* --- GLOBAL --- */
-body {
-  background-color: $color-primary;
-}
+// body {
+//   background-color: $color-primary;
+// }
+
 
 .dashboard-section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  margin: 1.5rem $container-padding 1rem;
+  padding: 12px 12px;
   color: $color-secondary;
   font-family: $font-secondary;
 }
