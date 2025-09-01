@@ -1,61 +1,63 @@
 <!-- SECTION PROFIL -->
-<h2 class="dashboard-section-title">Mon compte</h2>
-<div class="dashboard-profile-card">
-  <div class="dashboard-profile-header">
-    <h3 class="dashboard-profile-name"><%= @profile.name %></h3>
-    <%= link_to edit_profile_path(@profile) do %>
-      <%= image_tag "params.png", alt: "param", class: "dashboard-profile-edit" %>
+<div class="overflow-auto h-100">
+  <h2 class="dashboard-section-title">Mon compte</h2>
+  <div class="dashboard-profile-card">
+    <div class="dashboard-profile-header">
+      <h3 class="dashboard-profile-name"><%= @profile.name %></h3>
+      <%= link_to edit_profile_path(@profile) do %>
+        <%= image_tag "params.png", alt: "param", class: "dashboard-profile-edit" %>
+      <% end %>
+    </div>
+    <div class="dashboard-profile-body">
+      <p><strong>Préférences:</strong> <%= @profile.food_preferences %></p>
+      <p><strong>Budget:</strong> <%= @profile.total_budget %> €</p>
+      <p><strong>Objectif calories:</strong> <%= @profile.total_calories %> kcal</p>
+    </div>
+  </div>
+  <!-- SECTION RECIPES -->
+  <h2 class="dashboard-section-title">
+    Mes recettes
+    <span class="dashboard-count">(<%= @recap_recipes.count %>)</span>
+  </h2>
+  <div class="dashboard-recipes-scroll">
+    <% @recap_recipes.each do |recap| %>
+      <div class="dashboard-recipe-card">
+        <%= link_to recipe_path(recap.recipe), class:"dashboard-card-img", style:"background-image: url(#{recap.recipe.image_url});" do %>
+        <% end %>
+        <div class="dashboard-card-body">
+          <h5 class="dashboard-card-title"><%= recap.recipe.name %></h5>
+          <div class="dashboard-card-meta">
+            <span>💸 <%= recap.recipe.price %> €</span>
+            <span>⏳ <%= recap.recipe.time %> min</span>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-  <div class="dashboard-profile-body">
-    <p><strong>Préférences:</strong> <%= @profile.food_preferences %></p>
-    <p><strong>Budget:</strong> <%= @profile.total_budget %> €</p>
-    <p><strong>Objectif calories:</strong> <%= @profile.total_calories %> kcal</p>
-  </div>
-</div>
-<!-- SECTION RECIPES -->
-<h2 class="dashboard-section-title">
-  Mes recettes
-  <span class="dashboard-count">(<%= @recap_recipes.count %>)</span>
-</h2>
-<div class="dashboard-recipes-scroll">
-  <% @recap_recipes.each do |recap| %>
-    <div class="dashboard-recipe-card">
-      <%= link_to recipe_path(recap.recipe), class:"dashboard-card-img", style:"background-image: url(#{recap.recipe.image_url});" do %>
-      <% end %>
-      <div class="dashboard-card-body">
-        <h5 class="dashboard-card-title"><%= recap.recipe.name %></h5>
-        <div class="dashboard-card-meta">
-          <span>💸 <%= recap.recipe.price %> €</span>
-          <span>⏳ <%= recap.recipe.time %> min</span>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<!-- SECTION FAVORITES -->
-<div data-controller="favorites">
-<h2 class="dashboard-section-title">Mes favoris
-  <button data-action="click->favorites#toggle"
-    data-favorites-target="button"
-    class="dashboard-see-all-btn">
-    Voir tout
-  </button>
-</h2>
-<div class="dashboard-favorites-grid">
-  <% @favorites.each_with_index do |fav, index| %>
-    <div class="dashboard-recipe-card <%= 'hidden' if index > 1 %>"
+  <!-- SECTION FAVORITES -->
+  <div data-controller="favorites">
+    <h2 class="dashboard-section-title">Mes favoris
+      <button data-action="click->favorites#toggle"
+        data-favorites-target="button"
+        class="dashboard-see-all-btn">
+        Voir tout
+      </button>
+    </h2>
+    <div class="dashboard-favorites-grid">
+      <% @favorites.each_with_index do |fav, index| %>
+        <div class="dashboard-recipe-card <%= 'hidden' if index > 1 %>"
     data-favorites-target="card">
-      <%= link_to recipe_path(fav.recipe), class:"dashboard-card-img", style:"background-image: url(#{fav.recipe.image_url});" do %>
-      <% end %>
-      <div class="dashboard-card-body">
-        <h5 class="dashboard-card-title"><%= fav.recipe.name %></h5>
-        <div class="dashboard-card-meta">
-          <span>💸 <%= fav.recipe.price %> €</span>
-          <span>⏳ <%= fav.recipe.time %> min</span>
+          <%= link_to recipe_path(fav.recipe), class:"dashboard-card-img", style:"background-image: url(#{fav.recipe.image_url});" do %>
+          <% end %>
+          <div class="dashboard-card-body">
+            <h5 class="dashboard-card-title"><%= fav.recipe.name %></h5>
+            <div class="dashboard-card-meta">
+              <span>💸 <%= fav.recipe.price %> €</span>
+              <span>⏳ <%= fav.recipe.time %> min</span>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
   </div>
 </div>
