@@ -1,27 +1,53 @@
-<h1 class="mb-4">Ma sélection de recettes</h1>
+<section class="recap-scope">
+  <h1 class="recap-title">Ma sélection de recettes</h1>
 
-<% if @recap_recipes.any? %>
-  <div class="row">
-    <% @recap_recipes.each do |recap| %>
-      <% recipe = recap.recipe %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to recipe.name, recipe_path(recipe), class: "text-decoration-none" %>
-            </h5>
-            <p class="card-text">
-              <strong>Prix :</strong>
-              <%= number_to_currency(recipe.price, unit: "€") if recipe.respond_to?(:price) %>
-            </p>
-            <p class="card-text">
-              <strong>Préparation :</strong>
-              <%= "#{recipe.time} min" %>
-            </p>
+  <% if @recap_recipes.any? %>
+    <ul class="recap-list">
+      <% @recap_recipes.each do |recap| %>
+        <% recipe = recap.recipe %>
+
+        <li class="recap-card">
+          <div class="recap-thumb">
+            <%# image non intégrée pour l’instant %>
+            <div class="recap-thumb-plh">image</div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-          <%= link_to "Valider", ingredients_lists_path, class: "text-decoration-none" %>
-<% end %>
+
+          <div class="recap-main">
+            <h3 class="recap-name">
+              <%= link_to recipe.name, recipe_path(recipe), class: "recap-link" %>
+            </h3>
+
+            <div class="recap-row">
+              <div class="recap-meta">
+                <span class="meta-item">
+                  <%= image_tag "lhorloge.png", alt: "Temps de préparation", class: "meta-icon" %>
+                  <%= recipe.time %> min
+                </span>
+
+                <span class="meta-item">
+                  <%= image_tag "euro.png", alt: "Prix", class: "meta-icon" %>
+                  <% if recipe.respond_to?(:price) %>
+                    <%= number_to_currency(recipe.price, unit: "€", format: "%n%u") %>
+                  <% end %>
+                </span>
+              </div>
+
+              <div class="recap-qty">
+                <button type="button" class="recap-qty-btn" aria-label="Retirer">−</button>
+                <span class="recap-qty-n">
+                  <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
+                </span>
+                <button type="button" class="recap-qty-btn" aria-label="Ajouter">+</button>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      <% end %>
+    </ul>
+
+    <div class="recap-actions">
+      <%= link_to "Valider", ingredients_lists_path, class: "recap-validate" %>
+    </div>
+  <% end %>
+</section>
