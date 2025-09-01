@@ -1,26 +1,55 @@
-<div class="container mt-4">
-  <div class="card shadow">
-    <div class="card-body">
-      <%= simple_form_for @profile do |f| %>
-        <div class="mb-3">
-          <%= f.input :name, label: "Nom", input_html: { class: "form-control" } %>
+<div class="goals-page">
+  <div class="profile-card goals-card">
+    <h1 class="goals-title">Mes objectifs</h1>
+    <%= simple_form_for @profile, html: { class: "goals-form" } do |f| %>
+      <!-- Recettes / semaine -->
+      <div class="goals-row" data-controller="stepper"
+           data-stepper-step-value="1" data-stepper-min-value="1" data-stepper-max-value="21">
+        <label class="form-label">Nombre de recettes / semaine</label>
+        <div class="input-stepper">
+          <button type="button" class="step-btn" aria-label="Diminuer" data-action="stepper#dec">−</button>
+          <%= f.input_field :total_recipes, as: :integer,
+                class: "form-control form-pill step-input",
+                value: (@profile.total_recipes || 5),
+                inputmode: "numeric",
+                'data-stepper-target': 'input' %>
+          <span class="unit">recettes</span>
+          <button type="button" class="step-btn" aria-label="Augmenter" data-action="stepper#inc">+</button>
         </div>
-        <div class="mb-3">
-          <%= f.input :food_preferences, label: "Préférences alimentaires", input_html: { class: "form-control" } %>
+      </div>
+      <!-- Budget -->
+      <div class="goals-row" data-controller="stepper"
+           data-stepper-step-value="1" data-stepper-min-value="0" data-stepper-max-value="10000">
+        <label class="form-label">Budget total (€)</label>
+        <div class="input-stepper">
+          <button type="button" class="step-btn" aria-label="Diminuer" data-action="stepper#dec">−</button>
+          <%= f.input_field :total_budget, as: :float,
+                class: "form-control form-pill step-input",
+                value: (@profile.total_budget || 0),
+                inputmode: "decimal",
+                'data-stepper-target': 'input' %>
+          <span class="unit">€</span>
+          <button type="button" class="step-btn" aria-label="Augmenter" data-action="stepper#inc">+</button>
         </div>
-        <div class="mb-3">
-          <%= f.input :total_budget, label: "Budget total (€)", input_html: { class: "form-control" } %>
+      </div>
+      <!-- Calories -->
+      <div class="goals-row" data-controller="stepper"
+           data-stepper-step-value="50" data-stepper-min-value="0" data-stepper-max-value="50000">
+        <label class="form-label">Objectif calories</label>
+        <div class="input-stepper">
+          <button type="button" class="step-btn" aria-label="Diminuer" data-action="stepper#dec">−</button>
+          <%= f.input_field :total_calories, as: :integer,
+                class: "form-control form-pill step-input",
+                value: (@profile.total_calories || 0),
+                inputmode: "numeric",
+                'data-stepper-target': 'input' %>
+          <span class="unit">kcal</span>
+          <button type="button" class="step-btn" aria-label="Augmenter" data-action="stepper#inc">+</button>
         </div>
-        <div class="mb-3">
-          <%= f.input :total_calories, label: "Objectif calories (kcal)", input_html: { class: "form-control" } %>
-        </div>
-        <div class="mb-3">
-          <%= f.input :total_recipes, label: "Nombre de recettes", input_html: { class: "form-control" } %>
-        </div>
-        <div class="text-end">
-          <%= f.button :submit, class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="profile-actions justify-content-center">
+        <%= f.button :submit, "Voir les recettes", class: "btn btn-primary btn-tup" %>
+      </div>
+    <% end %>
   </div>
 </div>

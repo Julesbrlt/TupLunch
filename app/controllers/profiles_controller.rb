@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path(@profile)
+      redirect_to recipes_path
     else
       render :edit, status: :unprocessable_entity
     end
