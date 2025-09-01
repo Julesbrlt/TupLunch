@@ -6,7 +6,6 @@ Chat.destroy_all
 User.destroy_all
 
 
-
 user = User.create!(
   email: "test@test.fr",
   password: "123456"
