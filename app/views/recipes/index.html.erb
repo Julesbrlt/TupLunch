@@ -1,17 +1,19 @@
 <div class="container-swipe">
-  <div class="carousel">
+  <div class="carousel" data-controller="counter">
 
-    <% @recipes.each do |recipe| %>
+            <% @profile.total_recipes.times do |index| %>
+          <div class="dot" data-counter-target=<%="dot_#{index}"%>></div>
+          <% end %>
+    <% @recipes.each_with_index do |recipe, index_recipe| %>
       <div class="col-12 d-flex justify-content-center"> <!-- centre la card -->
         <div class="card position-relative overflow-hidden swipe-card">
           <!-- Wrapper cliquable -->
 
           <!-- Compteur de recettes -->
           <div class="card-counter d-flex justify-content-center">
-            <% @recipes.each_with_index do |_, index| %>
-              <div class="dot <%= 'active' if index == 0 %>"></div>
-            <% end %>
-            
+            <% @profile.total_recipes.times do |index| %>
+          <div class="dot" data-counter-target=<%="dot_#{index}"%>></div>
+          <% end %>
           </div>
           <%= link_to recipe_path(recipe), class:"card-img-background", style:"background-image: url(#{recipe.image_url});" do %>
             <div>
@@ -36,9 +38,10 @@
     <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
   <% end %>
   <%= link_to recipe_recap_recipes_path(recipe),
-              data: { turbo_method: :post },
+              data: { turbo_method: :post, action:"counter#next" },
               class: "btn btn-swipe" do %>
     <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
+    <%= hidden_field_tag "recipe_index", index_recipe %>
   <% end %>
 
 </div>
