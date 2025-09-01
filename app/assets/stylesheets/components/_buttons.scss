@@ -19,4 +19,62 @@
     align-items: center;
     justify-content: center;
   }
+
+}
+
+.btn-swipe {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #89f1a0;
+  padding: 0;
+}
+
+.btn-swipe:hover {
+  background-color: #e6ffec;
+  border: 2px solid #89f1a0;
+}
+
+.btn-swipe .btn-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.btn-pass {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #f87994;
+  padding: 0;
+}
+
+.btn-pass:hover {
+  background-color: #ffccd3;
+  border: 2px solid #f87994;
+}
+
+.btn-pass .btn-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.btn-swipe, .btn-pass {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
