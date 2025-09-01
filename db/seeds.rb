@@ -1,188 +1,155 @@
-# Favorite.destroy_all
-# RecipeIngredient.destroy_all
-# Ingredient.destroy_all
-# Recipe.destroy_all
-# Chat.destroy_all
-# User.destroy_all
+Favorite.destroy_all
+RecipeIngredient.destroy_all
+Ingredient.destroy_all
+Recipe.destroy_all
+Chat.destroy_all
+User.destroy_all
 
-require "json"
-require "open-uri"
 
-recipes = []
-ingredients = []
+user = User.create!(
+  email: "test@test.fr",
+  password: "123456"
+)
 
-url = "https://www.themealdb.com/api/json/v1/1/random.php"
-recipe_serialized = URI.parse(url).read
-recipe = JSON.parse(recipe_serialized)
-
-recipes << {
-    name: recipe["meals"][0]["strMeal"],
-    description: recipe["meals"][0]["strCategory"],
-    price: rand(3..10),
-    time: rand(10..59),
-    calories: rand(200..1000),
-    steps: recipe["meals"][0]["strInstructions"],
+# --- Recettes ---
+recipes = [
+  {
+    name: "Spaghetti Bolognaise",
+    description: "Un classique italien avec une sauce tomate mijotée et du bœuf haché.",
+    price: 12,
+    time: 30,
+    calories: 650,
+    steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce.",
     image_path: "app/assets/images/Spagetthi-bolo2.png",
-    image_url: recipe["meals"][0]["strMealThumb"]
+    image_url: "https://images.unsplash.com/photo-1692071097529-320eb2b32292?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Poulet Curry Coco",
+    description: "Poulet tendre cuisiné dans une sauce onctueuse au lait de coco et curry.",
+    price: 14,
+    time: 40,
+    calories: 720,
+    steps: "Coupez le poulet en morceaux.\nFaites revenir l’oignon avec un peu d’huile.\nAjoutez les épices.\nIncorporez le poulet et faites dorer.\nVersez le lait de coco et laissez mijoter.",
+    image_url: "https://plus.unsplash.com/premium_photo-1707227861789-475326479c2b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Salade César",
+    description: "Salade croquante avec poulet grillé, croûtons et sauce crémeuse au parmesan.",
+    price: 9,
+    time: 15,
+    calories: 450,
+    steps: "Lavez et coupez la laitue romaine.\nFaites griller le poulet.\nPréparez la sauce.\nAjoutez les croûtons et le parmesan.\nServez frais.",
+    image_url: "https://images.unsplash.com/photo-1574926054530-540288c8e678?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Burger Maison",
+    description: "Pain brioché, steak haché, cheddar fondant et sauce spéciale.",
+    price: 11,
+    time: 25,
+    calories: 800,
+    steps: "Préparez les steaks hachés.\nFaites cuire selon votre goût.\nToastez les pains.\nAjoutez la sauce, le steak et le fromage.\nServez avec des frites.",
+    image_url: "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Ratatouille Provençale",
+    description: "Mélange de légumes mijotés aux herbes de Provence.",
+    price: 8,
+    time: 35,
+    calories: 300,
+    steps: "Coupez les légumes.\nFaites revenir les oignons et l’ail.\nAjoutez les légumes.\nAssaisonnez.\nServez chaud ou froid.",
+    image_url: "https://plus.unsplash.com/premium_photo-1713635953194-ab8a625b2477?q=80&w=2105&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Sushi Saumon",
+    description: "Petits rouleaux de riz vinaigré garnis de saumon frais.",
+    price: 15,
+    time: 50,
+    calories: 500,
+    steps: "Faites cuire le riz vinaigré.\nCoupez le saumon.\nÉtalez le riz sur la feuille de nori.\nAjoutez le saumon.\nRoulez et découpez.",
+    image_url: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Pizza Margherita",
+    description: "Base tomate, mozzarella fondante et basilic frais.",
+    price: 10,
+    time: 20,
+    calories: 700,
+    steps: "Étalez la pâte.\nAjoutez la sauce tomate.\nAjoutez la mozzarella.\nEnfournez 12 min à 220°C.\nAjoutez le basilic.",
+    image_url: "https://plus.unsplash.com/premium_photo-1673439304183-8840bd0dc1bf?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Tacos Mexicains",
+    description: "Tortillas garnies de viande épicée, légumes frais et guacamole.",
+    price: 12,
+    time: 30,
+    calories: 600,
+    steps: "Faites cuire la viande épicée.\nPréparez le guacamole.\nChauffez les tortillas.\nAjoutez légumes et sauce.\nRepliez et dégustez.",
+    image_url: "https://plus.unsplash.com/premium_photo-1661730329741-b3bf77019b39?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Saumon Grillé",
+    description: "Filet de saumon grillé servi avec légumes vapeur et citron.",
+    price: 16,
+    time: 25,
+    calories: 550,
+    steps: "Assaisonnez le saumon.\nFaites griller dans une poêle chaude.\nPréparez les légumes vapeur.\nServez avec le saumon.\nAjoutez un filet de citron.",
+    image_url: "https://plus.unsplash.com/premium_photo-1723532536299-487180c8fdf5?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Omelette aux Champignons",
+    description: "Œufs battus, champignons frais et herbes aromatiques.",
+    price: 7,
+    time: 10,
+    calories: 320,
+    steps: "Nettoyez les champignons.\nFaites-les revenir.\nBattez les œufs.\nVersez dans la poêle.\nFaites cuire à feu doux.",
+    image_url: "https://images.unsplash.com/photo-1677137261161-0095c10418ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    name: "Sushi & Makis avec Tempura",
+    description: "Assortiment de sushis et makis accompagnés de tempura croustillants.",
+    price: 18,
+    time: 55,
+    calories: 720,
+    steps: "Préparez le riz vinaigré.\nRoulez les makis avec poisson et légumes.\nFaites la pâte à tempura.\nFaites frire les légumes et crevettes.\nServez avec sauce soja.",
+    image_path: "app/assets/images/sushi2.png"
+  },
+  {
+    name: "Nouilles épicées au poulet",
+    description: "Nouilles sautées avec morceaux de poulet et une sauce relevée.",
+    price: 13,
+    time: 25,
+    calories: 680,
+    steps: "Faites cuire les nouilles.\nSaisissez le poulet avec ail et piment.\nAjoutez la sauce soja et légumes.\nMélangez avec les nouilles.\nServez chaud.",
+    image_path: "app/assets/images/Nouille2.png"
+  },
+  {
+    name: "Spaghetti aux parmesan",
+    description: "Spaghetti mêlés à une émulsion d’eau de cuisson et parmesan, parfumés à l’ail.",
+    price: 12,
+    time: 20,
+    calories: 580,
+    steps: "Faites cuire les spaghetti al dente.\nRéservez une louche d’eau de cuisson.\nHors du feu, mélangez les spaghetti avec le parmesan râpé et un peu d’eau de cuisson jusqu’à texture crémeuse.\nAjoutez l’ail finement haché.\nServez avec quelques feuilles de basilic.",
+    image_path: "app/assets/images/parmesan2.png"
+  },
+  {
+    name: "Tagliatelles à la tomate",
+    description: "Pâtes fraîches tagliatelles servies avec une sauce tomate maison.",
+    price: 11,
+    time: 20,
+    calories: 560,
+    steps: "Faites cuire les tagliatelles.\nPréparez la sauce tomate avec oignon et ail.\nAjoutez des herbes.\nMélangez avec les pâtes.\nServez avec parmesan râpé.",
+    image_path: "app/assets/images/Pate-saussice2.png"
+  },
+  {
+    name: "Salade de pâtes à la Julio",
+    description: "Salade fraîche à base de pâtes, d'avocat noirs et vinaigrette légère askip.",
+    price: 9,
+    time: 15,
+    calories: 420,
+    steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais.",
+    image_path: "app/assets/images/salade-pate.png"
   }
-
-  ingredients << [
-  { name: (1..20).map{|r|recipe["meals"][0]["strIngredient#{r}"].strip}.reject(&:empty?),
-    unit: (1..20).map{|u|recipe["meals"][0]["strMeasure#{u}"].strip}.reject(&:empty?)
-  }
-  ]
-
-
-
-
-# user = User.create!(
-#   email: "test@test.fr",
-#   password: "123456"
-# )
-
-# # --- Recettes ---
-# recipes = [
-#
-#   {}
-#   {
-#     name: "Spaghetti Bolognaise",
-#     description: "Un classique italien avec une sauce tomate mijotée et du bœuf haché.",
-#     price: 12,
-#     time: 30,
-#     calories: 650,
-#     steps: "Faites cuire les spaghetti dans de l’eau bouillante salée.\nDans une poêle, faites revenir l’oignon et l’ail.\nAjoutez la viande hachée et faites-la dorer.\nIncorporez la sauce tomate et laissez mijoter 15 min.\nÉgouttez les pâtes et servez avec la sauce.",
-#     image_path: "app/assets/images/Spagetthi-bolo2.png",
-#     image_url: "https://images.unsplash.com/photo-1692071097529-320eb2b32292?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Poulet Curry Coco",
-#     description: "Poulet tendre cuisiné dans une sauce onctueuse au lait de coco et curry.",
-#     price: 14,
-#     time: 40,
-#     calories: 720,
-#     steps: "Coupez le poulet en morceaux.\nFaites revenir l’oignon avec un peu d’huile.\nAjoutez les épices.\nIncorporez le poulet et faites dorer.\nVersez le lait de coco et laissez mijoter.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1707227861789-475326479c2b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-
-#   },
-#   {
-#     name: "Salade César",
-#     description: "Salade croquante avec poulet grillé, croûtons et sauce crémeuse au parmesan.",
-#     price: 9,
-#     time: 15,
-#     calories: 450,
-#     steps: "Lavez et coupez la laitue romaine.\nFaites griller le poulet.\nPréparez la sauce.\nAjoutez les croûtons et le parmesan.\nServez frais.",
-#     image_url: "https://images.unsplash.com/photo-1574926054530-540288c8e678?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-
-#   },
-#   {
-#     name: "Burger Maison",
-#     description: "Pain brioché, steak haché, cheddar fondant et sauce spéciale.",
-#     price: 11,
-#     time: 25,
-#     calories: 800,
-#     steps: "Préparez les steaks hachés.\nFaites cuire selon votre goût.\nToastez les pains.\nAjoutez la sauce, le steak et le fromage.\nServez avec des frites.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Ratatouille Provençale",
-#     description: "Mélange de légumes mijotés aux herbes de Provence.",
-#     price: 8,
-#     time: 35,
-#     calories: 300,
-#     steps: "Coupez les légumes.\nFaites revenir les oignons et l’ail.\nAjoutez les légumes.\nAssaisonnez.\nServez chaud ou froid.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1713635953194-ab8a625b2477?q=80&w=2105&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Sushi Saumon",
-#     description: "Petits rouleaux de riz vinaigré garnis de saumon frais.",
-#     price: 15,
-#     time: 50,
-#     calories: 500,
-#     steps: "Faites cuire le riz vinaigré.\nCoupez le saumon.\nÉtalez le riz sur la feuille de nori.\nAjoutez le saumon.\nRoulez et découpez.",
-#     image_url: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Pizza Margherita",
-#     description: "Base tomate, mozzarella fondante et basilic frais.",
-#     price: 10,
-#     time: 20,
-#     calories: 700,
-#     steps: "Étalez la pâte.\nAjoutez la sauce tomate.\nAjoutez la mozzarella.\nEnfournez 12 min à 220°C.\nAjoutez le basilic.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1673439304183-8840bd0dc1bf?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Tacos Mexicains",
-#     description: "Tortillas garnies de viande épicée, légumes frais et guacamole.",
-#     price: 12,
-#     time: 30,
-#     calories: 600,
-#     steps: "Faites cuire la viande épicée.\nPréparez le guacamole.\nChauffez les tortillas.\nAjoutez légumes et sauce.\nRepliez et dégustez.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1661730329741-b3bf77019b39?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Saumon Grillé",
-#     description: "Filet de saumon grillé servi avec légumes vapeur et citron.",
-#     price: 16,
-#     time: 25,
-#     calories: 550,
-#     steps: "Assaisonnez le saumon.\nFaites griller dans une poêle chaude.\nPréparez les légumes vapeur.\nServez avec le saumon.\nAjoutez un filet de citron.",
-#     image_url: "https://plus.unsplash.com/premium_photo-1723532536299-487180c8fdf5?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Omelette aux Champignons",
-#     description: "Œufs battus, champignons frais et herbes aromatiques.",
-#     price: 7,
-#     time: 10,
-#     calories: 320,
-#     steps: "Nettoyez les champignons.\nFaites-les revenir.\nBattez les œufs.\nVersez dans la poêle.\nFaites cuire à feu doux.",
-#     image_url: "https://images.unsplash.com/photo-1677137261161-0095c10418ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-#   },
-#   {
-#     name: "Sushi & Makis avec Tempura",
-#     description: "Assortiment de sushis et makis accompagnés de tempura croustillants.",
-#     price: 18,
-#     time: 55,
-#     calories: 720,
-#     steps: "Préparez le riz vinaigré.\nRoulez les makis avec poisson et légumes.\nFaites la pâte à tempura.\nFaites frire les légumes et crevettes.\nServez avec sauce soja.",
-#     image_path: "app/assets/images/sushi2.png"
-#   },
-#   {
-#     name: "Nouilles épicées au poulet",
-#     description: "Nouilles sautées avec morceaux de poulet et une sauce relevée.",
-#     price: 13,
-#     time: 25,
-#     calories: 680,
-#     steps: "Faites cuire les nouilles.\nSaisissez le poulet avec ail et piment.\nAjoutez la sauce soja et légumes.\nMélangez avec les nouilles.\nServez chaud.",
-#     image_path: "app/assets/images/Nouille2.png"
-#   },
-#   {
-#     name: "Spaghetti aux parmesan",
-#     description: "Spaghetti mêlés à une émulsion d’eau de cuisson et parmesan, parfumés à l’ail.",
-#     price: 12,
-#     time: 20,
-#     calories: 580,
-#     steps: "Faites cuire les spaghetti al dente.\nRéservez une louche d’eau de cuisson.\nHors du feu, mélangez les spaghetti avec le parmesan râpé et un peu d’eau de cuisson jusqu’à texture crémeuse.\nAjoutez l’ail finement haché.\nServez avec quelques feuilles de basilic.",
-#     image_path: "app/assets/images/parmesan2.png"
-#   },
-#   {
-#     name: "Tagliatelles à la tomate",
-#     description: "Pâtes fraîches tagliatelles servies avec une sauce tomate maison.",
-#     price: 11,
-#     time: 20,
-#     calories: 560,
-#     steps: "Faites cuire les tagliatelles.\nPréparez la sauce tomate avec oignon et ail.\nAjoutez des herbes.\nMélangez avec les pâtes.\nServez avec parmesan râpé.",
-#     image_path: "app/assets/images/Pate-saussice2.png"
-#   },
-#   {
-#     name: "Salade de pâtes à la Julio",
-#     description: "Salade fraîche à base de pâtes, d'avocat noirs et vinaigrette légère askip.",
-#     price: 9,
-#     time: 15,
-#     calories: 420,
-#     steps: "Faites cuire les pâtes.\nLaissez refroidir.\nAjoutez tomates cerises, avocats et olives.\nPréparez une vinaigrette.\nMélangez et servez frais.",
-#     image_path: "app/assets/images/salade-pate.png",
-#   }
-#   ]
+]
 
 recipes_objects = []
  recipes.map do |data|
@@ -195,158 +162,159 @@ recipes_objects = []
     content_type: "image/jpg"
   )
 end
-# puts "✅ #{recipes_objects.size} recettes créées"
+
+puts "✅ #{recipes_objects.size} recettes créées"
 
 # # --- Ingrédients globaux ---
-# ingredients = [
-#   { name: "Spaghetti", price_per_unit: 2 },
-#   { name: "Bœuf haché", price_per_unit: 8 },
-#   { name: "Tomates", price_per_unit: 3 },
-#   { name: "Oignon", price_per_unit: 1 },
-#   { name: "Ail", price_per_unit: 1 },
-#   { name: "Poulet", price_per_unit: 7 },
-#   { name: "Lait de coco", price_per_unit: 3 },
-#   { name: "Curry en poudre", price_per_unit: 2 },
-#   { name: "Laitue romaine", price_per_unit: 2 },
-#   { name: "Croûtons", price_per_unit: 2 },
-#   { name: "Parmesan", price_per_unit: 5 },
-#   { name: "Pain burger", price_per_unit: 3 },
-#   { name: "Steak haché", price_per_unit: 6 },
-#   { name: "Cheddar", price_per_unit: 4 },
-#   { name: "Aubergine", price_per_unit: 2 },
-#   { name: "Courgette", price_per_unit: 2 },
-#   { name: "Poivron", price_per_unit: 2 },
-#   { name: "Riz à sushi", price_per_unit: 4 },
-#   { name: "Saumon frais", price_per_unit: 10 },
-#   { name: "Feuille de nori", price_per_unit: 2 },
-#   { name: "Mozzarella", price_per_unit: 4 },
-#   { name: "Persil", price_per_unit: 1 },
-#   { name: "Basilic frais", price_per_unit: 1 },
-#   { name: "Tortilla", price_per_unit: 3 },
-#   { name: "Avocat", price_per_unit: 3 },
-#   { name: "Citron", price_per_unit: 1 },
-#   { name: "Œufs", price_per_unit: 3 },
-#   { name: "Champignons", price_per_unit: 4 },
-#   { name: "Nouilles", price_per_unit: 3 },
-#   { name: "Piment", price_per_unit: 1 },
-#   { name: "Sauce soja", price_per_unit: 2 },
-#   { name: "Tagliatelles", price_per_unit: 3 },
-#   { name: "Fusili", price_per_unit: 3 },
-#   { name: "Tomates cerises", price_per_unit: 3 },
-#   { name: "Avocat", price_per_unit: 2 },
-#   { name: "Olives noires", price_per_unit: 3 },
-#   { name: "Crevettes", price_per_unit: 8 },
-#   { name: "Légumes tempura", price_per_unit: 5 }
-# ]
-
-# ingredients_objects = ingredients.map { |data| Ingredient.create!(data) }
-# puts "✅ #{ingredients_objects.size} ingrédients créés"
-
-# # --- Liaisons Recettes ↔ Ingrédients ---
-# # Spaghetti Bolognaise
-# RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
-# RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
-
-# # Poulet Curry Coco
-# RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: "200ml")
-# RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: "1 c.à.c")
-# RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-
-# # Salade César
-# RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Croûtons"), quantity: "30g")
-# RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "20g")
-
-# # Burger Maison
-# RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Pain burger"), quantity: "2 pains")
-# RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: "2 steaks")
-# RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Cheddar"), quantity: "2 tranches")
-# RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
-
-# # Ratatouille
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Aubergine"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Poivron"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-
-# # Sushi Saumon
-# RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: "2 feuilles")
-
-# # Pizza Margherita
-# RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
-# RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "quelques feuilles")
-
-# # Tacos Mexicains
-# RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: "2 pièces")
-# RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
-
-# # Saumon Grillé
-# RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Citron"), quantity: "1/2 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "1 pièce")
-
-# # Omelette aux Champignons
-# RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "3 œufs")
-# RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Champignons"), quantity: "100g")
-# RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/4 pièce")
+ingredients = [
+  { name: "Spaghetti", prix_au_kilo: 2 },
+  { name: "Bœuf haché", prix_au_kilo: 8 },
+  { name: "Tomates", prix_au_kilo: 3 },
+  { name: "Oignon", prix_au_kilo: 1 },
+  { name: "Ail", prix_au_kilo: 1 },
+  { name: "Poulet", prix_au_kilo: 7 },
+  { name: "Lait de coco", prix_au_kilo: 3 },
+  { name: "Curry en poudre", prix_au_kilo: 2 },
+  { name: "Laitue romaine", prix_au_kilo: 2 },
+  { name: "Croûtons", prix_au_kilo: 2 },
+  { name: "Parmesan", prix_au_kilo: 5 },
+  { name: "Pain burger", prix_au_kilo: 3 },
+  { name: "Steak haché", prix_au_kilo: 6 },
+  { name: "Cheddar", prix_au_kilo: 4 },
+  { name: "Aubergine", prix_au_kilo: 2 },
+  { name: "Courgette", prix_au_kilo: 2 },
+  { name: "Poivron", prix_au_kilo: 2 },
+  { name: "Riz à sushi", prix_au_kilo: 4 },
+  { name: "Saumon frais", prix_au_kilo: 10 },
+  { name: "Feuille de nori", prix_au_kilo: 2 },
+  { name: "Mozzarella", prix_au_kilo: 4 },
+  { name: "Persil", prix_au_kilo: 1 },
+  { name: "Basilic frais", prix_au_kilo: 1 },
+  { name: "Tortilla", prix_au_kilo: 3 },
+  { name: "Avocat", prix_au_kilo: 3 },
+  { name: "Citron", prix_au_kilo: 1 },
+  { name: "Œufs", prix_au_kilo: 3 },
+  { name: "Champignons", prix_au_kilo: 4 },
+  { name: "Nouilles", prix_au_kilo: 3 },
+  { name: "Piment", prix_au_kilo: 1 },
+  { name: "Sauce soja", prix_au_kilo: 2 },
+  { name: "Tagliatelles", prix_au_kilo: 3 },
+  { name: "Fusili", prix_au_kilo: 3 },
+  { name: "Tomates cerises", prix_au_kilo: 3 },
+  { name: "Avocat", prix_au_kilo: 2 },
+  { name: "Olives noires", prix_au_kilo: 3 },
+  { name: "Crevettes", prix_au_kilo: 8 },
+  { name: "Légumes tempura", prix_au_kilo: 5 }
+]
 
 
-# # Sushi & Makis avec Tempura
-# RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "1100g")
-# RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: "2 feuilles")
-# RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Crevettes"), quantity: "100g")
-# RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Légumes tempura"), quantity: "150g")
+ingredients_objects = ingredients.map { |data| Ingredient.create!(data) }
+puts "✅ #{ingredients_objects.size} ingrédients créés"
+
+#--- Liaisons Recettes ↔ Ingrédients ---
+# Spaghetti Bolognaise
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
+
+# Poulet Curry Coco
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: "200ml")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: "1 c.à.c")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+
+# Salade César
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Croûtons"), quantity: "30g")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "20g")
+
+# Burger Maison
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Pain burger"), quantity: "2 pains")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: "2 steaks")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Cheddar"), quantity: "2 tranches")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
+
+# Ratatouille
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Aubergine"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Poivron"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+
+# Sushi Saumon
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: "2 feuilles")
+
+# Pizza Margherita
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "2 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "quelques feuilles")
+
+# Tacos Mexicains
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: "2 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
+
+# Saumon Grillé
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Citron"), quantity: "1/2 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "1 pièce")
+
+# Omelette aux Champignons
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "3 œufs")
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Champignons"), quantity: "100g")
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/4 pièce")
+
+# Sushi & Makis avec Tempura
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "1100g")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: "2 feuilles")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Crevettes"), quantity: "100g")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Légumes tempura"), quantity: "150g")
 
 # # Nouilles épicées au poulet
-# RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Piment"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Sauce soja"), quantity: "2 c.à.s")
-# RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Piment"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Sauce soja"), quantity: "2 c.à.s")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1/2 pièce")
 
-# # Spaghetti aux parmesan
-# RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "60g")
-# RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-# RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "quelques feuilles")
+# Spaghetti aux parmesan
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "60g")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "quelques feuilles")
 
+# Tagliatelles à la tomate
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tagliatelles"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "3 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "20g")
 
-# # Tagliatelles à la tomate
-# RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tagliatelles"), quantity: "200g")
-# RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "3 pièces")
-# RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-# RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "20g")
+# Salade de pâtes à la Julio
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Fusili"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: "100g")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1/2 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Olives noires"), quantity: "50g")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Persil"), quantity: "quelques feuilles")
 
-# # Salade de pâtes à la Julio
-# RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Fusili"), quantity: "150g")
-# RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: "100g")
-# RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1/2 pièce")
-# RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Olives noires"), quantity: "50g")
-# RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Persil"), quantity: "quelques feuilles")
+ puts "✅ Liaisons recettes ↔ ingrédients créées"
 
-# puts "✅ Liaisons recettes ↔ ingrédients créées"
-
-
-
-# user.favorites.create(recipe: Recipe.all.sample)
-# Profile.create!(
-#   user: user,
-#   name: "Jean Dupont",
-#   food_preferences: "Végétarien, aime les pâtes"
-# )
+user.favorites.create(recipe: Recipe.all.sample)
+Profile.create!(
+  user: user,
+  name: "Jean Dupont",
+  food_preferences: "Végétarien, aime les pâtes",
+  total_budget: 50,
+  total_calories: 2000,
+  total_recipes: 5
+)
