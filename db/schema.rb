@@ -130,7 +130,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_29_092102) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "steps"
-    t.vector "embedding", limit: 1536
     t.string "image_url"
   end
 
