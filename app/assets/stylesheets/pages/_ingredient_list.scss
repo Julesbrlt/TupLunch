@@ -214,7 +214,7 @@ $border:         rgba(0,0,0,0.06);
 /* ====== Responsive ====== */
 @media (max-width: 540px) {
   .shopping-card { padding: 14px 16px 14px; }
-  .shopping-card tbody td { padding: 10px 20px; }
+  .shopping-card tbody td { padding: 10px 16px; }
   .shopping-card tbody td:nth-child(1) { width: 50%; }
   .shopping-card tbody td:nth-child(2),
   .shopping-card tbody td:nth-child(3) { width: 22%; }
