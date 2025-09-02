@@ -1,7 +1,8 @@
 <div class="shopping-page">
   <div class="shopping-card">
     <h1>Liste de courses</h1>
-    <div class="h-100 overflow-scroll">
+
+    <div class="shopping-list">
       <% if @lists.present? %>
         <table>
           <tbody>
@@ -11,27 +12,28 @@
                 <tr>
                   <td><%= ri.ingredient.name %></td>
                   <td><%= ri.quantity %></td>
-                  <td><%= number_to_currency(ri.ingredient.price_per_unit, unit: "€", separator: ",") %></td>
+                  <td><%= number_to_currency(ri.ingredient.prix_au_kilo, unit: "€", separator: ",") %></td>
                   <td class="text-center">
                     <input type="checkbox"
-                         class="round-check ingredient-checkbox"
-                         data-id="<%= ri.ingredient.id %>"
-                         <%= "checked" if false %> >
+                      class="round-check ingredient-checkbox"
+                      data-id="<%= ri.ingredient.id %>">
                   </td>
                 </tr>
+                <% total_price += (ri.ingredient.prix_au_kilo || 0) %>
               <% end %>
             <% end %>
           </tbody>
         </table>
-        <div class="shopping-total">
-          <span class="label">TOTAL :</span>
-          <span class="value"><%= number_to_currency(total_price, unit: "€", separator: ",") %></span>
-        </div>
       <% else %>
         <div class="alert alert-info">
           Aucune recette trouvée dans votre récap.
         </div>
       <% end %>
+    </div>
+
+    <div class="shopping-total">
+      <span class="label">TOTAL :</span>
+      <span class="value"><%= number_to_currency(total_price, unit: "€", separator: ",") %></span>
     </div>
   </div>
 </div>

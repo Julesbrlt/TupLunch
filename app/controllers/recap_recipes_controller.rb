@@ -18,4 +18,11 @@ class RecapRecipesController < ApplicationController
     redirect_to dashboard_path, notice: "Recette retirée de vos favoris."
   end
 
+  def dashboard
+    @user = current_user
+    @recap_recipes = @user.recap_recipes
+    @profile = @user.profile
+    @favorites = @user.favorites
+
+  end
 end
