@@ -1,19 +1,27 @@
 <footer class="footer">
-  <nav class="footer-nav">
+  <nav class="footer-nav" aria-label="Navigation principale">
     <%= link_to home_path, class: "footer-link" do %>
-      <%= image_tag "home.png", alt: "Home", class: "footer-icon" %>
+      <%= image_tag "home.png",  alt: "Accueil", class: "footer-icon" %>
     <% end %>
+
     <%= link_to ingredients_lists_path, class: "footer-link" do %>
-      <%= image_tag "list.png", alt: "Liste", class: "footer-icon" %>
+      <%= image_tag "list.png",  alt: "Liste", class: "footer-icon" %>
     <% end %>
-    <%= link_to recipes_path, class: "footer-link" do %>
-      <%= image_tag "cards.png", alt: "Recipes", class: "footer-icon" %>
-    <% end %>
+
+    <!-- espace réservé pour la zone du bouton central -->
+    <span class="fab-gap" aria-hidden="true"></span>
+
     <%= link_to chat_path(current_user.chat), class: "footer-link" do %>
-      <%= image_tag "chef.png", alt: "Checklist", class: "footer-icon" %>
+      <%= image_tag "chef.png",  alt: "Chat", class: "footer-icon" %>
     <% end %>
+
     <%= link_to dashboard_path, class: "footer-link" do %>
-      <%= image_tag "profile.png", alt: "Chef", class: "footer-icon" %>
+      <%= image_tag "profile.png", alt: "Profil", class: "footer-icon" %>
     <% end %>
   </nav>
+
+  <!-- Bouton rond au centre, dans le creux -->
+  <%= link_to recipes_path, class: "footer-fab" do %>
+    <%= image_tag "cards.png", alt: "Recettes", class: "fab-icon" %>
+  <% end %>
 </footer>

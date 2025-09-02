@@ -1,41 +1,84 @@
+/* Réglages rapides */
+:root {
+  --footer-h: 60px;   /* hauteur de la barre blanche */
+  --fab-d: 70px;      /* diamètre du bouton rond */
+}
+
 .footer {
   position: fixed;
-  bottom: 0;
-  left: 50%;
-  background: #fff;
-  height: 12vh;                // hauteur fixe confortable
-  padding: 8px 0;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;                // largeur exacte iPhone 12
-  transform: translateX(-50%); // centre si jamais tu testes sur écran plus large
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  inset: auto 0 0 0;
+  height: var(--footer-h);
+  background: #fff;                         /* footer plein, plus de creux */
+  box-shadow: 0 -2px 8px rgba(0,0,0,.12);
+  z-index: 1000;
+  display: grid;
+  place-items: end center;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  overflow: visible;                        /* pour laisser flotter le bouton au-dessus */
 }
 
+/* Navigation : 2 icônes + espace du bouton + 2 icônes */
 .footer-nav {
-  display: flex;
-  justify-content: space-around; // espace égal entre chaque icône
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  height: 100%;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr var(--fab-d) 1fr 1fr; /* centre réservé au fab */
   align-items: center;
-  gap: 42px;
+  gap: 22px;
 }
+
+.fab-gap { width: var(--fab-d); height: 1px; display: block; }
 
 .footer-link {
+  display: grid;
+  place-items: center;
   text-decoration: none;
-  flex: 1;                     // chaque icône prend le même espace
-  display: flex;
-  justify-content: center;
-    &:hover {
-    transform: translateY(-3px) rotate(4deg);
-    opacity: 0.85;               // léger changement de contraste
-  }
-   &:active {
-    transform: scale(0.92); // effet "tap" iOS quand on clique
-    opacity: 0.7;
-  }
+  transition: transform .15s ease, opacity .15s ease, filter .15s ease;
+
+  &:hover  { transform: translateY(-2px); filter: drop-shadow(0 2px 1px rgba(0,0,0,.08)); }
+  &:active { transform: scale(.92); opacity: .75; }
 }
 
 .footer-icon {
-  width: 34px;                 // taille idéale pour tap target
+  width: 30px;
   height: auto;
+}
+
+/* ----- Bouton circulaire central (flotte au-dessus du footer plein) ----- */
+.footer-fab {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -38%);  /* ajuste la sortie visuelle (−35% à −45% selon ton goût) */
+  width: var(--fab-d);
+  height: var(--fab-d);
+  border-radius: 999px;
+  background: #bfbfbf;
+  display: grid;
+  place-items: center;
+  z-index: 2;                        /* au-dessus de la barre */
+  box-shadow: 0 8px 18px rgba(0,0,0,.24), inset 0 0 0 1px rgba(255,255,255,.12);
+  transition: transform .18s ease, filter .2s ease;
+
+  &:hover  { transform: translate(-50%, -40%) scale(1.03); filter: drop-shadow(0 6px 6px rgba(0,0,0,.2)); }
+  &:active { transform: translate(-50%, -34%) scale(.97); }
+}
+
+.fab-icon {
+  width: 44px;
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.25));
+}
+
+/* Petits écrans */
+@media (max-width: 380px) {
+  :root {
+    --footer-h: 78px;
+    --fab-d: 78px;
+  }
+  .footer-icon { width: 28px; }
 }
