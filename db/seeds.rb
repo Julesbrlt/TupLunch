@@ -161,7 +161,6 @@ recipes = [
     time: 15,
     calories: 450,
     steps: "Beurrez les tranches de pain.\nAjoutez le jambon et le fromage.\nRefermez et faites dorer à la poêle ou au four.\nServez chaud.",
-    image_path: "app/assets/images/croque-monsieur.png",
     image_url: "https://images.unsplash.com/photo-1589308078059-f63424311815?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -171,7 +170,6 @@ recipes = [
     time: 20,
     calories: 520,
     steps: "Toastez le pain.\nAjoutez poulet, salade, tomate et mayo.\nMontez en étages avec 3 tranches.\nCoupez en triangles et piquez avec un cure-dent.",
-    image_path: "app/assets/images/club-sandwich.png",
     image_url: "https://images.unsplash.com/photo-1603046891744-6f3f6217b174?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -181,7 +179,6 @@ recipes = [
     time: 10,
     calories: 430,
     steps: "Étalez le fromage frais sur la tortilla.\nAjoutez saumon fumé, salade et concombre.\nRoulez serré et coupez en deux.\nServez frais.",
-    image_path: "app/assets/images/wrap-saumon.png",
     image_url: "https://images.unsplash.com/photo-1528731708534-816fe59f90cb?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -191,7 +188,6 @@ recipes = [
     time: 25,
     calories: 600,
     steps: "Préparez ou chauffez les falafels.\nDressez avec salade, tomates, concombre et carottes.\nAjoutez houmous et sauce tahini.\nServez en bowl.",
-    image_path: "app/assets/images/bowl-falafel.png",
     image_url: "https://images.unsplash.com/photo-1617196039897-4f6062c0f3a1?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -201,7 +197,6 @@ recipes = [
     time: 40,
     calories: 750,
     steps: "Préparez une sauce bolognaise.\nMontez les couches pâtes, sauce, béchamel et fromage.\nCuisez au four 35 min.\nServez chaud.",
-    image_path: "app/assets/images/lasagne.png",
     image_url: "https://images.unsplash.com/photo-1617196039714-6f76e0f03a57?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -211,7 +206,6 @@ recipes = [
     time: 35,
     calories: 680,
     steps: "Préparez une purée maison.\nFaites revenir la viande hachée avec oignon.\nDisposez viande au fond, purée au-dessus.\nParsemez de fromage et gratinez.",
-    image_path: "app/assets/images/hachis-parmentier.png",
     image_url: "https://images.unsplash.com/photo-1589308078059-f63424311815?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -221,7 +215,6 @@ recipes = [
     time: 12,
     calories: 400,
     steps: "Écrasez l’avocat avec citron et sel.\nToastez le pain.\nAjoutez l’avocat et un œuf poché.\nAssaisonnez et servez.",
-    image_path: "app/assets/images/avocado-toast.png",
     image_url: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -231,7 +224,6 @@ recipes = [
     time: 15,
     calories: 520,
     steps: "Faites chauffer la galette.\nCassez un œuf au centre.\nAjoutez jambon et fromage.\nPliez les bords et laissez cuire.\nServez chaud.",
-    image_path: "app/assets/images/galette-jambon-oeuf-fromage.png",
     image_url: "https://images.unsplash.com/photo-1627906295817-622535c6ee5a?w=900&auto=format&fit=crop&q=60"
   },
   {
@@ -241,8 +233,79 @@ recipes = [
     time: 25,
     calories: 480,
     steps: "Faites revenir oignon, ail et poivrons.\nAjoutez tomates et épices.\nLaissez mijoter.\nCassez des œufs sur le dessus et couvrez.\nServez avec pain.",
-    image_path: "app/assets/images/chakchouka.png",
     image_url: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9e?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Soupe potimarron",
+    description: "Velouté de potimarron crémeux avec une touche de muscade.",
+    price: 8,
+    time: 40,
+    calories: 250,
+    steps: "Épluchez et coupez le potimarron.\nFaites revenir oignon et ail.\nAjoutez le potimarron et couvrez d’eau.\nMixez avec crème fraîche.\nServez chaud avec persil.",
+    image_url: "https://images.unsplash.com/photo-1604908177522-402f9b1ecb7f?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Bruschetta tomate mozzarella",
+    description: "Pain grillé garni de tomates fraîches, mozzarella et basilic.",
+    price: 7,
+    time: 15,
+    calories: 320,
+    steps: "Faites griller les tranches de pain.\nFrottez-les avec de l’ail.\nAjoutez tomates et mozzarella.\nParsemez de basilic.\nServez avec un filet d’huile d’olive.",
+    image_url: "https://images.unsplash.com/photo-1625949275296-938668911a7b?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Steak frites",
+    description: "Pièce de bœuf grillée servie avec des frites croustillantes.",
+    price: 14,
+    time: 25,
+    calories: 780,
+    steps: "Assaisonnez le steak.\nFaites-le griller selon cuisson souhaitée.\nPréparez les frites maison ou surgelées.\nServez chaud avec sauce au choix.",
+    image_url: "https://images.unsplash.com/photo-1604908813323-70c3e50b0f9c?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Ravioles fondue de poireaux",
+    description: "Ravioles fraîches servies avec une fondue crémeuse de poireaux.",
+    price: 12,
+    time: 30,
+    calories: 540,
+    steps: "Faites cuire les ravioles.\nÉmincez les poireaux et faites-les revenir.\nAjoutez crème et assaisonnez.\nServez chaud avec les ravioles.",
+    image_url: "https://images.unsplash.com/photo-1601303246277-3e40c836d13e?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Bœuf bourguignon",
+    description: "Plat mijoté de bœuf tendre au vin rouge, carottes et champignons.",
+    price: 16,
+    time: 180,
+    calories: 890,
+    steps: "Faites revenir les morceaux de bœuf.\nAjoutez oignon, carottes et champignons.\nDéglacez au vin rouge.\nLaissez mijoter 3h.\nServez avec pommes de terre vapeur.",
+    image_url: "https://images.unsplash.com/photo-1601314163482-b30b4a8d5bb7?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Quiche lorraine",
+    description: "Tarte salée garnie de lardons, œufs et crème.",
+    price: 9,
+    time: 45,
+    calories: 600,
+    steps: "Préparez une pâte brisée.\nGarnissez de lardons.\nMélangez œufs et crème.\nVersez l’appareil et enfournez.\nServez tiède.",
+    image_url: "https://images.unsplash.com/photo-1607877398205-d0e83b083ffd?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Tomates farcies",
+    description: "Tomates garnies d’une farce de viande hachée et riz.",
+    price: 11,
+    time: 60,
+    calories: 670,
+    steps: "Évidez les tomates.\nPréparez une farce avec viande, oignon et riz.\nFarcissez les tomates.\nEnfournez 40 min.\nServez chaud.",
+    image_url: "https://images.unsplash.com/photo-1603091936116-fb12b4e0d7a7?w=900&auto=format&fit=crop&q=60"
+  },
+  {
+    name: "Purée saucisse",
+    description: "Purée de pommes de terre maison servie avec une saucisse grillée.",
+    price: 10,
+    time: 35,
+    calories: 720,
+    steps: "Faites cuire les pommes de terre.\nÉcrasez avec beurre et lait.\nFaites griller la saucisse.\nServez ensemble avec sauce moutarde.",
+    image_url: "https://images.unsplash.com/photo-1617196039895-8abf886a5ef1?w=900&auto=format&fit=crop&q=60"
   }
 ]
 
@@ -281,6 +344,7 @@ ingredients = [
   { name: "Poivron", prix_au_kilo: 2 },
   { name: "Riz à sushi", prix_au_kilo: 4 },
   { name: "Saumon frais", prix_au_kilo: 10 },
+  { name: "Saumon fumé", prix_au_kilo: 12 }, # ajouté
   { name: "Feuille de nori", prix_au_kilo: 2 },
   { name: "Mozzarella", prix_au_kilo: 4 },
   { name: "Persil", prix_au_kilo: 1 },
@@ -296,7 +360,6 @@ ingredients = [
   { name: "Tagliatelles", prix_au_kilo: 3 },
   { name: "Fusili", prix_au_kilo: 3 },
   { name: "Tomates cerises", prix_au_kilo: 3 },
-  { name: "Avocat", prix_au_kilo: 2 },
   { name: "Olives noires", prix_au_kilo: 3 },
   { name: "Crevettes", prix_au_kilo: 8 },
   { name: "Légumes tempura", prix_au_kilo: 5 },
@@ -315,8 +378,21 @@ ingredients = [
   { name: "Pain complet", prix_au_kilo: 3 },
   { name: "Farine de sarrasin", prix_au_kilo: 4 },
   { name: "Poivrons rouges", prix_au_kilo: 3 },
-  { name: "Épices orientales", prix_au_kilo: 3 }
+  { name: "Épices orientales", prix_au_kilo: 3 },
+  { name: "Potimarron", prix_au_kilo: 3 },
+  { name: "Crème fraîche", prix_au_kilo: 4 },
+  { name: "Pain", prix_au_kilo: 2 },
+  { name: "Poireau", prix_au_kilo: 2 },
+  { name: "Vin rouge", prix_au_kilo: 6 },
+  { name: "Lardons", prix_au_kilo: 7 },
+  { name: "Pâte brisée", prix_au_kilo: 3 },
+  { name: "Riz", prix_au_kilo: 2 },
+  { name: "Saucisse", prix_au_kilo: 7 },
+  { name: "Beurre", prix_au_kilo: 6 },
+  { name: "Lait", prix_au_kilo: 1 },
+  { name: "Ravioles fraîches", prix_au_kilo: 6 } # ajouté
 ]
+
 
 
 ingredients_objects = ingredients.map { |data| Ingredient.create!(data) }
@@ -478,6 +554,54 @@ RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.fin
 RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
 RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "2 pièces")
 RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Épices orientales"), quantity: "1 càs")
+
+# Soupe potimarron
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Potimarron"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "10cl")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Persil"), quantity: "Quelques brins")
+
+# Bruschetta tomate mozzarella
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Pain"), quantity: "4 tranches")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: "150g")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: "125g")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "Quelques feuilles")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+
+# Steak frites
+RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: "300g")
+
+# Ravioles fondue de poireaux
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Pâte brisée"), quantity: "1 paquet de ravioles fraîches")
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Poireau"), quantity: "2 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "15cl")
+
+# Bœuf bourguignon
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "600g de morceaux")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Carottes"), quantity: "3 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Champignons"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Vin rouge"), quantity: "50cl")
+
+# Quiche lorraine
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Pâte brisée"), quantity: "1 rouleau")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Lardons"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "3 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "20cl")
+
+# Tomates farcies
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "4 pièces")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "300g")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Riz"), quantity: "100g")
+
+# Purée saucisse
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: "400g")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Beurre"), quantity: "50g")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Lait"), quantity: "10cl")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Saucisse"), quantity: "1 pièce")
 
 puts "✅ Liaisons recettes ↔ ingrédients créées"
 
