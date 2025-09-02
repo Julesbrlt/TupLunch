@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["card", "button"]
 
   connect() {
-    this.showingAll = false 
+    this.showingAll = false
     this.updateView()
   }
 
