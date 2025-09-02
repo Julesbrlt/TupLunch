@@ -11,7 +11,7 @@
       <%= render "messages/messages", messages: @chat.messages %>
     </div>
     <!-- Input -->
-    <div id="new_message" class="p-2">
+    <div id="new_message">
       <%= render "messages/form", chat: @chat, message: Message.new %>
     </div>
   </div>
