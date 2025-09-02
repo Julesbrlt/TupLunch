@@ -1,6 +1,5 @@
 
 /* Palette (approximations de la maquette) */
-$teal-bg:        #00524F;
 $card-bg:        #f3f9fb;
 $pill-bg:        #ecebeb;
 $accent-yellow:  #FCBF38;
@@ -12,7 +11,7 @@ $border:         rgba(0,0,0,0.06);
 
 /* Page background + centrage de la carte */
 .shopping-page {
-  background: $teal-bg;
+  background: $color-primary;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -38,15 +37,15 @@ $border:         rgba(0,0,0,0.06);
 }
 
 .shopping-list {
-  flex: 1 1 auto;          /* occupe l'espace restant entre le titre et le total */
-  min-height: 0;           /* indispensable avec flex pour autoriser le scroll */
-  overflow-y: auto;        /* scroll vertical interne uniquement */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch; /* scroll fluide iOS */
-  overscroll-behavior: contain;      /* évite le "scroll chaining" qui sort de la card */
-  scrollbar-gutter: stable;          /* évite les sauts quand la barre apparaît */
-  padding-top: 0px;       /* léger air avant la première ligne (optionnel) */
-  padding-right: 6px;      /* espace pour la scrollbar (optionnel) */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-top: 0px;
+  padding-right: 6px;
 }
 
 /* Titre style maquette */
@@ -74,7 +73,7 @@ $border:         rgba(0,0,0,0.06);
 .shopping-card table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 6px; /* 0 horizontal | 14px vertical */
+  border-spacing: 0 6px;
 }
 
 .shopping-card thead {
@@ -133,8 +132,8 @@ $border:         rgba(0,0,0,0.06);
   left: 0;
   top: 10px;
   bottom: 10px;
-  width: 1px;                 /* épaisseur du séparateur */
-  background: $text-dark;     /* couleur du séparateur */
+  width: 1px;
+  background: $text-dark;
   border-radius: 2px;
 }
 
@@ -147,7 +146,7 @@ $border:         rgba(0,0,0,0.06);
 .shopping-card tbody td:nth-child(4) {
   width: 10%;
   background: transparent;
-  padding-left: 12px; /* espace visuel entre le pill et le bouton */
+  padding-left: 12px;
   padding-right: 10px;
 }
 
@@ -180,7 +179,7 @@ $border:         rgba(0,0,0,0.06);
   background: $pill-bg;
 }
 .round-check:checked::after {
-  content: "✔";
+  content: "✔︎";
   transform: translateY(-1px);
 }
 
@@ -199,7 +198,7 @@ $border:         rgba(0,0,0,0.06);
   justify-content: flex-end;
   font-weight: 800;
   letter-spacing: .2px;
-  flex: 0 0 auto;          /* ne scrolle pas, reste fixé en bas de la card */
+  flex: 0 0 auto;
   margin-top: 5px;
 
   .label {
