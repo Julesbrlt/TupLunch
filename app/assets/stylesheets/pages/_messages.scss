@@ -1,0 +1,40 @@
+.answer-chat {
+  background-color: $color-primary;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 14px;
+  max-width: 70%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+}
+
+/* Petit triangle façon bulle */
+.answer-chat::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 12px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent $color-primary transparent transparent;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;  /* rond */
+  object-fit: cover;   /* recadre bien l'image */
+  border: 2px solid #eee;
+}
+
+.chat-bubble {
+  background: #f8f9fa;
+  padding: 10px 14px;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  max-width: 70%;
+  font-size: 15px;
+  line-height: 1.4;
+}
