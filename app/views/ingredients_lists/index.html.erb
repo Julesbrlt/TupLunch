@@ -11,7 +11,7 @@
                 <tr>
                   <td><%= ri.ingredient.name %></td>
                   <td><%= ri.quantity %></td>
-                  <td><%= number_to_currency(ri.ingredient.price_per_unit, unit: "€", separator: ",") %></td>
+                  <td><%= number_to_currency(ri.ingredient.prix_au_kilo, unit: "€", separator: ",") %></td>
                   <td class="text-center">
                     <input type="checkbox"
                          class="round-check ingredient-checkbox"
