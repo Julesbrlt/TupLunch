@@ -8,8 +8,13 @@
 
         <li class="recap-card">
           <div class="recap-thumb">
-            <%# image non intégrée pour l’instant %>
-            <div class="recap-thumb-plh">image</div>
+            <div class="recap-thumb-plh">
+              <% if recipe.image_url.present? %>
+                <%= image_tag recipe.image_url, alt: recipe.name, class: "recap-img" %>
+              <% else %>
+                <span class="recap-thumb-blank">la bouleeette</span>
+              <% end %>
+            </div>
           </div>
 
           <div class="recap-main">
@@ -27,7 +32,7 @@
                 <span class="meta-item">
                   <%= image_tag "euro.png", alt: "Prix", class: "meta-icon" %>
                   <% if recipe.respond_to?(:price) %>
-                    <%= number_to_currency(recipe.price, unit: "€", format: "%n%u") %>
+                    <%= number_to_currency(recipe.price, unit: "€") %>
                   <% end %>
                 </span>
               </div>
@@ -42,7 +47,6 @@
             </div>
           </div>
         </li>
-
       <% end %>
     </ul>
 

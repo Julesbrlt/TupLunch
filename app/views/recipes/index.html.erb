@@ -38,7 +38,7 @@
     <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
   <% end %>
   <%= link_to recipe_recap_recipes_path(recipe),
-              data: { turbo_method: :post, action:"counter#next" },
+              data: { turbo_method: :post},
               class: "btn btn-swipe" do %>
     <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
     <%= hidden_field_tag "recipe_index", index_recipe %>
