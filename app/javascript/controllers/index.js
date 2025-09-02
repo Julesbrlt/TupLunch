@@ -1,8 +1,13 @@
 // Import and register all your controllers from the importmap via controllers/**/*_controller
 import { application } from "controllers/application"
-import FavoritesController from "./favorites_controller"
-import CounterController from "./counter_controller"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
+
+import FavoritesController from "./favorites_controller"
 application.register("favorites", FavoritesController)
+
+import CounterController from "./counter_controller"
 application.register("counter", CounterController)
+
+import SwiperController from "./swiper_controller"
+application.register("swiper", SwiperController)
