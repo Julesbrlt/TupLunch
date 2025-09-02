@@ -1,63 +1,61 @@
-<div class="container-swipe">
-  <div class="carousel" data-controller="counter">
-
-            <% @profile.total_recipes.times do |index| %>
-          <div class="dot" data-counter-target=<%="dot_#{index}"%>></div>
-          <% end %>
-    <% @recipes.each_with_index do |recipe, index_recipe| %>
-      <div class="col-12 d-flex justify-content-center"> <!-- centre la card -->
-        <div class="card position-relative overflow-hidden swipe-card">
-          <!-- Wrapper cliquable -->
-
-          <!-- Compteur de recettes -->
-          <div class="card-counter d-flex justify-content-center">
-            <% @profile.total_recipes.times do |index| %>
-          <div class="dot" data-counter-target=<%="dot_#{index}"%>></div>
-          <% end %>
-          </div>
-          <%= link_to recipe_path(recipe), class:"card-img-background", style:"background-image: url(#{recipe.image_url});" do %>
-            <div>
-              <!-- Infos en bas sur l'image -->
-              <div class="card-overlay p-3 text-white">
-              <div class="card-info">
-                <h5 class="mb-2"><%= recipe.name %></h5>
-                <div class="d-flex justify-content-between small">
-                  <span>💸 <%= recipe.price %> €</span>
-                  <span>⏳ <%= recipe.time %> min</span>
-                  <span>🍕 <%= recipe.calories %> kcal</span>
+<div class="swiper-container" data-controller="swiper">
+  <div class="swiper-wrapper" data-swipe-target="wrapper">
+    <%# <div class="card-counter d-flex justify-content-center mt-3">
+      <% @profile.total_recipes.times do |index| %>
+      <%# <div class="dot" data-counter-target=<%="dot_#{index}"%>
+      <%# </div> %>
+      <%# <% end %>
+      <%# </div> %>
+      <% @recipes.each do |recipe| %>
+        <div class="swiper-slide">
+          <div class="col-12 d-flex justify-content-center"> <!-- centre la card -->
+            <%= link_to recipe_path(recipe), class:"card-img-background", style:"background-image: url(#{recipe.image_url});" do %>
+              <div>
+                <!-- Infos en bas sur l'image -->
+                <div class="card-overlay p-3 text-white">
+                  <div class="card-info">
+                    <h5 class="mb-2"><%= recipe.name %></h5>
+                    <div class="d-flex justify-content-between small">
+                      <span>💸 <%= recipe.price %> €</span>
+                      <span>⏳ <%= recipe.time %> min</span>
+                      <span>🍕 <%= recipe.calories %> kcal</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              </div>
+            <% end %>
+            <!-- Footer en dehors de l'image -->
+            <div class="btn-actions position-absolute w-100 d-flex justify-content-around">
+              <button type="button" class="btn btn-pass" data-action="click->swiper#pass">
+                <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
+              </button>
+
+              <button type="button"
+                class="btn btn-swipe"
+                id="btn-swipe"
+                data-action="click->swiper#add"
+                data-url="<%= recipe_recap_recipes_path(recipe) %>">
+                <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
+              </button>
+
             </div>
-          <% end %>
-          <!-- Footer en dehors de l'image -->
-<div class="btn-actions position-absolute w-100 d-flex justify-content-around">
-  <%= link_to recipe_recap_recipes_path(recipe),
-              data: { turbo_method: :post },
-              class: "btn btn-pass" do %>
-    <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
-  <% end %>
-  <%= link_to recipe_recap_recipes_path(recipe),
-              data: { turbo_method: :post},
-              class: "btn btn-swipe" do %>
-    <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
-    <%= hidden_field_tag "recipe_index", index_recipe %>
-  <% end %>
-
-</div>
-
-                  <!-- Bouton coeur en overlay -->
-              <div class="bouton position-absolute top-0 end-0">
-                <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
-                  <span class="text-danger fs-4">❤️</span>
-                <% else %>
-                  <%= button_to "🤍", recipe_favorites_path(recipe),
-                              data: { turbo_method: :post },
-                              class: "btn btn-outline-danger btn-sm" %>
-                <% end %>
-              </div>
+            <!-- Bouton coeur en overlay -->
+            <div class="bouton position-absolute top-0 end-0">
+              <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                <span class="text-danger fs-4">❤️</span>
+              <% else %>
+                <div class="btn-favorite mt-3">
+                  <%= link_to recipe_favorites_path(recipe),
+                    data: { turbo_method: :post }  do %>
+                    <div class="rounded-circle">
+                      <%= image_tag "heart.png", alt: "Favori", class: "heart-icon" %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
