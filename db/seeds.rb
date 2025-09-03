@@ -220,7 +220,7 @@ RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find
 RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
 
 # Poulet Curry Coco
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.2Kilos")
 RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: "200ml")
 RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: "1 c.à.c")
 RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
@@ -281,7 +281,7 @@ RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.fin
 RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Légumes tempura"), quantity: "150g")
 
 # # Nouilles épicées au poulet
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: "200g")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: "0,2kg")
 RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "150g")
 RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Piment"), quantity: "1 pièce")
 RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Sauce soja"), quantity: "2 c.à.s")
