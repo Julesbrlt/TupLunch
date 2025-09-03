@@ -72,3 +72,10 @@
   padding-top: 25px;
   padding-right: 40px;
 }
+
+.retour-btn {
+  z-index: 10000000 !important;
+  position: absolute;
+      left: 100px;
+    bottom: 68px;
+}
