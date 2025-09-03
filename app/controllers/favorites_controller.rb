@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  
+
   def index
     @favorites = Favorite.all
     @favorites = current_user.favorites
@@ -13,7 +13,6 @@ class FavoritesController < ApplicationController
 
     @recipe = Recipe.find(params[:recipe_id])
     Favorite.find_or_create_by!(recipe: @recipe, user: current_user)
-    redirect_to recipes_path
   end
 
   def destroy
