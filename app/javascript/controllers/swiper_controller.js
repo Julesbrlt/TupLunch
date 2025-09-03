@@ -6,33 +6,72 @@ export default class extends Controller {
   connect() {
     this.swiper = new Swiper(this.element, {
       effect: "cards",
-      allowSlidePrev: false,
+      allowSlidePrev: true,
+/*       watchSlidesProgress: true,
+ */      // grabCursor: true,
+      on: {
+        touchEnd: (swiper) => this.onTouchEnd(swiper)
+      }
     })
   }
 
   pass() {
-    this.swiper.slideNext()
+    // this.swiper.slideNext()
   }
 
-  add(event) {
-  event.preventDefault();
-  const url = event.currentTarget.dataset.url
-  const token = document.querySelector('meta[name="csrf-token"]').content
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "X-CSRF-Token": token,
-      "Accept": "text/vnd.turbo-stream.html, text/html, application/json"
-    },
-    credentials: "same-origin"
-  })
-  this.swiper.slideNext()
+  add(eventOrUrl) {
+    let url
+
+    if (eventOrUrl?.preventDefault) {
+      eventOrUrl.preventDefault()
+      url = eventOrUrl.currentTarget.dataset.url
+    }
+    else {
+      url = eventOrUrl
+    }
+
+    const token = document.querySelector('meta[name="csrf-token"]').content
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": token,
+        "Accept": "text/vnd.turbo-stream.html, text/html, application/json"
+      },
+      credentials: "same-origin"
+    })
+
+    // this.swiper.slideNext()
+  }
+
+  // --- Swipe tactile ---
+  onTouchEnd(swiper) {
+    /* debugger */
+    const dx = swiper.touches.diff || 0
+    const threshold = 200 // px minimum
+    console.log({dx, threshold})
+    const activeIndex =  swiper.activeIndex
+    if (dx > threshold) {
+      // 👉 swipe droite = add
+      const active = this._activeSlide()
+      const url = active?.querySelector(".btn-swipe")?.dataset.url
+        swiper.removeSlide(activeIndex);
+        swiper.update();
+      if (url) this.add(url)
+
+    } else if (dx < -threshold) {
+      // 👉 swipe gauche = pass
+      swiper.removeSlide(activeIndex);
+      swiper.update();
+      this.pass()
+
+    } else {
+      // trop court → revient au centre
+      swiper.slideTo(activeIndex, 200)
+    }
+  }
+
+  // helper
+  _activeSlide() {
+    return this.element.querySelector(".swiper-slide-active")
   }
 }
-
-// swiper.allowSlideNext
-// swiper.allowSlidePrev
-// swiper.allowTouchMove Disable / enable ability move slider by grabbing it with mouse or by touching it with finger (on touch screens) by assigning false / true to this property
-// swiper.clickedSlide Link to last clicked slide (HTMLElement)
-// click	(swiper, event) Event will be fired when user click/tap on Swiper. Receives pointerup event as an arguments.
-// sliderMove	(swiper, event) Event will be fired when user touch and move finger over Swiper and move it. Receives pointermove event as an arguments.
