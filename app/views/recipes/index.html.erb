@@ -1,3 +1,4 @@
+<div class="cont-swiper">
   <div class="swiper-container" data-controller="swiper">
     <div class="swiper-wrapper" data-swipe-target="wrapper">
       <%# <div class="card-counter d-flex justify-content-center mt-3">
@@ -14,8 +15,8 @@
                   <!-- Infos en bas sur l'image -->
                   <div class="card-overlay p-3 text-white">
                     <div class="card-info">
-                      <h5 class="mb-2"><%= recipe.name %></h5>
-                      <div class="d-flex justify-content-between small">
+                      <h4 class="title-recipe"><%= recipe.name %></h4>
+                      <div class="info-recipe d-flex justify-content-between small">
                         <span>💸 <%= recipe.price %> €</span>
                         <span>⏳ <%= recipe.time %> min</span>
                         <span>🍕 <%= recipe.calories %> kcal</span>
@@ -29,14 +30,12 @@
                 <button type="button" class="btn btn-pass" data-action="click->swiper#pass">
                   <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
                 </button>
-
                 <button type="button"
                   class="btn btn-swipe"
                   data-action="click->swiper#add"
                   data-url="<%= recipe_recap_recipes_path(recipe) %>">
                   <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
                 </button>
-
               </div>
               <!-- Bouton coeur en overlay -->
               <div class="bouton position-absolute top-0 end-0">
@@ -58,3 +57,4 @@
         <% end %>
       </div>
     </div>
+  </div>

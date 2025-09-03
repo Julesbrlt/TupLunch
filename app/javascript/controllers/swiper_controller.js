@@ -10,16 +10,18 @@ export default class extends Controller {
 /*       watchSlidesProgress: true,
  */      // grabCursor: true,
       on: {
-        touchEnd: (swiper) => this.onTouchEnd(swiper)
+        touchEnd: (swiper, event) => this.onTouchEnd(swiper, event)
       }
     })
   }
 
   pass() {
-    // this.swiper.slideNext()
+    this.swiper.slideNext()
+    console.log('pass')
   }
 
   add(eventOrUrl) {
+    console.log('add')
     let url
 
     if (eventOrUrl?.preventDefault) {
@@ -40,13 +42,23 @@ export default class extends Controller {
       credentials: "same-origin"
     })
 
-    // this.swiper.slideNext()
+    this.swiper.slideNext()
   }
 
   // --- Swipe tactile ---
-  onTouchEnd(swiper) {
-    /* debugger */
+  onTouchEnd(swiper, event) {
+     /* debugger */
+    console.log('event', event)
+
+    if (event.target.closest('[data-action]') || event.target.tagName === "BUTTON" || event.target.closest('[href]') || event.target.tagName === "A") {
+      console.log('dans le early return')
+      return
+    }
+
+
     const dx = swiper.touches.diff || 0
+    console.log('swiper', swiper)
+
     const threshold = 200 // px minimum
     console.log({dx, threshold})
     const activeIndex =  swiper.activeIndex
@@ -54,8 +66,8 @@ export default class extends Controller {
       // 👉 swipe droite = add
       const active = this._activeSlide()
       const url = active?.querySelector(".btn-swipe")?.dataset.url
-        swiper.removeSlide(activeIndex);
-        swiper.update();
+      swiper.removeSlide(activeIndex);
+      swiper.update();
       if (url) this.add(url)
 
     } else if (dx < -threshold) {

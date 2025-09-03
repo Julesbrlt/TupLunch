@@ -1,8 +1,15 @@
 /* ========= Homepage ========= */
+.h-100-dvh {
+  height: 100dvh;
+}
 
 #body-home {
-  height: 83vh;
-  background-color: $color-primary;
+/*   height: 83vh;
+ */  background-color: $color-primary;
+}
+
+.body-wrapper {
+  height: calc(100dvh - 50px);
 }
 
 /* Variables */
@@ -16,7 +23,7 @@ $card-bg:        #ffffff;
 
 /* ===== Hero ===== */
 .homepage {
-  height: 105vh;
+/*   height: 105vh; */
   background:#00524F;
   padding:16px;
 }
