@@ -48,6 +48,7 @@ display: flex;
     transform: translateY(-2px);
     filter: drop-shadow(0 2px 1px rgba(0,0,0,.08));
   }
+  &:active { transform: scale(.92); opacity: .75; }
 }
 .rounded-circle2 {
   width: 35px;

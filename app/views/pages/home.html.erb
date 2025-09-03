@@ -28,14 +28,30 @@
             <div class="meta">Prix</div>
             <div class="time"><%= "#{number_to_currency(recipe.price, unit: "€")}" %></div>
             </div>
-          <div class="btn-favorite2">
-                  <%= link_to recipe_favorites_path(recipe),
-                    data: { turbo_method: :post }  do %>
-                    <div class="rounded-circle2">
-                      <%= image_tag "heart.png", alt: "Favori", class: "heart-icon2" %>
-                    </div>
-                  <% end %>
-                </div>
+
+          <div class="btn-favorite2"
+              data-controller="update-favorites"
+              data-update-favorites-red-url-value="<%= image_path('heart-red.png') %>"
+              data-update-favorites-white-url-value="<%= image_path('heart.png') %>">
+            <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
+              <div class="rounded-circle2">
+                <%= image_tag "heart-red.png",
+                      alt: "Favori",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
+              </div>
+            <% else %>
+              <%= link_to recipe_favorites_path(recipe),
+                    data: { turbo_method: :post, action: "click->update-favorites#toRed" },
+                    class: "rounded-circle2" do %>
+                <%= image_tag "heart.png",
+                      alt: "Ajouter aux favoris",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
+              <% end %>
+            <% end %>
+          </div>
+
               </div>
         </article>
       <% end %>

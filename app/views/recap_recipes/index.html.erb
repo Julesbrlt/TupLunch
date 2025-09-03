@@ -37,13 +37,26 @@
                 </span>
               </div>
 
-              <div class="recap-qty">
-                <button type="button" class="recap-qty-btn" aria-label="Retirer">−</button>
-                <span class="recap-qty-n">
-                  <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
-                </span>
-                <button type="button" class="recap-qty-btn" aria-label="Ajouter">+</button>
-              </div>
+              <div class="recap-qty"
+     data-controller="recipe-count"
+     data-recipe-count-min-value="1">
+
+  <button type="button"
+          class="recap-qty-btn"
+          aria-label="Retirer"
+          data-action="recipe-count#decrement">−</button>
+
+  <span class="recap-qty-n"
+        data-recipe-count-target="value">
+    <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
+  </span>
+
+  <button type="button"
+          class="recap-qty-btn"
+          aria-label="Ajouter"
+          data-action="recipe-count#increment">+</button>
+</div>
+
             </div>
           </div>
         </li>
