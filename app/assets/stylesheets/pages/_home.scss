@@ -21,6 +21,51 @@ $card-bg:        #ffffff;
   padding:16px;
 }
 
+.all {
+display: flex;
+}
+
+.card-time{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.recipe-card { position: relative; } /* déjà présent mais nécessaire pour le positionnement */
+
+.btn-favorite2 {
+  position: absolute;
+  right: 14px;
+  bottom: 18px;
+  width: 30px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  z-index: 2;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 2px 1px rgba(0,0,0,.08));
+  }
+}
+.rounded-circle2 {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: $accent-yellow;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.10);
+  display: grid;
+  place-items: center;
+}
+
+.heart-icon2 {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+
 .hero {
   position: relative;
   width: 100%;
@@ -52,7 +97,7 @@ $card-bg:        #ffffff;
     position: absolute;
     top: 24px;
     left: 24px;
-    z-index: 2;             /* au-dessus de l’overlay */
+    z-index: 2;
     max-width: 80%;
     color: $text-light;
     text-align: left;
@@ -170,6 +215,7 @@ $card-bg:        #ffffff;
     color: $text-muted;
     margin-bottom: 4px;
     margin-top: 10px;
+    font-weight: 800;
   }
 
   .time {

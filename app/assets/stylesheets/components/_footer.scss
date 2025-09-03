@@ -53,11 +53,11 @@
   position: absolute;
   left: 50%;
   top: 0;
-  transform: translate(-50%, -38%);  /* ajuste la sortie visuelle (−35% à −45% selon ton goût) */
+  transform: translate(-50%, -27%);  /* ajuste la sortie visuelle (−35% à −45% selon ton goût) */
   width: var(--fab-d);
   height: var(--fab-d);
   border-radius: 999px;
-  background: #bfbfbf;
+  background: $color-secondary;
   display: grid;
   place-items: center;
   z-index: 2;                        /* au-dessus de la barre */

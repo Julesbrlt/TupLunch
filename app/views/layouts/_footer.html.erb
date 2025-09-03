@@ -8,15 +8,14 @@
       <%= image_tag "checklist.png",  alt: "Liste", class: "footer-icon" %>
     <% end %>
 
-    <!-- espace réservé pour la zone du bouton central -->
     <span class="fab-gap" aria-hidden="true"></span>
 
     <%= link_to chat_path(current_user.chat), class: "footer-link" do %>
-      <%= image_tag "chef.png",  alt: "Chat", class: "footer-icon" %>
+      <%= image_tag "frigo-ia.png",  alt: "Chat", class: "footer-icon" %>
     <% end %>
 
     <%= link_to dashboard_path, class: "footer-link" do %>
-      <%= image_tag "profile.png", alt: "Profil", class: "footer-icon" %>
+      <%= image_tag "user.png", alt: "Profil", class: "footer-icon" %>
     <% end %>
   </nav>
 

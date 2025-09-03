@@ -17,6 +17,7 @@ $border:         rgba(0,0,0,0.06);
   justify-content: center;
   align-items: flex-start;
   padding: 6px 12px 18px;
+  margin: 0;
 }
 
 /* Carte principale */
@@ -196,9 +197,10 @@ $border:         rgba(0,0,0,0.06);
 .shopping-total {
   display: flex;
   justify-content: flex-end;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: .2px;
   flex: 0 0 auto;
+  font-family: $font-secondary;
   margin-top: 5px;
 
   .label {
