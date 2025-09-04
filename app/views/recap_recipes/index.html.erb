@@ -31,22 +31,28 @@
                   <% end %>
                 </span>
               </div>
-              <div class="recap-qty"
-     data-controller="recipe-count"
-     data-recipe-count-min-value="1">
-                <button type="button"
+
+              <%= form_with url: servings_recap_recipe_path(recap), method: :patch, class: "recap-qty",
+      data: { controller: "recipe-count", recipe_count_min_value: 1 } do %>
+
+  <button type="button"
           class="recap-qty-btn"
           aria-label="Retirer"
           data-action="recipe-count#decrement">−</button>
-                <span class="recap-qty-n"
-        data-recipe-count-target="value">
-                  <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
-                </span>
-                <button type="button"
+
+  <span class="recap-qty-n" data-recipe-count-target="value">
+    <%= recap.servings %>
+  </span>
+
+  <button type="button"
           class="recap-qty-btn"
           aria-label="Ajouter"
           data-action="recipe-count#increment">+</button>
-              </div>
+
+  <%= hidden_field_tag :servings, recap.servings, data: { recipe_count_target: "input" } %>
+<% end %>
+
+
             </div>
           </div>
         </li>

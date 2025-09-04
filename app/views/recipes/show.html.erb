@@ -39,7 +39,7 @@
       </div>
       <ul class="accordion-content">
         <% @recipe.ingredients.each do |ingredient| %>
-          <li><%= ingredient.name %> - <%= ingredient.recipe_ingredients.find_by(recipe: @recipe).quantity %></li>
+          <li><%= ingredient.name %> - <%= ingredient.recipe_ingredients.find_by(recipe: @recipe).quantity %> <%= ingredient.recipe_ingredients.find_by(recipe: @recipe).unit %></li>
         <% end %>
       </ul>
     </div>

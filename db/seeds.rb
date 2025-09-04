@@ -333,7 +333,7 @@ ingredients = [
   { name: "Poulet", prix_au_kilo: 11 },
   { name: "Lait de coco", prix_au_kilo: 8 },
   { name: "Curry en poudre", prix_au_kilo: 20 },
-  { name: "Laitue romaine", prix_au_kilo: 9 },
+  { name: "Laitue romaine", prix_au_kilo: 1 },
   { name: "Croûtons", prix_au_kilo: 10 },
   { name: "Parmesan", prix_au_kilo: 27 },
   { name: "Pain burger", prix_au_kilo: 0.3 },
@@ -408,212 +408,211 @@ puts "✅ #{ingredients_objects.size} ingrédients créés"
 #--- Liaisons Recettes ↔ Ingrédients ---
 
 # Spaghetti Bolognaise
-RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.260kg")
-RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.260, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: 2, unit: "gousses")
 
 # Poulet Curry Coco
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: "0.2l")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: "0.005kg")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: 0.2, unit: "kg" )
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: 0.2, unit: "l")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: 0.005, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
 
 # Salade César
-RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Croûtons"), quantity: "0.03kg")
-RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "0.02kg")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Poulet"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Croûtons"), quantity: 0.03, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: 0.02, unit: "kg")
 
 # Burger Maison
-RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Pain burger"), quantity: "1 pain")
-RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: "0.3kg")
-RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Cheddar"), quantity: "0.028kg")
-RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.130kg")
-RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Chapelure"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Pain burger"), quantity: 1, unit: "pain")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: 0.3, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Cheddar"), quantity: 0.028, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.130, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[3], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Chapelure"), quantity: 0.1, unit: "kg")
 
 # Ratatouille
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Aubergine"), quantity: "0.4kg")
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Poivron"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.260kg")
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Aubergine"), quantity: 0.4, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Courgette"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Poivron"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.260, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[4], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
 
 # Sushi Saumon
-RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: "2 feuilles")
-RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Wasabi"), quantity: "0.01kg")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Feuille de nori"), quantity: 2, unit: "feuilles")
+RecipeIngredient.create!(recipe: recipes_objects[5], ingredient: Ingredient.find_by(name: "Wasabi"), quantity: 0.01, unit: "kg")
 
 # Pizza Margherita
-RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.260kg")
-RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "1 bouquet")
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.260, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[6], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: 1, unit: "bouquet")
 
 # Tacos Mexicains
-RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: "2 pièces")
-RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Coulis de tomate"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: 2, unit: "pièces")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Avocat"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[7], ingredient: Ingredient.find_by(name: "Coulis de tomate"), quantity: 0.1, unit: "kg")
 
 # Saumon Grillé
-RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Citron"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Courgette"), quantity: "0.2kg")
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Saumon frais"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Citron"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[8], ingredient: Ingredient.find_by(name: "Courgette"), quantity: 0.2, unit: "kg")
 
 # Omelette aux Champignons
-RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "3 œufs")
-RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Champignons"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Œufs"), quantity: 3, unit: "œufs")
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Champignons"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[9], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
 
 # Crevettes à la tempura
-RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Crevettes"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Chapelure"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Riz à sushi"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Crevettes"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[10], ingredient: Ingredient.find_by(name: "Chapelure"), quantity: 0.1, unit: "kg")
 
 # Nouilles épicées au poulet
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Piment"), quantity: "0.001kg")
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Sauce soja"), quantity: "0.02l")
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nuoc mam"), quantity: "0.02l")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nouilles"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Poulet"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Piment"), quantity: 0.001, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Sauce soja"), quantity: 0.02, unit: "l")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[11], ingredient: Ingredient.find_by(name: "Nuoc mam"), quantity: 0.02, unit: "l")
 
 # Spaghetti à la Carbonara
-RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: "0.06kg")
-RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Guanciale"), quantity: "0.05kg")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Parmesan"), quantity: 0.06, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
+RecipeIngredient.create!(recipe: recipes_objects[12], ingredient: Ingredient.find_by(name: "Guanciale"), quantity: 0.05, unit: "kg")
 
 # Pâtes à l'arrabiata
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.39kg")
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Paprika"), quantity: "0.005kg")
-RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Chorizo"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.39, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Paprika"), quantity: 0.005, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[13], ingredient: Ingredient.find_by(name: "Chorizo"), quantity: 0.1, unit: "kg")
 
 # Salade de pâtes à la Julio
-RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Olives noires"), quantity: "0.05kg")
-RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Persil"), quantity: "0.002kg")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Spaghetti"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Avocat"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Olives noires"), quantity: 0.05, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[14], ingredient: Ingredient.find_by(name: "Persil"), quantity: 0.002, unit: "kg")
 
 # Croque Monsieur
-RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: "2 tranches")
-RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Jambon"), quantity: "1 tranche")
-RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: "0.05kg")
+RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: 2, unit: "tranches")
+RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Jambon"), quantity: 1, unit: "tranche")
+RecipeIngredient.create!(recipe: recipes_objects[15], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: 0.05, unit: "kg")
 
 # Club sandwich
-RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: "3 tranches")
-RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.06kg")
-RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Mayonnaise"), quantity: "0.02kg")
+RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: 3, unit: "tranches")
+RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Poulet"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.06, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[16], ingredient: Ingredient.find_by(name: "Mayonnaise"), quantity: 0.02, unit: "kg")
 
 # Wrap saumon
-RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Saumon fumé"), quantity: "0.08kg")
-RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Concombre"), quantity: "0.05kg")
-RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Tortilla"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Saumon fumé"), quantity: 0.08, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Concombre"), quantity: 0.05, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[17], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: 1, unit: "pièce")
 
 # Bowl d'hiver
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Falafels"), quantity: "4 pièces")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.13kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Concombre"), quantity: "0.05kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Carottes"), quantity: "0.05kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Houmous"), quantity: "0.03kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Sauce tahini"), quantity: "0.015kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Roquette"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Graines de courge"), quantity: "0.01kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Falafels"), quantity: 4, unit: "pièces")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.13, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Concombre"), quantity: 0.05, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Carottes"), quantity: 0.05, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Houmous"), quantity: 0.03, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Sauce tahini"), quantity: 0.015, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Roquette"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[18], ingredient: Ingredient.find_by(name: "Graines de courge"), quantity: 0.01, unit: "kg")
 
 # Lasagne
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Feuilles de lasagne"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.26kg")
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Béchamel"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: "0.08kg")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Feuilles de lasagne"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.26, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Béchamel"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[19], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: 0.08, unit: "kg")
 
 # Hachis Parmentier
-RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: "0.3kg")
-RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: "0.06kg")
+RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: 0.3, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[20], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: 0.06, unit: "kg")
 
 # Avocado toast
-RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Pain complet"), quantity: "1 tranche")
-RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Avocat"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Citron"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "1 pièce")
+RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Pain complet"), quantity: 1, unit: "tranche")
+RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Avocat"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Citron"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[21], ingredient: Ingredient.find_by(name: "Œufs"), quantity: 1, unit: "pièce")
 
 # Galettes jambon œuf fromage
-RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Farine de sarrasin"), quantity: "0.1kg")
-RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Jambon"), quantity: "1 tranche")
-RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: "0.05kg")
+RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Farine de sarrasin"), quantity: 0.1, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Jambon"), quantity: 1, unit: "tranche")
+RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Œufs"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[22], ingredient: Ingredient.find_by(name: "Fromage râpé"), quantity: 0.05, unit: "kg")
 
 # Chakchouka
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.39kg")
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Poivron"), quantity: "2 pièces")
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "2 pièces")
-RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Paprika"), quantity: "0.02kg")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.39, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Poivron"), quantity: 2, unit: "pièces")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Ail"), quantity: 2, unit: "gousses")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Œufs"), quantity: 2, unit: "pièces")
+RecipeIngredient.create!(recipe: recipes_objects[23], ingredient: Ingredient.find_by(name: "Paprika"), quantity: 0.02, unit: "kg")
 
 # Soupe potimarron
-RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Potimarron"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
-RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "0.01l")
-RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Persil"), quantity: "0.002kg")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Potimarron"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: 0.01, unit: "l")
+RecipeIngredient.create!(recipe: recipes_objects[24], ingredient: Ingredient.find_by(name: "Persil"), quantity: 0.002, unit: "kg")
 
 # Bruschetta tomate mozzarella
-RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: "4 tranches")
-RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: "0.15kg")
-RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: "0.125kg")
-RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: "1 bouquet")
-RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Pain de mie"), quantity: 4, unit: "tranches")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Tomates cerises"), quantity: 0.15, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Mozzarella"), quantity: 0.125, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Basilic frais"), quantity: 1, unit: "bouquet")
+RecipeIngredient.create!(recipe: recipes_objects[25], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
 
 # Steak frites
-RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: "0.3kg")
+RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Steak haché"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[26], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: 0.3, unit: "kg")
 
 # Ravioles fondue de poireaux
-RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Ravioles fraîches"), quantity: "1 paquet")
-RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Poireau"), quantity: "0.3kg")
-RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "0.015l")
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Ravioles fraîches"), quantity: 1, unit: "paquet")
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Poireau"), quantity: 0.3, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[27], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: 0.015, unit: "l")
 
 # Bœuf bourguignon
-RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Bœuf"), quantity: "0.6kg")
-RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Carottes"), quantity: "0.4kg")
-RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Champignons"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Vin rouge"), quantity: "0.05l")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Bœuf"), quantity: 0.6, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Carottes"), quantity: 0.4, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Champignons"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[28], ingredient: Ingredient.find_by(name: "Vin rouge"), quantity: 0.05, unit: "l")
 
 # Quiche lorraine
-RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Pâte brisée"), quantity: "1 pâte")
-RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Lardons"), quantity: "0.2kg")
-RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Œufs"), quantity: "3 pièces")
-RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: "0.02l")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Pâte brisée"), quantity: 1, unit: "pâte")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Lardons"), quantity: 0.2, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Œufs"), quantity: 3, unit: "pièces")
+RecipeIngredient.create!(recipe: recipes_objects[29], ingredient: Ingredient.find_by(name: "Crème fraîche"), quantity: 0.02, unit: "l")
 
 # Tomates farcies
-RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Tomates"), quantity: "0.52kg")
-RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: "0.3kg")
-RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Riz"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Tomates"), quantity: 0.52, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Bœuf haché"), quantity: 0.3, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[30], ingredient: Ingredient.find_by(name: "Riz"), quantity: 0.1, unit: "kg")
 
 # Purée saucisse
-RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: "0.4kg")
-RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Beurre"), quantity: "0.05kg")
-RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Lait"), quantity: "0.01l")
-RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Saucisse"), quantity: "0.1kg")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Pommes de terre"), quantity: 0.4, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Beurre"), quantity: 0.05, unit: "kg")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Lait"), quantity: 0.01, unit: "l")
+RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.find_by(name: "Saucisse"), quantity: 0.1, unit: "kg")
 
 puts "✅ Liaisons recettes ↔ ingrédients créées"
 

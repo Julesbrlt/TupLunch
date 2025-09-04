@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_01_130240) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_04_125146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_01_130240) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prix_au_kilo"
+    t.decimal "prix_au_kilo"
   end
 
   create_table "ingredients_lists", force: :cascade do |t|
@@ -106,6 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_01_130240) do
     t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "servings"
     t.index ["recipe_id"], name: "index_recap_recipes_on_recipe_id"
     t.index ["user_id"], name: "index_recap_recipes_on_user_id"
   end
@@ -115,7 +116,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_01_130240) do
     t.datetime "updated_at", null: false
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
-    t.string "quantity"
+    t.string "unit"
+    t.float "quantity"
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
