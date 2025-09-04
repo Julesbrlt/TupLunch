@@ -3,7 +3,7 @@ class RecapRecipesController < ApplicationController
   before_action :set_recap_recipe, only: [:servings]
 
   def index
-    @recap_recipes = current_user.recap_recipes.includes(:recipe)
+    @recap_recipes = current_user.recap_recipes.includes(:recipe).sort()
   end
 
   def create

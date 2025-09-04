@@ -333,7 +333,7 @@ ingredients = [
   { name: "Poulet", prix_au_kilo: 11 },
   { name: "Lait de coco", prix_au_kilo: 8 },
   { name: "Curry en poudre", prix_au_kilo: 20 },
-  { name: "Laitue romaine", prix_au_kilo: 9 },
+  { name: "Laitue romaine", prix_au_kilo: 1 },
   { name: "Croûtons", prix_au_kilo: 10 },
   { name: "Parmesan", prix_au_kilo: 27 },
   { name: "Pain burger", prix_au_kilo: 0.3 },
