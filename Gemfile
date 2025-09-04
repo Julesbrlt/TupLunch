@@ -26,6 +26,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "devise"
+gem "devise-i18n"
 gem "simple_form"
 gem 'dartsass-sprockets'
 gem 'bootstrap', '~> 5.3.3'
