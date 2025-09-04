@@ -1,18 +1,31 @@
 class RecapRecipesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_recap_recipes, only: [:index, :destroy]
 
   def index
-    @recap_recipes = current_user.recap_recipes.includes(:recipe)
   end
 
   def create
+    @profile = current_user.profile
     @recipe = Recipe.find(params[:recipe_id])
     RecapRecipe.find_or_create_by!(recipe: @recipe, user: current_user)
-    redirect_to recap_recipes_path
+
+    @recap_recipes = current_user.recap_recipes.includes(:recipe)
+    puts " Profile Total Recipes : #{@profile.total_recipes}"
+        puts " Recap Recipes count : #{@recap_recipes.count}"
+    if @recap_recipes.count >= @profile.total_recipes
+      render json: { redirect_url: recap_recipes_path } and return
+    end
+
+    total_price = @recap_recipes.sum { |rr| rr.recipe.price }
+    total_calories = @recap_recipes.sum { |rr| rr.recipe.calories }
+
+    if total_price > @profile.total_budget || total_calories > @profile.total_calories
+    flash.now[:alert] = "⚠️ Attention vous dépassez votre budget ou vos calories"
+    end
   end
 
   def destroy
-    @recap_recipe = current_user.recap_recipes.find(params[:id])
     @recap_recipe.destroy
 
     redirect_to dashboard_path, notice: "Recette retirée de vos favoris."
@@ -23,6 +36,11 @@ class RecapRecipesController < ApplicationController
     @recap_recipes = @user.recap_recipes
     @profile = @user.profile
     @favorites = @user.favorites
+  end
 
+  private
+
+  def set_recap_recipes
+    @recap_recipes = current_user.recap_recipes.includes(:recipe)
   end
 end

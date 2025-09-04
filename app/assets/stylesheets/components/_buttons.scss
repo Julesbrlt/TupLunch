@@ -101,3 +101,21 @@
   align-items: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
+
+.btn-favorite-index {
+  position: absolute;
+  right: 35px;
+  top: 50px;
+  width: 30px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  z-index: 2;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 2px 1px rgba(0,0,0,.08));
+  }
+  &:active { transform: scale(.92); opacity: .75; }
+}

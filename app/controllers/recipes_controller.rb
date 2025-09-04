@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     @profile = current_user.profile
-    @choice_recipes = @profile.total_recipes
+    @recap_recipes = current_user.recap_recipes
   end
 
   def show

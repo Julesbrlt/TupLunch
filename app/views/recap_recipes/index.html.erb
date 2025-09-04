@@ -1,11 +1,9 @@
 <section class="recap-scope">
   <h1 class="recap-title">Ma sélection de recettes</h1>
-
   <% if @recap_recipes.any? %>
     <ul class="recap-list">
       <% @recap_recipes.each do |recap| %>
         <% recipe = recap.recipe %>
-
         <li class="recap-card">
           <div class="recap-thumb">
             <div class="recap-thumb-plh">
@@ -16,19 +14,16 @@
               <% end %>
             </div>
           </div>
-
           <div class="recap-main">
             <h3 class="recap-name">
               <%= link_to recipe.name, recipe_path(recipe), class: "recap-link" %>
             </h3>
-
             <div class="recap-row">
               <div class="recap-meta">
                 <span class="meta-item">
                   <%= image_tag "lhorloge.png", alt: "Temps de préparation", class: "meta-icon" %>
                   <%= recipe.time %> min
                 </span>
-
                 <span class="meta-item">
                   <%= image_tag "euro.png", alt: "Prix", class: "meta-icon" %>
                   <% if recipe.respond_to?(:price) %>
@@ -36,33 +31,27 @@
                   <% end %>
                 </span>
               </div>
-
               <div class="recap-qty"
      data-controller="recipe-count"
      data-recipe-count-min-value="1">
-
-  <button type="button"
+                <button type="button"
           class="recap-qty-btn"
           aria-label="Retirer"
           data-action="recipe-count#decrement">−</button>
-
-  <span class="recap-qty-n"
+                <span class="recap-qty-n"
         data-recipe-count-target="value">
-    <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
-  </span>
-
-  <button type="button"
+                  <%= recap.respond_to?(:quantity) ? recap.quantity : 1 %>
+                </span>
+                <button type="button"
           class="recap-qty-btn"
           aria-label="Ajouter"
           data-action="recipe-count#increment">+</button>
-</div>
-
+              </div>
             </div>
           </div>
         </li>
       <% end %>
     </ul>
-
     <div class="recap-actions">
       <%= link_to "Valider", ingredients_lists_path, class: "recap-validate" %>
     </div>

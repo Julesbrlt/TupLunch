@@ -9,9 +9,9 @@
       <% end %>
     </div>
     <div class="dashboard-profile-body">
-      <p><strong>Préférences:</strong> <%= @profile.food_preferences %></p>
       <p><strong>Budget:</strong> <%= @profile.total_budget %> €</p>
       <p><strong>Objectif calories:</strong> <%= @profile.total_calories %> kcal</p>
+      <p><strong>Préférences:</strong> <%= @profile.food_preferences %></p>
     </div>
   </div>
   <!-- SECTION RECIPES -->
@@ -27,8 +27,8 @@
         <div class="dashboard-card-body">
           <h5 class="dashboard-card-title"><%= recap.recipe.name %></h5>
           <div class="dashboard-card-meta">
-            <span>💸 <%= recap.recipe.price %> €</span>
-            <span>⏳ <%= recap.recipe.time %> min</span>
+            <span class="meta-item"><%= image_tag "euro.png", alt: "Prix", class: "meta-icon" %><%= recap.recipe.price %> €</span>
+            <span class="meta-item"><%= image_tag "lhorloge.png", alt: "Temps de préparation", class: "meta-icon" %> <%= recap.recipe.time %> min</span>
           </div>
         </div>
       </div>
@@ -52,8 +52,8 @@
           <div class="dashboard-card-body">
             <h5 class="dashboard-card-title"><%= fav.recipe.name %></h5>
             <div class="dashboard-card-meta">
-              <span>💸 <%= fav.recipe.price %> €</span>
-              <span>⏳ <%= fav.recipe.time %> min</span>
+              <span class="meta-item"><%= image_tag "euro.png", alt: "Prix", class: "meta-icon" %> <%= fav.recipe.price %> €</span>
+              <span class="meta-item"><%= image_tag "lhorloge.png", alt: "Temps de préparation", class: "meta-icon" %><%= fav.recipe.time %> min</span>
             </div>
           </div>
         </div>
