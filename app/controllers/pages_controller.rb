@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: :landing
 
   def home
     @recipes = Recipe.all.select{|recipe|recipe.photos.any?}
