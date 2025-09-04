@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/home", to: "pages#home"
   get "/dashboard", to: "pages#dashboard"
-  
+
   patch 'recap_recipes/:id/servings', to: 'recap_recipes#servings', as: :servings_recap_recipe
 
 
-  resources :profiles, except: [:index, :destroy]
+  resources :profiles, except: [:index, :destroy, :show]
   resources :recipe_ingredients
   resources :recipes, only: [:index, :show] do
     resources :favorites, only: [:create, :destroy]

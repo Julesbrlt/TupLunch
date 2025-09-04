@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  skip_before_action :check_profile
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
@@ -12,7 +13,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile)
+      redirect_to home_path
     else
       render :new, status: :unprocessable_entity
     end
