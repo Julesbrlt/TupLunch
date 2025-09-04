@@ -1,17 +1,13 @@
-.container-swipe {
-  background-color: $color-primary;
-  height: 100vh;
+.swiper-cards .swiper-slide {
+  overflow: visible !important;
 }
 
-.card-counter {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  gap: 30px;
-  z-index: 100;
+.cont-swiper {
+  overflow-x: hidden;
+  height: 100%;
 }
 
-.card-counter .dot {
+.dot {
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -20,30 +16,12 @@
   border: 1px solid black;
 }
 
-.card-counter .dot.active {
+.dot.active {
   background-color: rgb(30, 240, 173);
 }
 
-
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  scroll-snap-type: x mandatory;
-  height: 82%;
-
-  &::-webkit-scrollbar { display: none; }
-}
-
-.swipe-card {
-  width: 95%;
-  border-radius: 1rem;
-  background-color: $color-background;
-  align-items: center;
-}
-
 .btn-actions {
-  bottom: 12px;
+  bottom: -60px;
   align-items: center;
   padding-inline: 20px;
 }
@@ -76,11 +54,28 @@
   justify-content: flex-end;
 }
 
+.title-recipe {
+  font-family: $font-secondary;
+  font-size: 1.625rem;
+}
+
+.info-recipe {
+  font-size: 1rem;
+}
+
 .card-info {
-  padding-bottom: 30px;
+  padding-bottom: 40px;
+  font-family: $font-secondary;
 }
 
 .bouton {
   padding-top: 25px;
   padding-right: 40px;
+}
+
+.retour-btn {
+  z-index: 10000000 !important;
+  position: absolute;
+      left: 100px;
+    bottom: 68px;
 }
