@@ -28,6 +28,18 @@ $card-bg:        #ffffff;
   padding:16px;
 }
 
+.img-wok {
+width: 25px;
+height: 25px;
+}
+
+.wok{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
 .all {
 display: flex;
 }
