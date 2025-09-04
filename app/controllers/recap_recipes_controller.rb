@@ -1,5 +1,6 @@
 class RecapRecipesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_recap_recipe, only: [:servings]
 
   def index
     @recap_recipes = current_user.recap_recipes.includes(:recipe)
@@ -23,6 +24,17 @@ class RecapRecipesController < ApplicationController
     @recap_recipes = @user.recap_recipes
     @profile = @user.profile
     @favorites = @user.favorites
+  end
 
+  def servings
+    recap = RecapRecipe.find(params[:id])
+    recap.update!(servings: params[:servings].to_i)
+    redirect_to recap_recipes_path
+  end
+
+private
+
+  def set_recap_recipe
+    @recap_recipe = RecapRecipe.find(params[:id])
   end
 end

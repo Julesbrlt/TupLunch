@@ -220,11 +220,11 @@ RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find
 RecipeIngredient.create!(recipe: recipes_objects[0], ingredient: Ingredient.find_by(name: "Ail"), quantity: "2 gousses")
 
 # Poulet Curry Coco
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: "0.2Kilos")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: "200ml")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: "1 c.à.c")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: "1 pièce")
-RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: "1 gousse")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Poulet"), quantity: 0.2, unit: "kg" )
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Lait de coco"), quantity: 200, unit: "ml")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Curry en poudre"), quantity: 1, unit: " c.à.c")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Oignon"), quantity: 1, unit: "pièce")
+RecipeIngredient.create!(recipe: recipes_objects[1], ingredient: Ingredient.find_by(name: "Ail"), quantity: 1, unit: "gousse")
 
 # Salade César
 RecipeIngredient.create!(recipe: recipes_objects[2], ingredient: Ingredient.find_by(name: "Laitue romaine"), quantity: "1 pièce")
