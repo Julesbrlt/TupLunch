@@ -17,10 +17,9 @@ export default class extends Controller {
 
   pass() {
     this.swiper.slideNext()
-    console.log('pass')
   }
 
-  add(eventOrUrl) {
+  async add(eventOrUrl) {
     console.log('add')
     let url
 
@@ -33,7 +32,7 @@ export default class extends Controller {
     }
 
     const token = document.querySelector('meta[name="csrf-token"]').content
-    fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "X-CSRF-Token": token,
@@ -41,6 +40,14 @@ export default class extends Controller {
       },
       credentials: "same-origin"
     })
+
+    if (response.ok) {
+    const data = await response.json().catch(() => ({}))
+    if (data.redirect_url) {
+      window.location.href = data.redirect_url
+      return
+    }
+  }
 
     this.swiper.slideNext()
   }

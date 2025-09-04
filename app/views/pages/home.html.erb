@@ -8,51 +8,47 @@
       <%= link_to "Let’s goooo", recipes_path, class: "cta-btn" %>
     </div>
   </section>
-
   <section class="recipes-section">
     <h3>Les recettes du moment</h3>
     <div class="recipes-carousel">
       <% @recipes.each do |recipe| %>
-
         <article class="recipe-card">
           <%= link_to recipe_path(recipe), class: "recipe-link" do  %>
             <div class="image-wrapper">
               <% recipe.photos.each do |photo| %>
                 <%= cl_image_tag(photo.key)%>
-          <% end  %>
-              <% end %>
+              <% end  %>
+            <% end %>
+          </div>
+          <h4><%= recipe.name %></h4>
+          <div class= "all">
+            <div class="card-time">
+              <div class="meta">Prix</div>
+              <div class="time"><%= "#{number_to_currency(recipe.price, unit: "€")}" %></div>
             </div>
-            <h4><%= recipe.name %></h4>
-            <div class= "all">
-              <div class="card-time">
-            <div class="meta">Prix</div>
-            <div class="time"><%= "#{number_to_currency(recipe.price, unit: "€", format: "%n%u", separator: ",", delimiter: " ", precision: 2)}" %></div>
-            </div>
-
-          <div class="btn-favorite2"
+            <div class="btn-favorite2"
               data-controller="update-favorites"
               data-update-favorites-red-url-value="<%= image_path('heart-red.png') %>"
               data-update-favorites-white-url-value="<%= image_path('heart.png') %>">
-            <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-              <div class="rounded-circle2">
-                <%= image_tag "heart-red.png",
+              <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
+                <div class="rounded-circle2">
+                  <%= image_tag "heart-red.png",
                       alt: "Favori",
                       class: "heart-icon2",
                       data: { update_favorites_target: "icon" } %>
-              </div>
-            <% else %>
-              <%= link_to recipe_favorites_path(recipe),
+                </div>
+              <% else %>
+                <%= link_to recipe_favorites_path(recipe),
                     data: { turbo_method: :post, action: "click->update-favorites#toRed" },
                     class: "rounded-circle2" do %>
-                <%= image_tag "heart.png",
+                  <%= image_tag "heart.png",
                       alt: "Ajouter aux favoris",
                       class: "heart-icon2",
                       data: { update_favorites_target: "icon" } %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
-
-              </div>
         </article>
       <% end %>
     </div>

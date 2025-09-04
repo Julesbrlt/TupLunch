@@ -1,11 +1,38 @@
 .recipe-show {
-  padding: 20px;
+  padding: 70px 20px 20px 20px;
+
   background: $color-light2;
   min-height: 100vh;
   text-align: center;
+  position: relative;
+
+  .btn-favorite2 {
+    position: absolute;
+    top: 28px;             /* distance depuis le haut */
+    left: 50%;             /* centre horizontal */
+    transform: translateX(-50%);
+    z-index: 10;
+    
+  }
+
+  .rounded-circle2 {
+    width: 45px;
+    height: 45px;
+  }
+
+  .heart-icon2 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.link-index {
+  text-decoration: none;
+  color: black
 }
 
 .recipe-title {
+  margin-top: 24px;
   font-family: $font-secondary;
   font-weight: 600;
   font-size: 1.8rem;

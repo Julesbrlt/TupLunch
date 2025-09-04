@@ -25,6 +25,28 @@
                   </div>
                 </div>
               <% end %>
+              <div class="btn-favorite-index"
+              data-controller="update-favorites"
+              data-update-favorites-red-url-value="<%= image_path('heart-red.png') %>"
+              data-update-favorites-white-url-value="<%= image_path('heart.png') %>">
+                <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
+                  <div class="rounded-circle2">
+                    <%= image_tag "heart-red.png",
+                      alt: "Favori",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
+                  </div>
+                <% else %>
+                  <%= link_to recipe_favorites_path(recipe),
+                    data: { turbo_method: :post, action: "click->update-favorites#toRed" },
+                    class: "rounded-circle2" do %>
+                    <%= image_tag "heart.png",
+                      alt: "Ajouter aux favoris",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
+                  <% end %>
+                <% end %>
+              </div>
               <!-- Footer en dehors de l'image -->
               <div class="btn-actions position-absolute w-100 d-flex justify-content-around">
                 <button type="button" class="btn btn-pass" data-action="click->swiper#pass">
@@ -38,26 +60,12 @@
                 </button>
               </div>
               <!-- Bouton coeur en overlay -->
-              <div class="bouton position-absolute top-0 end-0">
-                <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
-                  <span class="text-danger fs-4">❤️</span>
-                <% else %>
-                  <div class="btn-favorite mt-3">
-                    <%= link_to recipe_favorites_path(recipe),
-                      data: { turbo_method: :post }  do %>
-                      <div class="rounded-circle">
-                        <%= image_tag "heart.png", alt: "Favori", class: "heart-icon" %>
-                      </div>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
             </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-      <div class="retour-btn">
-    <%= link_to "Voir mon panier", recap_recipes_path, class:"btn-cta"  %>
-    </div>
+  <% if flash[:alert] %>
+    <div class="alert alert-warning"><%= flash[:alert] %></div>
+  <% end %>

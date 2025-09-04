@@ -91,26 +91,6 @@
   }
 
 
-.recap-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;         /* espace entre le bloc temps et le bloc prix */
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .meta-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;          /* espace entre l’icône et le texte */
-    white-space: nowrap;
-  }
-  .meta-icon {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    display: inline-block;
-  }
 
   /* Pastille quantité sous la ligne méta */
   .recap-qty {
@@ -147,7 +127,7 @@
 
   /* CTA */
   .recap-actions {
-  position: fixed;
+    position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -159,25 +139,46 @@
   margin-top: 0;
 }
 
-  .recap-validate {
-    display: inline-block;
-    width: 100%;
-    background: $color-secondary;
-    color: $color-light;
-    font-weight: 800;
-    text-decoration: none;
-    padding: 12px 18px;
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-  }
-
-  .recap-validate:hover {
-    filter: brightness(.96);
-  }
-
-  @media (min-width: 900px) {
-    .recap-list { max-width: 880px; margin: 0 auto; }
-  }
+.recap-validate {
+  display: inline-block;
+  width: 100%;
+  background: $color-secondary;
+  color: $color-light;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
 }
+
+.recap-validate:hover {
+  filter: brightness(.96);
+}
+
+@media (min-width: 900px) {
+  .recap-list { max-width: 880px; margin: 0 auto; }
+}
+}
+
+.recap-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;         /* espace entre le bloc temps et le bloc prix */
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;          /* espace entre l’icône et le texte */
+    white-space: nowrap;
+  }
+  .meta-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: inline-block;
+  }
