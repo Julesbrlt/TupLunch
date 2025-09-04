@@ -9,7 +9,10 @@
     </div>
   </section>
   <section class="recipes-section">
+    <div class= "wok">
     <h3>Les recettes du moment</h3>
+      <%= image_tag "cuisine.png", alt: "wok", class: "img-wok" %>
+    </div>
     <div class="recipes-carousel">
       <% @recipes.each do |recipe| %>
         <article class="recipe-card">
