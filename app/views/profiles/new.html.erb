@@ -1,4 +1,41 @@
 <div class="container mt-5">
-  <h2 class="mb-4">Créer mon profil</h2>
-  <%= render "form" %>
+  <div class="goals-page">
+    <div class="profile-card goals-card">
+      <h1 class="goals-title">Créer mon profil</h1>
+      <%= simple_form_for @profile, url: profiles_path, html: { class: "goals-form" } do |f| %>
+        <!-- Nom -->
+        <div class="goals-row">
+          <label class="form-label">Nom</label>
+          <%= f.input_field :name, as: :string,
+              class: "form-control form-pill",
+              value: (@profile.name) %>
+        </div>
+        <!-- Recettes / semaine -->
+        <div class="goals-row">
+          <label class="form-label">Nombre de recettes / semaine</label>
+            <%= f.input_field :total_recipes, as: :integer,
+        class: "form-control form-pill step-input",
+        value: @profile.total_recipes %>
+        </div>
+        <!-- Budget -->
+        <div class="goals-row">
+          <label class="form-label">Budget total (€) / semaine</label>
+            <%= f.input_field :total_budget, as: :integer,
+        class: "form-control form-pill step-input",
+        value: @profile.total_budget  %>
+        </div>
+        <!-- Calories -->
+        <div class="goals-row">
+          <label class="form-label">Objectif calories / semaine</label>
+            <%= f.input_field :total_calories, as: :integer,
+        class: "form-control form-pill step-input",
+        value: @profile.total_calories%>
+        </div>
+        <!-- Submit -->
+        <div class="profile-actions justify-content-center">
+          <%= f.button :submit, "Découvre TupLunch!", class: "btn btn-primary btn-tup" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

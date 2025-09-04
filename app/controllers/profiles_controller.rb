@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile)
+      redirect_to home_path
     else
       render :new, status: :unprocessable_entity
     end
