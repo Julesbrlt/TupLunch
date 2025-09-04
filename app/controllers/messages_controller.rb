@@ -21,7 +21,8 @@ class MessagesController < ApplicationController
     instructions = SYSTEM_PROMPT
     instructions += recipe_prompt(recipe)
     if @message.valid?
-      @chat.with_instructions(instructions).ask(@message.content)
+      ai = @chat.with_instructions(instructions)
+      ai.ask(@message.content)
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to chat_path(@chat) }
