@@ -4,11 +4,11 @@ class MessagesController < ApplicationController
     Your task is to find a recipe using the ingredients given by the user. \
     Always share the name and the URL of the recipe. \
     Always answer with recipes that you know. \
-    IF you send a recipe to the user, You have to ask him if he wants assistance during cooking. \
     Else, propose recipes that contains one or more ingredients that the user have. \
     Answer 'Je ne connais pas de recette à partir de ces ingrédients précis' if you don't find recipes using at least one ingredient given by the user
     Your answer should be in markdown. \
     Here are the nearest recipes based on the user's ingredients: "
+    # You have to ask him if he wants assistance during cooking. \
 
 
   def create
@@ -21,8 +21,8 @@ class MessagesController < ApplicationController
     instructions = SYSTEM_PROMPT
     instructions += recipe_prompt(recipe)
     if @message.valid?
-      ai = @chat.with_instructions(instructions)
-      ai.ask(@message.content)
+      @chat.with_instructions(instructions).ask(@message.content)
+      @chat.messages.where(role: "system").delete_all
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to chat_path(@chat) }
