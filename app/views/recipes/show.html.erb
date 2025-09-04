@@ -1,43 +1,57 @@
 <div class="recipe-show">
-    <%= link_to recipes_path %>
   <!-- Bouton favori -->
-  <div class="btn-favorite mt-3">
-    <%= link_to recipe_favorites_path(@recipe),
-        data: { turbo_method: :post }  do %>
-      <div class="rounded-circle">
-        <%= image_tag "heart.png", alt: "Favori", class: "heart-icon" %>
+  <div class="btn-favorite2"
+              data-controller="update-favorites"
+              data-update-favorites-red-url-value="<%= image_path('heart-red.png') %>"
+              data-update-favorites-white-url-value="<%= image_path('heart.png') %>">
+    <% if user_signed_in? && current_user.favorites.exists?(recipe_id: @recipe) %>
+      <div class="rounded-circle2">
+        <%= image_tag "heart-red.png",
+                      alt: "Favori",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
       </div>
-    <% end %>
-  </div>
-  <!-- Titre et description -->
-  <h1 class="recipe-title mt-3"><%= @recipe.name %></h1>
-  <p class="recipe-description mt-2"><%= @recipe.description %></p>
-  <!-- Infos principales -->
-  <div class="recipe-info">
-    <span><%= @recipe.price %> €</span>
-    <span><%= @recipe.time %> min</span>
-    <span><%= @recipe.calories %> kcal</span>
-  </div>
-  <!-- Ingrédients -->
-  <div class="ingredients-accordion">
-    <div class="accordion-header" onclick="this.classList.toggle('open')">
-      <h3 class="section-title">Ingrédients</h3>
-      <span><%= @recipe.ingredients.count %> items ▼</span>
-    </div>
-    <ul class="accordion-content">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li><%= ingredient.name %> - <%= ingredient.recipe_ingredients.find_by(recipe: @recipe).quantity %></li>
+    <% else %>
+      <%= link_to recipe_favorites_path(@recipe),
+                    data: { turbo_method: :post, action: "click->update-favorites#toRed" },
+                    class: "rounded-circle2" do %>
+        <%= image_tag "heart.png",
+                      alt: "Ajouter aux favoris",
+                      class: "heart-icon2",
+                      data: { update_favorites_target: "icon" } %>
       <% end %>
-    </ul>
-  </div>
-  <!-- Étapes -->
-  <h3 class="section-title mt-4">Étapes de la recette</h3>
-  <div class="steps">
-    <% @recipe.steps.split("\n").each_with_index do |step, i| %>
-      <div class="step-card">
-        <div class="step-title">Étape <%= i+1 %> :</div>
-        <div class="step-description"><%= step %></div>
-      </div>
     <% end %>
   </div>
+  <%= link_to recipes_path, class:"link-index" do %>
+    <!-- Titre et description -->
+    <h1 class="recipe-title mt-3"><%= @recipe.name %></h1>
+    <p class="recipe-description mt-2"><%= @recipe.description %></p>
+    <!-- Infos principales -->
+    <div class="recipe-info">
+      <span><%= @recipe.price %> €</span>
+      <span><%= @recipe.time %> min</span>
+      <span><%= @recipe.calories %> kcal</span>
+    </div>
+    <!-- Ingrédients -->
+    <div class="ingredients-accordion open">
+      <div class="accordion-header">
+        <h3 class="section-title">Ingrédients</h3>
+      </div>
+      <ul class="accordion-content">
+        <% @recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %> - <%= ingredient.recipe_ingredients.find_by(recipe: @recipe).quantity %></li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- Étapes -->
+    <h3 class="section-title mt-4">Étapes de la recette</h3>
+    <div class="steps">
+      <% @recipe.steps.split("\n").each_with_index do |step, i| %>
+        <div class="step-card">
+          <div class="step-title">Étape <%= i+1 %> :</div>
+          <div class="step-description"><%= step %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

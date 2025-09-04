@@ -25,20 +25,10 @@
                   </div>
                 </div>
               <% end %>
-              <!-- Footer en dehors de l'image -->
-              <div class="btn-actions position-absolute w-100 d-flex justify-content-around">
-                <button type="button" class="btn btn-pass" data-action="click->swiper#pass">
-                  <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
-                </button>
-                <button type="button"
-                  class="btn btn-swipe"
-                  data-action="click->swiper#add"
-                  data-url="<%= recipe_recap_recipes_path(recipe) %>">
-                  <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
-                </button>
-              </div>
-              <!-- Bouton coeur en overlay -->
-              <div class="bouton position-absolute top-0 end-0">
+              <div class="btn-favorite-index"
+              data-controller="update-favorites"
+              data-update-favorites-red-url-value="<%= image_path('heart-red.png') %>"
+              data-update-favorites-white-url-value="<%= image_path('heart.png') %>">
                 <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
                   <div class="rounded-circle2">
                     <%= image_tag "heart-red.png",
@@ -57,14 +47,24 @@
                   <% end %>
                 <% end %>
               </div>
+              <!-- Footer en dehors de l'image -->
+              <div class="btn-actions position-absolute w-100 d-flex justify-content-around">
+                <button type="button" class="btn btn-pass" data-action="click->swiper#pass">
+                  <%= image_tag "close.png", alt: "Passer", class: "btn-icon" %>
+                </button>
+                <button type="button"
+                  class="btn btn-swipe"
+                  data-action="click->swiper#add"
+                  data-url="<%= recipe_recap_recipes_path(recipe) %>">
+                  <%= image_tag "chefswipe.png", alt: "Ajouter", class: "btn-icon" %>
+                </button>
+              </div>
+              <!-- Bouton coeur en overlay -->
             </div>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="retour-btn">
-    <%= link_to "Voir mon panier", recap_recipes_path, class:"btn-cta"  %>
   </div>
   <% if flash[:alert] %>
     <div class="alert alert-warning"><%= flash[:alert] %></div>
