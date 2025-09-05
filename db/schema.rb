@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 2025_09_04_125146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "vector"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,7 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_04_125146) do
     t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "servings"
+    t.integer "servings", default: 1, null: false
     t.index ["recipe_id"], name: "index_recap_recipes_on_recipe_id"
     t.index ["user_id"], name: "index_recap_recipes_on_user_id"
   end
@@ -131,6 +132,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_04_125146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "steps"
+    t.vector "embedding", limit: 1536
     t.string "image_url"
   end
 
