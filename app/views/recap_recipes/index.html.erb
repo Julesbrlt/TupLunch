@@ -5,6 +5,11 @@
       <% @recap_recipes.each do |recap| %>
         <% recipe = recap.recipe %>
         <li class="recap-card">
+          <%= link_to recap_recipe_path(recap),
+                data: { turbo_method: :delete, turbo_confirm: "Supprimer cette recette ?" },
+                class: "btn-recap-destroy" do %>
+            <%= image_tag "bin.png", alt: "Supprimer", class: "icon-delete" %>
+          <% end %>
           <div class="recap-thumb">
             <div class="recap-thumb-plh">
               <% if recipe.image_url.present? %>
@@ -31,28 +36,21 @@
                   <% end %>
                 </span>
               </div>
-
               <%= form_with url: servings_recap_recipe_path(recap), method: :patch, class: "recap-qty",
       data: { controller: "recipe-count", recipe_count_min_value: 1 } do %>
-
-  <button type="button"
+                <button type="button"
           class="recap-qty-btn"
           aria-label="Retirer"
           data-action="recipe-count#decrement">−</button>
-
-  <span class="recap-qty-n" data-recipe-count-target="value">
-    <%= recap.servings %>
-  </span>
-
-  <button type="button"
+                <span class="recap-qty-n" data-recipe-count-target="value">
+                  <%= recap.servings %>
+                </span>
+                <button type="button"
           class="recap-qty-btn"
           aria-label="Ajouter"
           data-action="recipe-count#increment">+</button>
-
-  <%= hidden_field_tag :servings, recap.servings, data: { recipe_count_target: "input" } %>
-<% end %>
-
-
+                <%= hidden_field_tag :servings, recap.servings, data: { recipe_count_target: "input" } %>
+              <% end %>
             </div>
           </div>
         </li>

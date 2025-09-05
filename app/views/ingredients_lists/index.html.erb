@@ -1,40 +1,33 @@
 <div class="shopping-page">
   <div class="shopping-card">
     <h1>Liste de courses</h1>
-
     <div class="shopping-list">
       <% if @lists.present? %>
         <table>
           <tbody>
             <% total_price = 0.0 %>
-
             <% @lists.each do |recap| %>
               <% s = (recap.servings.presence || 1).to_f %>
-
               <% recap.recipe.recipe_ingredients.each do |ri| %>
                 <% line_qty   = (ri.quantity.to_f * s) %>
                 <% line_price = (ri.just_price.to_f * s) %>
-
                 <tr>
                   <td><%= ri.ingredient.name %></td>
                   <td>
                     <%= line_qty.truncate(4) %> <%= ri.unit %>
                   </td>
-
                   <td>
                     <%= number_to_currency(
                           line_price,
                           unit: "€", format: "%n%u", separator: ",", delimiter: " ", precision: 2
                         ) %>
                   </td>
-
                   <td class="text-center">
                     <input type="checkbox"
                       class="round-check ingredient-checkbox"
                       data-id="<%= ri.ingredient.id %>">
                   </td>
                 </tr>
-
                 <% total_price += line_price %>
               <% end %>
             <% end %>
@@ -46,7 +39,6 @@
         </div>
       <% end %>
     </div>
-
     <div class="shopping-total">
       <span class="label">TOTAL :</span>
       <span class="value">

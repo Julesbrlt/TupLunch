@@ -1,6 +1,6 @@
 class RecapRecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recap_recipe, only: [:servings]
+  before_action :set_recap_recipe, only: [:servings, :destroy]
 
   def index
     @recap_recipes = current_user.recap_recipes.includes(:recipe).sort()
@@ -28,8 +28,7 @@ class RecapRecipesController < ApplicationController
 
   def destroy
     @recap_recipe.destroy
-
-    redirect_to dashboard_path, notice: "Recette retirée de vos favoris."
+    redirect_to recap_recipes_path(@recap_recipe), notice: "Recette retirée de vos favoris."
   end
 
   def dashboard
