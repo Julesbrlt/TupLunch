@@ -6,8 +6,13 @@ Chat.destroy_all
 User.destroy_all
 
 
-user = User.create!(
+user1 = User.create!(
   email: "test@test.fr",
+  password: "123456"
+)
+
+user2  = User.create!(
+  email: "jules@gmail.com",
   password: "123456"
 )
 
@@ -386,8 +391,7 @@ ingredients = [
   { name: "Saucisse", prix_au_kilo: 11 },
   { name: "Beurre", prix_au_kilo: 10 },
   { name: "Lait", prix_au_kilo: 3 },
-  { name: "Ravioles fraîches", prix_au_kilo: 14 },
-  { name: "Concentré de tomate", prix_au_kilo: 6 },
+  { name: "Ravioles fraîches", prix_au_kilo: 4 },
   { name: "Gingembre mariné", prix_au_kilo: 20 },
   { name: "Wasabi", prix_au_kilo: 77 },
   { name: "Coulis de tomate", prix_au_kilo: 3 },
@@ -616,12 +620,22 @@ RecipeIngredient.create!(recipe: recipes_objects[31], ingredient: Ingredient.fin
 
 puts "✅ Liaisons recettes ↔ ingrédients créées"
 
-user.favorites.create(recipe: Recipe.all.sample)
 Profile.create!(
-  user: user,
-  name: "Jean Dupont",
-  food_preferences: "Végétarien, aime les pâtes",
+  user: user2,
+  name: "Jules Baralotto",
+  food_preferences: "Carnivore, mange TOUT",
+  total_budget: 30,
+  total_calories: 2000,
+  total_recipes: 5
+)
+
+Profile.create!(
+  user: user1,
+  name: "Test",
+  food_preferences: "Carnivore, mange TOUT",
   total_budget: 50,
   total_calories: 2000,
   total_recipes: 5
 )
+
+puts "✅ profils crées"
