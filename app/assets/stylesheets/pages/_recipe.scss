@@ -12,7 +12,7 @@
     left: 50%;             /* centre horizontal */
     transform: translateX(-50%);
     z-index: 10;
-    
+
   }
 
   .rounded-circle2 {
@@ -139,4 +139,11 @@
 .step-description {
   font-size: 0.95rem;
   color: #333;
+}
+
+
+.calorie-icon {
+  width: 17px;
+  height: 17px;
+  margin-right: 4px;
 }
